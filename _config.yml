@@ -19,6 +19,7 @@ show_post_footers:  false
 disqus_shortname: miroslavpopovic
 
 # Social icons
+feed_url: http://feeds.feedburner.com/miroslavpopovic/blog
 show_social_icons: true
 github_username: miroslavpopovic
 stackoverflow_id: 119230

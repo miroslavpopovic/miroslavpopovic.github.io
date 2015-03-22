@@ -6,7 +6,12 @@
     {% if site.stackoverflow_id %}
       <a class="fa fa-stack-overflow" href="https://stackoverflow.com/users/{{ site.stackoverflow_id }}"></a>
     {% endif %}
-    <a class="fa fa-rss" href="{{ "/feed.xml" | prepend: site.baseurl }}"></a>
+    {% if site.codeproject_username %}
+      <a class="fa fa-file-text-o" href="http://www.codeproject.com/Members/{{ site.codeproject_username }}" title="CodeProject"></a>
+    {% endif %}
+    {% if site.feed_url %}
+      <a class="fa fa-rss" href="{{ site.feed_url }}"></a>
+    {% endif %}
     {% if site.twitter_username %}
       <a class="fa fa-twitter" href="https://twitter.com/{{ site.twitter_username }}"></a>
     {% endif %}
@@ -19,9 +24,6 @@
     {% if site.linkedin_username %}
       <a class="fa fa-linkedin" href="https://www.linkedin.com/in/{{ site.linkedin_username }}"></a>
     {% endif %}
-    {% if site.codeproject_username %}
-      <a class="fa fa-file-text-o" href="http://www.codeproject.com/Members/{{ site.codeproject_username }}" title="CodeProject"></a>
-    {% endif %} 
   </div>
   <div class="right">
     {% if site.bitcoin_url %}
