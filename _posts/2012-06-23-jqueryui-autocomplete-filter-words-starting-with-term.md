@@ -12,7 +12,8 @@ There [are](http://stackoverflow.com/questions/2382497/jquery-autocomplete-plug-
 The solution was pretty easy though. After searching thru jQuery UI's source, I found the `filter` method used just for that. All that needs to be done is replacing that function with this:
 
 ```javascript
-// Overrides the default autocomplete filter function to search only from the beginning of the string
+// Overrides the default autocomplete filter function to 
+// search only from the beginning of the string
 $.ui.autocomplete.filter = function (array, term) {
   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
   return $.grep(array, function (value) {
