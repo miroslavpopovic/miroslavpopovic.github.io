@@ -1,6 +1,6 @@
 # Site settings
 title:       Miroslav Popovic
-email:       miroslav.popovic@gmail.com
+email:       contact@miroslavpopovic.com
 author:      Miroslav Popovic
 description: "A somewhat independent web and .NET development consultant, currently employed at Abacus Solutions & Consulting."
 baseurl:     ""
@@ -10,7 +10,7 @@ url:         "http://blog.miroslavpopovic.com"
 google_analytics: UA-32542962-1
 
 # Optional features
-animated:           false
+animated:           true
 show_related_posts: false
 show_post_footers:  false
 
