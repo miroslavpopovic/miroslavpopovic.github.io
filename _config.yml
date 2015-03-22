@@ -52,3 +52,9 @@ permalink:    pretty
 paginate:     5
 sass:
   compressed: true
+
+# Use the following plug-ins
+gems:
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-redirect-from
+  - jemoji
