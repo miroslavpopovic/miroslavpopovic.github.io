@@ -16,21 +16,27 @@ It looked like everything went smoothly, but when trying to run `Jekyll serve` o
 
 Of course, something had to go wrong with that too. After installing Ruby 2.1.5 x64 and Ruby DevKit, gem installation with the following message:
 
-	gem install jekyll
-	ERROR:  Could not find a valid gem 'jekyll' (>= 0), here is why:
-          Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://api.rubygems.org/latest_specs.4.8.gz)
+```bat
+gem install jekyll
+ERROR:  Could not find a valid gem 'jekyll' (>= 0), here is why:
+       	Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://api.rubygems.org/latest_specs.4.8.gz)
+```
 
 [This SO answer](http://stackoverflow.com/a/27641786/119230) helped and I was able to install Jekyll after that.
 
 Since I'm referencing few Ruby gems in `_config.yml` I had to install those too:
 
-	gem install jekyll-sitemap	
-	gem install jekyll-redirect-from
-	gem install jemoji
+```bat
+gem install jekyll-sitemap	
+gem install jekyll-redirect-from
+gem install jemoji
+```
 
 Finally, running the following command started the build process and enabled file change watcher. Success!
 
-	jekyll serve --watch
+```bat
+jekyll serve --watch
+```
 
 I tested several themes locally, before settling up with Pixyll theme.
 
