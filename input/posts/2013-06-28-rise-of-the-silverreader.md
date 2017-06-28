@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Rise of the SilverReader
-tags: silverreader projects
+tags: [silverreader, projects]
 redirect_from: "/rise-of-the-silverreader/"
 ---
 
 Yes, you read that right. Rise of the [SilverReader](http://silverreader.com/), not [Rise of the Silver Surfer](http://www.imdb.com/title/tt0486576/).
 
-Right after [the news](http://googleblog.blogspot.com/2013/03/a-second-spring-of-cleaning.html) that shocked the world (at least our world) my friend [Radenko Zec](http://blog.developers.ba/) suggested that we build an alternative to Google Reader. So, few months ago, together with another friend of ours [Igor Markovic](http://igormarkovic.com/), we started working on it and apparently, we [weren’t alone](http://techcrunch.com/2013/06/24/there-is-no-google-reader-replacement-only-alternatives/). 
+Right after [the news](http://googleblog.blogspot.com/2013/03/a-second-spring-of-cleaning.html) that shocked the world (at least our world) my friend [Radenko Zec](http://blog.developers.ba/) suggested that we build an alternative to Google Reader. So, few months ago, together with another friend of ours [Igor Markovic](http://igormarkovic.com/), we started working on it and apparently, we [weren’t alone](http://techcrunch.com/2013/06/24/there-is-no-google-reader-replacement-only-alternatives/).
 
 And now, just few days before our beloved Google Reader shuts down, we have published our [first live beta version](http://silverreader.com)!
 

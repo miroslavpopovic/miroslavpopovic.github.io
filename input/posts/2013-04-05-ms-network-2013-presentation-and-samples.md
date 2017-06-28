@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MS NetWork 2013 Presentation and Samples
-tags: presentation msnetwork
+tags: [presentation, msnetwork]
 redirect_from: "/ms-network-2013-presentation-and-samples/"
 ---
 

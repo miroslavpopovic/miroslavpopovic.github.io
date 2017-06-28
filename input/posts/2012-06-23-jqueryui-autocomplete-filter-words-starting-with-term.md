@@ -1,7 +1,7 @@
 ---
 layout: post
 title: jQuery UI Autocomplete - Filter words starting with term
-tags:  jquery jqueryui autocomplete
+tags: [jquery, jqueryui, autocomplete]
 redirect_from: "/jqueryui-autocomplete-filter-words-starting-with-term/"
 ---
 
@@ -12,7 +12,7 @@ There [are](http://stackoverflow.com/questions/2382497/jquery-autocomplete-plug-
 The solution was pretty easy though. After searching thru jQuery UI's source, I found the `filter` method used just for that. All that needs to be done is replacing that function with this:
 
 ```javascript
-// Overrides the default autocomplete filter function to 
+// Overrides the default autocomplete filter function to
 // search only from the beginning of the string
 $.ui.autocomplete.filter = function (array, term) {
   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
@@ -22,9 +22,9 @@ $.ui.autocomplete.filter = function (array, term) {
 };
 ```
 
-This is actually the copy of the default jQuery UI's `filter` method with a single change. Regex is prefixed with "^" sign which matches the beginning of the string. 
+This is actually the copy of the default jQuery UI's `filter` method with a single change. Regex is prefixed with "^" sign which matches the beginning of the string.
 
-Please note that this is a global change. It will affect all autocomplete boxes on your page. 
+Please note that this is a global change. It will affect all autocomplete boxes on your page.
 
 Here's a fiddle for that, if you want to play around (just try commenting / uncommenting the `filter` method):
 

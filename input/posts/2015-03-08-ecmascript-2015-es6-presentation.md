@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ECMAScript 2015 (ES6) Presentation
-tags: presentation es2015 es6
+tags: [presentation, es2015, es6]
 redirect_from: "/ecmascript-2015-es6-presentation/"
 ---
 

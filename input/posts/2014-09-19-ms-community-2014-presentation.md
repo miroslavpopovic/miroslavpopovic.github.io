@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MS Community 2014 Presentation
-tags: presentation mscommunity
+tags: [presentation, mscommunity]
 redirect_from: "/ms-community-2014-presentation/"
 ---
 

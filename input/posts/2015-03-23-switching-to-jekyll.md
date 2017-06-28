@@ -1,16 +1,16 @@
 ---
 layout: post
 title: Switching to Jekyll
-tags: blog jekyll
+tags: [blog, jekyll]
 ---
 
 I decided to switch my blog from [FunnelWeb](http://www.funnelweblog.com/) to [Jekyll](http://jekyllrb.com/) and host it on [GitHub Pages](https://pages.github.com/). There were some problems along the way so I'm documenting it here in case it might help someone. If you want a more detailed introduction to Jekyll, read Brian Rinaldi's [Getting Started with Jekyll](http://developer.telerik.com/featured/getting-started-with-jekyll/) post.
 
 ## Installing Jekyll on Windows
 
-Since I'm not a designer, I decided to choose one of [many Jekyll themes](https://github.com/jekyll/jekyll/wiki/Themes) and modify if necessary. Changing the theme directly on GitHub would be clumsy, since a lot of files are involved. Also doing little changes and testing the outcome would require a lot of git commits. Instead, I cloned my repository locally and installed Jekyll and its requirements on my Windows machine. 
+Since I'm not a designer, I decided to choose one of [many Jekyll themes](https://github.com/jekyll/jekyll/wiki/Themes) and modify if necessary. Changing the theme directly on GitHub would be clumsy, since a lot of files are involved. Also doing little changes and testing the outcome would require a lot of git commits. Instead, I cloned my repository locally and installed Jekyll and its requirements on my Windows machine.
 
-There's a [very good tutorial](http://jekyll-windows.juthilo.com/) for installing Jekyll on Windows. Unfortunately it's a little bit older. I followed the guide and installed the latest version of x64 build of Ruby, Ruby DevKit, Jekyll, x64 build of Python and Pygments. The latest Ruby version at the time of writing was 2.2.1. 
+There's a [very good tutorial](http://jekyll-windows.juthilo.com/) for installing Jekyll on Windows. Unfortunately it's a little bit older. I followed the guide and installed the latest version of x64 build of Ruby, Ruby DevKit, Jekyll, x64 build of Python and Pygments. The latest Ruby version at the time of writing was 2.2.1.
 
 It looked like everything went smoothly, but when trying to run `Jekyll serve` on my blog repository, it failed. The problem was with one of the Ruby gems called [nokogiri](http://www.nokogiri.org/). Apparently, it [doesn't work](http://stackoverflow.com/questions/28999906/require-cannot-load-such-file-nokogiri-nokogiri-loaderror-when-running) with Ruby 2.2.1 on Windows, so I had to fall back to older Ruby version - 2.1.5.
 
@@ -27,7 +27,7 @@ ERROR:  Could not find a valid gem 'jekyll' (>= 0), here is why:
 Since I'm referencing few Ruby gems in `_config.yml` I had to install those too:
 
 ```bat
-gem install jekyll-sitemap	
+gem install jekyll-sitemap
 gem install jekyll-redirect-from
 gem install jemoji
 ```
@@ -40,7 +40,7 @@ jekyll serve --watch
 
 I tested several themes locally, before settling up with Pixyll theme.
 
-## Creating user repository 
+## Creating user repository
 
 There's an easy getting started guide on [Smashing Magazine](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/). I ended up with [user repository](https://github.com/miroslavpopovic/miroslavpopovic.github.io) forked from John Otander's [Pixyll](https://github.com/johnotander/pixyll) theme, instead of [Jekyll Now](https://github.com/barryclark/jekyll-now) that's described in the guide above.
 
@@ -60,7 +60,7 @@ One thing that needed to be changed was the format of links. Markdown supports [
 
 ## Domain redirection
 
-My old blog was hosted on [ASPnix](https://billing.aspnix.com/aff.php?aff=079) under a custom subdomain. Following the [GitHub guide](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/), I had to delete the subdomain first and create a custom `cname` record for `blog` that points to `miroslavpopovic.github.io`. 
+My old blog was hosted on [ASPnix](https://billing.aspnix.com/aff.php?aff=079) under a custom subdomain. Following the [GitHub guide](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/), I had to delete the subdomain first and create a custom `cname` record for `blog` that points to `miroslavpopovic.github.io`.
 
 Also, [FeedBurner](https://feedburner.google.com/) had to be redirected to use `/feed.xml` file instead of `/feed`. Users that were subscribed to my RSS feed will get one time refresh of all items, since post ids are different.
 
