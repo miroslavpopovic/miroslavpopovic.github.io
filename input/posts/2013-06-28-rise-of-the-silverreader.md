@@ -1,8 +1,10 @@
----
-layout: post
-title: Rise of the SilverReader
-tags: [silverreader, projects]
-redirect_from: "/rise-of-the-silverreader/"
+Title: Rise of the SilverReader
+Tags:
+  - silverreader
+  - projects
+RedirectFrom:
+  - rise-of-the-silverreader
+  - 2013/06/28/rise-of-the-silverreader
 ---
 
 Yes, you read that right. Rise of the [SilverReader](http://silverreader.com/), not [Rise of the Silver Surfer](http://www.imdb.com/title/tt0486576/).

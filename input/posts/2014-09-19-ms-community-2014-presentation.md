@@ -1,8 +1,10 @@
----
-layout: post
-title: MS Community 2014 Presentation
-tags: [presentation, mscommunity]
-redirect_from: "/ms-community-2014-presentation/"
+Title: MS Community 2014 Presentation
+Tags:
+  - presentation
+  - mscommunity
+RedirectFrom:
+  - ms-community-2014-presentation
+  - 2014/09/19/ms-community-2014-presentation
 ---
 
 I held a talk "Building modern web in Microsoft world" on this year's [Microsoft Community conference](http://konferencija.mscommunity.ba/). Thanks for everyone who attended. The conference was great as always. [Damir](https://twitter.com/ddamirMVP) and [Enis](https://twitter.com/sahinovic) did a great job organizing it.

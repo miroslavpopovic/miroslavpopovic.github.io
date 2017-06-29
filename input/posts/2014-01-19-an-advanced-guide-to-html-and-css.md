@@ -1,8 +1,11 @@
----
-layout: post
-title: An advanced guide to HTML and CSS
-tags: [html, css, frontend]
-redirect_from: "/an-advanced-guide-to-html-and-css/"
+Title: An advanced guide to HTML and CSS
+Tags:
+  - html
+  - css
+  - frontend
+RedirectFrom:
+  - an-advanced-guide-to-html-and-css
+  - 2014/01/19/an-advanced-guide-to-html-and-css
 ---
 
 Lately, I'm catching up with my reading list - have a bunch of links bookmarked over the last year or so. Found a little gem today that I would like to share...

@@ -1,8 +1,11 @@
----
-layout: post
-title: jQuery UI Autocomplete - Filter words starting with term
-tags: [jquery, jqueryui, autocomplete]
-redirect_from: "/jqueryui-autocomplete-filter-words-starting-with-term/"
+Title: jQuery UI Autocomplete - Filter words starting with term
+Tags:
+  - jquery
+  - jqueryui
+  - autocomplete
+RedirectFrom:
+  - jqueryui-autocomplete-filter-words-starting-with-term
+  - 2012/06/23/jqueryui-autocomplete-filter-words-starting-with-term
 ---
 
 I had an interested problem with [jQuery UI Autocomplete](http://jqueryui.com/demos/autocomplete/) yesterday. The client required that the search / filtering should be done from the beginning of the word only. By default, jQuery UI Autocomplete filters through the list matching the term in the middle of the word.

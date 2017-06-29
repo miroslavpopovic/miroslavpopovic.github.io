@@ -1,7 +1,8 @@
----
-layout: post
-title: Switching to Jekyll
-tags: [blog, jekyll]
+Title: Switching to Jekyll
+Tags:
+  - blog
+  - jekyll
+RedirectFrom: 2015/03/23/switching-to-jekyll
 ---
 
 I decided to switch my blog from [FunnelWeb](http://www.funnelweblog.com/) to [Jekyll](http://jekyllrb.com/) and host it on [GitHub Pages](https://pages.github.com/). There were some problems along the way so I'm documenting it here in case it might help someone. If you want a more detailed introduction to Jekyll, read Brian Rinaldi's [Getting Started with Jekyll](http://developer.telerik.com/featured/getting-started-with-jekyll/) post.

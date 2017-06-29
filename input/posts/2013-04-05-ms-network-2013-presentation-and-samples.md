@@ -1,8 +1,10 @@
----
-layout: post
-title: MS NetWork 2013 Presentation and Samples
-tags: [presentation, msnetwork]
-redirect_from: "/ms-network-2013-presentation-and-samples/"
+Title: MS NetWork 2013 Presentation and Samples
+Tags:
+  - presentation
+  - msnetwork
+RedirectFrom:
+  - ms-network-2013-presentation-and-samples
+  - 2013/04/05/ms-network-2013-presentation-and-samples
 ---
 
 [Microsoft NetWork 2013](http://msnetwork.ba) conference was great. It's the biggest IT conference in Bosnia and Herzegovina, held in [Teslić](http://en.wikipedia.org/wiki/Tesli%C4%87) this year. I had a chance to meet some pretty cool people. Thanks to organizers for making an excellent event.

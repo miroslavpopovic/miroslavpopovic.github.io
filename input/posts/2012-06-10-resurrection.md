@@ -1,7 +1,7 @@
----
-layout: post
-title: Resurrection
-redirect_from: "/resurrection/"
+Title: Resurrection
+RedirectFrom:
+  - resurrection
+  - 2012/06/10/resurrection
 ---
 
 A lot of things have happen last two-three years for me. I did some experiments (business ones, not with drugs :) ), that proved unsuccessful. During this period I neglected some important and other not so important things. Now I'm trying to get back and reset.

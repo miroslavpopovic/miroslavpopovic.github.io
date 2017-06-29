@@ -1,8 +1,11 @@
----
-layout: post
-title: Using FluentMigrator with MSBuild
-tags: [msbuild, fluentmigrator, codeproject]
-redirect_from: "/using-fluentmigrator-with-msbuild/"
+Title: Using FluentMigrator with MSBuild
+Tags:
+  - msbuild
+  - fluentmigrator
+  - codeproject
+RedirectFrom:
+  - using-fluentmigrator-with-msbuild
+  - 2012/06/12/using-fluentmigrator-with-msbuild
 ---
 
 I have been playing with [FluentMigrator](https://github.com/schambers/fluentmigrator) lately, trying to implement the features I had with my old, SQL script based tool.

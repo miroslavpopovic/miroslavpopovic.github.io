@@ -1,8 +1,11 @@
----
-layout: post
-title: Time to learn AngularJS
-tags: [durandal, angular, frontend]
-redirect_from: "/time-to-learn-angularjs/"
+Title: Time to learn AngularJS
+Tags:
+  - durandal
+  - angular
+  - frontend
+RedirectFrom:
+  - time-to-learn-angularjs
+  - 2014/04/22/time-to-learn-angularjs
 ---
 
 A week ago, Rob Eisenberg [announced](http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/) that the future version of [Duranda](http://durandaljs.com/)l will be called [AngularJS](http://angularjs.org/) 2.0. What seemed to be a late April 1. joke proved to be true. Rob joined AngularJS core team as a full-time external contractor and they are already on the way, building the web's most advanced framework.
