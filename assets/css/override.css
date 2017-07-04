@@ -1,0 +1,27 @@
+.copyright .btn-rss {
+  background-color: #efefef;
+  border-radius: 18px;
+  display: inline-block;
+  margin: 0 5px 25px;
+  text-decoration: none;
+  padding: 0 15px 0 0;
+}
+
+.copyright .btn-rss:hover,
+.copyright .btn-rss:active,
+.copyright .btn-rss:focus {
+  background-color: #000;
+  color: #efefef;
+}
+
+.copyright .btn-rss:hover .fa-inverse,
+.copyright .btn-rss:active .fa-inverse,
+.copyright .btn-rss:focus .fa-inverse {
+  color: #000;
+}
+
+.copyright .btn-rss:hover .fa-circle,
+.copyright .btn-rss:active .fa-circle,
+.copyright .btn-rss:focus .fa-circle {
+  color: #fff;
+}

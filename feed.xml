@@ -1,21 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title>Miroslav Popovic</title>
+		<link>http://blog.miroslavpopovic.com/</link>
+		<description>Full-stack .NET and JavaScript software architect</description>
+		<copyright>2017</copyright>
+		<pubDate>Tue, 04 Jul 2017 12:38:05 GMT</pubDate>
+		<lastBuildDate>Tue, 04 Jul 2017 12:38:05 GMT</lastBuildDate>
+		<item>
+			<title>Speaking Engagements</title>
+			<link>http://blog.miroslavpopovic.com/posts/2015/04/speaking-engagements</link>
+			<description>&lt;p&gt;On Wednesday, 29. April, I'm holding a talk &lt;a href="https://msnetwork.ba/conference/sessions#se2313"&gt;"Tales from the client side"&lt;/a&gt; on 5th Microsoft Bosnia and Herzegovina &lt;a href="https://msnetwork.ba/"&gt;NetWork conference&lt;/a&gt;. The samples and presentation are available at &lt;a href="https://github.com/miroslavpopovic/msnetwork5-sample"&gt;https://github.com/miroslavpopovic/msnetwork5-sample&lt;/a&gt;.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2015/04/speaking-engagements</guid>
+			<pubDate>Mon, 27 Apr 2015 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;On Wednesday, 29. April, I'm holding a talk &lt;a href="https://msnetwork.ba/conference/sessions#se2313"&gt;&amp;quot;Tales from the client side&amp;quot;&lt;/a&gt; on 5th Microsoft Bosnia and Herzegovina &lt;a href="https://msnetwork.ba/"&gt;NetWork conference&lt;/a&gt;. The samples and presentation are available at &lt;a href="https://github.com/miroslavpopovic/msnetwork5-sample"&gt;https://github.com/miroslavpopovic/msnetwork5-sample&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;At Saturday, 9. May I'm heading to Čakovec Croatia for &lt;a href="http://weblica.hr/"&gt;Weblica&lt;/a&gt; conference, where I'm holding a talk &amp;quot;Building modern web in Microsoft world&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Looking forward to them!&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/conferences-2015-ms-network-weblica.png" class="img-fluid" alt="Conferences" /&gt;&lt;/p&gt;
+&lt;p&gt;Update: Weblica presentation is available at &lt;a href="https://github.com/miroslavpopovic/web-ms-2015"&gt;https://github.com/miroslavpopovic/web-ms-2015&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Switching to Jekyll</title>
+			<link>http://blog.miroslavpopovic.com/posts/2015/03/switching-to-jekyll</link>
+			<description>&lt;p&gt;I decided to switch my blog from &lt;a href="http://www.funnelweblog.com/"&gt;FunnelWeb&lt;/a&gt; to &lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt; and host it on &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;. There were some problems along the way so I'm documenting it here in case it might help someone. If you want a more detailed introduction to Jekyll, read Brian Rinaldi's &lt;a href="http://developer.telerik.com/featured/getting-started-with-jekyll/"&gt;Getting Started with Jekyll&lt;/a&gt; post.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2015/03/switching-to-jekyll</guid>
+			<pubDate>Mon, 23 Mar 2015 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I decided to switch my blog from &lt;a href="http://www.funnelweblog.com/"&gt;FunnelWeb&lt;/a&gt; to &lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt; and host it on &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;. There were some problems along the way so I'm documenting it here in case it might help someone. If you want a more detailed introduction to Jekyll, read Brian Rinaldi's &lt;a href="http://developer.telerik.com/featured/getting-started-with-jekyll/"&gt;Getting Started with Jekyll&lt;/a&gt; post.&lt;/p&gt;
+&lt;h2 id="installing-jekyll-on-windows"&gt;Installing Jekyll on Windows&lt;/h2&gt;
+&lt;p&gt;Since I'm not a designer, I decided to choose one of &lt;a href="https://github.com/jekyll/jekyll/wiki/Themes"&gt;many Jekyll themes&lt;/a&gt; and modify if necessary. Changing the theme directly on GitHub would be clumsy, since a lot of files are involved. Also doing little changes and testing the outcome would require a lot of git commits. Instead, I cloned my repository locally and installed Jekyll and its requirements on my Windows machine.&lt;/p&gt;
+&lt;p&gt;There's a &lt;a href="http://jekyll-windows.juthilo.com/"&gt;very good tutorial&lt;/a&gt; for installing Jekyll on Windows. Unfortunately it's a little bit older. I followed the guide and installed the latest version of x64 build of Ruby, Ruby DevKit, Jekyll, x64 build of Python and Pygments. The latest Ruby version at the time of writing was 2.2.1.&lt;/p&gt;
+&lt;p&gt;It looked like everything went smoothly, but when trying to run &lt;code&gt;Jekyll serve&lt;/code&gt; on my blog repository, it failed. The problem was with one of the Ruby gems called &lt;a href="http://www.nokogiri.org/"&gt;nokogiri&lt;/a&gt;. Apparently, it &lt;a href="http://stackoverflow.com/questions/28999906/require-cannot-load-such-file-nokogiri-nokogiri-loaderror-when-running"&gt;doesn't work&lt;/a&gt; with Ruby 2.2.1 on Windows, so I had to fall back to older Ruby version - 2.1.5.&lt;/p&gt;
+&lt;p&gt;Of course, something had to go wrong with that too. After installing Ruby 2.1.5 x64 and Ruby DevKit, gem installation with the following message:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bat"&gt;gem install jekyll
+ERROR:  Could not find a valid gem 'jekyll' (&amp;gt;= 0), here is why:
+       	Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://api.rubygems.org/latest_specs.4.8.gz)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/a/27641786/119230"&gt;This SO answer&lt;/a&gt; helped and I was able to install Jekyll after that.&lt;/p&gt;
+&lt;p&gt;Since I'm referencing few Ruby gems in &lt;code&gt;_config.yml&lt;/code&gt; I had to install those too:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bat"&gt;gem install jekyll-sitemap
+gem install jekyll-redirect-from
+gem install jemoji
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, running the following command started the build process and enabled file change watcher. Success!&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bat"&gt;jekyll serve --watch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I tested several themes locally, before settling up with Pixyll theme.&lt;/p&gt;
+&lt;h2 id="creating-user-repository"&gt;Creating user repository&lt;/h2&gt;
+&lt;p&gt;There's an easy getting started guide on &lt;a href="http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/"&gt;Smashing Magazine&lt;/a&gt;. I ended up with &lt;a href="https://github.com/miroslavpopovic/miroslavpopovic.github.io"&gt;user repository&lt;/a&gt; forked from John Otander's &lt;a href="https://github.com/johnotander/pixyll"&gt;Pixyll&lt;/a&gt; theme, instead of &lt;a href="https://github.com/barryclark/jekyll-now"&gt;Jekyll Now&lt;/a&gt; that's described in the guide above.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;_config.yml&lt;/code&gt; file &lt;code&gt;permalink&lt;/code&gt; is set to &lt;code&gt;pretty&lt;/code&gt;. That's what I want it to be, since I prefer to &lt;a href="http://jekyllrb.com/docs/permalinks/#built-in-permalink-styles"&gt;have date in URL and no extension&lt;/a&gt;. My blog posts didn't have date in URL before, so I had also added &lt;code&gt;jekyll-redirect-from&lt;/code&gt; gem to &lt;code&gt;gems&lt;/code&gt; section. With this gem installed, you can tell Jekyll to create redirects from defined URL to the current page or post. This is done with Front Matter instruction on top of the post. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+layout: post
+title: Resurrection
+redirect_from: &amp;quot;/resurrection/&amp;quot;
 ---
-layout: null
----
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml" />
-    {% for post in site.posts limit:10 %}
-      <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-      </item>
-    {% endfor %}
-  </channel>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that the &lt;code&gt;redirect_from&lt;/code&gt; value needs to have trailing slash, otherwise GitHub Pages will serve the generated document as file download instead of a regular page, causing browsers to download it. Hopefully, this will not cause SEO problems since my previous URLs were without the trailing slash.&lt;/p&gt;
+&lt;p&gt;GitHub itself can serve as an editor for your posts. Since there were only nine posts on my blog, it was not necessary to create some kind of migration tool. I just added them one by one through GitHub repository (they were already in Markdown format).&lt;/p&gt;
+&lt;p&gt;One thing that needed to be changed was the format of links. Markdown supports &lt;a href="http://daringfireball.net/projects/markdown/syntax#link"&gt;two types of links&lt;/a&gt; inline and reference. I had reference links in my posts. They were processed correctly on post pages, but post excerpts on home page did not process them - they were displayed in markdown syntax. After switching to inline links it worked correctly.&lt;/p&gt;
+&lt;h2 id="domain-redirection"&gt;Domain redirection&lt;/h2&gt;
+&lt;p&gt;My old blog was hosted on &lt;a href="https://billing.aspnix.com/aff.php?aff=079"&gt;ASPnix&lt;/a&gt; under a custom subdomain. Following the &lt;a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/"&gt;GitHub guide&lt;/a&gt;, I had to delete the subdomain first and create a custom &lt;code&gt;cname&lt;/code&gt; record for &lt;code&gt;blog&lt;/code&gt; that points to &lt;code&gt;miroslavpopovic.github.io&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Also, &lt;a href="https://feedburner.google.com/"&gt;FeedBurner&lt;/a&gt; had to be redirected to use &lt;code&gt;/feed.xml&lt;/code&gt; file instead of &lt;code&gt;/feed&lt;/code&gt;. Users that were subscribed to my RSS feed will get one time refresh of all items, since post ids are different.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://disqus.com/"&gt;Disqus&lt;/a&gt; was used for my blog comments and since my post URLs are changed, I also needed to create the map between old and new URLs. There's a migrate tool in Admin area of Disqus for that. To get to Admin area, log in to Disqus, and select Admin from your profile drop-down menu on top right. Select your blog if not already selected and go to Discussion / Tools / Upload a URL map. You'll find the instructions on how to create CSV map file and upload it.&lt;/p&gt;
+&lt;h2 id="final-words"&gt;Final words&lt;/h2&gt;
+&lt;p&gt;That's it. Migration was relatively straightforward with few problems here and there. My blog is now a Jekyll generated static site hosted on GitHub Pages.&lt;/p&gt;
+&lt;p&gt;GitHub repository for my blog is &lt;a href="https://github.com/miroslavpopovic/miroslavpopovic.github.io"&gt;available here&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>ECMAScript 2015 (ES6) Presentation</title>
+			<link>http://blog.miroslavpopovic.com/posts/2015/03/ecmascript-2015-es6-presentation</link>
+			<description>&lt;p&gt;Ten days ago, I held a talk "ECMAScript 2015 (ES6)" on our local user group meeting. Slides on English and Serbian language, with examples, can be found here: &lt;a href="http://miroslavpopovic.github.io/ecmascript6/"&gt;http://miroslavpopovic.github.io/ecmascript6/&lt;/a&gt;.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2015/03/ecmascript-2015-es6-presentation</guid>
+			<pubDate>Sun, 08 Mar 2015 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Ten days ago, I held a talk &amp;quot;ECMAScript 2015 (ES6)&amp;quot; on our local user group meeting. Slides on English and Serbian language, with examples, can be found here: &lt;a href="http://miroslavpopovic.github.io/ecmascript6/"&gt;http://miroslavpopovic.github.io/ecmascript6/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks to all who attended.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>MS Community 2014 Presentation</title>
+			<link>http://blog.miroslavpopovic.com/posts/2014/09/ms-community-2014-presentation</link>
+			<description>&lt;p&gt;I held a talk "Building modern web in Microsoft world" on this year's &lt;a href="http://konferencija.mscommunity.ba/"&gt;Microsoft Community conference&lt;/a&gt;. Thanks for everyone who attended. The conference was great as always. &lt;a href="https://twitter.com/ddamirMVP"&gt;Damir&lt;/a&gt; and &lt;a href="https://twitter.com/sahinovic"&gt;Enis&lt;/a&gt; did a great job organizing it.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2014/09/ms-community-2014-presentation</guid>
+			<pubDate>Fri, 19 Sep 2014 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I held a talk &amp;quot;Building modern web in Microsoft world&amp;quot; on this year's &lt;a href="http://konferencija.mscommunity.ba/"&gt;Microsoft Community conference&lt;/a&gt;. Thanks for everyone who attended. The conference was great as always. &lt;a href="https://twitter.com/ddamirMVP"&gt;Damir&lt;/a&gt; and &lt;a href="https://twitter.com/sahinovic"&gt;Enis&lt;/a&gt; did a great job organizing it.&lt;/p&gt;
+&lt;p&gt;You can find the presentation and a sample on my &lt;a href="https://bitbucket.org/miroslavpopovic/web-ms-demo/"&gt;BitBucket account&lt;/a&gt;. Thanks!&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Time to learn AngularJS</title>
+			<link>http://blog.miroslavpopovic.com/posts/2014/04/time-to-learn-angularjs</link>
+			<description>&lt;p&gt;A week ago, Rob Eisenberg &lt;a href="http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/"&gt;announced&lt;/a&gt; that the future version of &lt;a href="http://durandaljs.com/"&gt;Duranda&lt;/a&gt;l will be called &lt;a href="http://angularjs.org/"&gt;AngularJS&lt;/a&gt; 2.0. What seemed to be a late April 1. joke proved to be true. Rob joined AngularJS core team as a full-time external contractor and they are already on the way, building the web's most advanced framework.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2014/04/time-to-learn-angularjs</guid>
+			<pubDate>Tue, 22 Apr 2014 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;A week ago, Rob Eisenberg &lt;a href="http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/"&gt;announced&lt;/a&gt; that the future version of &lt;a href="http://durandaljs.com/"&gt;Duranda&lt;/a&gt;l will be called &lt;a href="http://angularjs.org/"&gt;AngularJS&lt;/a&gt; 2.0. What seemed to be a late April 1. joke proved to be true. Rob joined AngularJS core team as a full-time external contractor and they are already on the way, building the web's most advanced framework.&lt;/p&gt;
+&lt;p&gt;This was a mind blowing news, at least for me. A little over a year ago, I chose Durandal to be my front-end framework of choice. Usually, I lean toward the most used framework / library, and Angular was (and still is) on the fire. Having widespread adoption and a huge community, Angular looked like a clear winner.&lt;/p&gt;
+&lt;p&gt;However, there was Durandal, a small framework built by one of the most inspiring developers. It used &lt;a href="http://knockoutjs.com/"&gt;Knockout&lt;/a&gt; library for data binding and just built an MV* framework around it. Since I was a long time Knockout user, Durandal was so natural and easy to start with.&lt;/p&gt;
+&lt;p&gt;As always, Rob (and other contributors) did an excellent job. I've always admired him, ever since I tried old &lt;a href="https://caliburn.codeplex.com/"&gt;Caliburn&lt;/a&gt; MVVM framework for WPF. He bought me completely with an inspiring talk on &lt;a href="http://channel9.msdn.com/Events/MIX/MIX10/EX15"&gt;building your own MVVM framework&lt;/a&gt; which later become &lt;a href="http://www.caliburnproject.org/"&gt;Caliburn.Micro&lt;/a&gt;, a framework without which I cannot think of doing any XAML based app.&lt;/p&gt;
+&lt;p&gt;The amount of code you &lt;strong&gt;don't&lt;/strong&gt; need to write when using Caliburn.Micro in your XAML apps is simply astonishing. Convention over configuration at it's best. Bindings everywhere. No need for all those ceremonial code, like IDelegateCommand etc. that other MVVM frameworks have. Just write your plain and simple .NET code. Heck, it even had &lt;a href="https://caliburnmicro.codeplex.com/wikipage?title=IResult%20and%20Coroutines&amp;amp;referringTitle=Documentation"&gt;coroutines&lt;/a&gt; since day 1, which are basically async/await pattern, way before Microsoft brought it to .NET framework. Amazing.&lt;/p&gt;
+&lt;p&gt;The same concepts are implemented in Durandal. Again, convention over configuration rules. There is a little to none infrastructure code you need to write in your view models / controllers. Just write simple JavaScript modules and let Durandal handle the rest.&lt;/p&gt;
+&lt;p&gt;I used Durandal with success on a &lt;a href="http://silverreader.com/"&gt;private project&lt;/a&gt; and also on several client projects at work, so I can consider myself as an intermediate user. Now I'll try to deep dive into current version of Angular, to gain a perspective on what to expect in Angular 2.0. It might be better to wait for 2.0 and start learning then, since there will be &lt;a href="http://blog.angularjs.org/2014/03/angular-20.html"&gt;considerable changes&lt;/a&gt;, but I'm a sucker for learning. Besides, I would like to compare the philosophies behind both frameworks before that.&lt;/p&gt;
+&lt;p&gt;Now if I could only think of some small project to play around with...&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>An advanced guide to HTML and CSS</title>
+			<link>http://blog.miroslavpopovic.com/posts/2014/01/an-advanced-guide-to-html-and-css</link>
+			<description>&lt;p&gt;Lately, I'm catching up with my reading list - have a bunch of links bookmarked over the last year or so. Found a little gem today that I would like to share...&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2014/01/an-advanced-guide-to-html-and-css</guid>
+			<pubDate>Sun, 19 Jan 2014 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Lately, I'm catching up with my reading list - have a bunch of links bookmarked over the last year or so. Found a little gem today that I would like to share...&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://shayhowe.com/"&gt;Shay Howe&lt;/a&gt; put together a fantastic guide on HTML and CSS called &lt;a href="http://learn.shayhowe.com/advanced-html-css/"&gt;An Advanced Guide to HTML &amp;amp; CSS&lt;/a&gt;. Even seasoned front-end developers can learn a thing or two from it. Highly recommended!&lt;/p&gt;
+&lt;p&gt;Oh yeah, and there's also &lt;a href="http://learn.shayhowe.com/html-css/"&gt;A Beginner's Guide to HTML &amp;amp; CSS&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Rise of the SilverReader</title>
+			<link>http://blog.miroslavpopovic.com/posts/2013/06/rise-of-the-silverreader</link>
+			<description>&lt;p&gt;Yes, you read that right. Rise of the &lt;a href="http://silverreader.com/"&gt;SilverReader&lt;/a&gt;, not &lt;a href="http://www.imdb.com/title/tt0486576/"&gt;Rise of the Silver Surfer&lt;/a&gt;.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2013/06/rise-of-the-silverreader</guid>
+			<pubDate>Fri, 28 Jun 2013 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Yes, you read that right. Rise of the &lt;a href="http://silverreader.com/"&gt;SilverReader&lt;/a&gt;, not &lt;a href="http://www.imdb.com/title/tt0486576/"&gt;Rise of the Silver Surfer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Right after &lt;a href="http://googleblog.blogspot.com/2013/03/a-second-spring-of-cleaning.html"&gt;the news&lt;/a&gt; that shocked the world (at least our world) my friend &lt;a href="http://blog.developers.ba/"&gt;Radenko Zec&lt;/a&gt; suggested that we build an alternative to Google Reader. So, few months ago, together with another friend of ours &lt;a href="http://igormarkovic.com/"&gt;Igor Markovic&lt;/a&gt;, we started working on it and apparently, we &lt;a href="http://techcrunch.com/2013/06/24/there-is-no-google-reader-replacement-only-alternatives/"&gt;weren’t alone&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And now, just few days before our beloved Google Reader shuts down, we have published our &lt;a href="http://silverreader.com"&gt;first live beta version&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;You can read the &lt;a href="http://silverreader.wordpress.com/2013/06/28/going-live/"&gt;official announcement&lt;/a&gt; on &lt;a href="http://silverreader.wordpress.com/"&gt;SilverReader blog&lt;/a&gt;. Also, Radenko has made a &lt;a href="http://blog.developers.ba/post/2013/06/28/SilverReader-ultra-fast-Google-Reader-alternative.aspx"&gt;blog post&lt;/a&gt; explaining a technical side of the story.&lt;/p&gt;
+&lt;p&gt;Try the &lt;a href="http://silverreader.com"&gt;SilverReader&lt;/a&gt; now. If you need any help, or want to submit an idea or issue, visit &lt;a href="https://silverreader.uservoice.com/knowledgebase/"&gt;SilverReader Knowledge Base&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>MS NetWork 2013 Presentation and Samples</title>
+			<link>http://blog.miroslavpopovic.com/posts/2013/04/ms-network-2013-presentation-and-samples</link>
+			<description>&lt;p&gt;&lt;a href="http://msnetwork.ba"&gt;Microsoft NetWork 2013&lt;/a&gt; conference was great. It's the biggest IT conference in Bosnia and Herzegovina, held in &lt;a href="http://en.wikipedia.org/wiki/Tesli%C4%87"&gt;Teslić&lt;/a&gt; this year. I had a chance to meet some pretty cool people. Thanks to organizers for making an excellent event.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2013/04/ms-network-2013-presentation-and-samples</guid>
+			<pubDate>Fri, 05 Apr 2013 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;a href="http://msnetwork.ba"&gt;Microsoft NetWork 2013&lt;/a&gt; conference was great. It's the biggest IT conference in Bosnia and Herzegovina, held in &lt;a href="http://en.wikipedia.org/wiki/Tesli%C4%87"&gt;Teslić&lt;/a&gt; this year. I had a chance to meet some pretty cool people. Thanks to organizers for making an excellent event.&lt;/p&gt;
+&lt;p&gt;My friend &lt;a href="http://blog.developers.ba/"&gt;Radenko Zec&lt;/a&gt; and I held a talk there - &amp;quot;Easy Transition to HTML5 using MVVM&amp;quot;. Thanks to everyone who attended. We didn't expect the full room. Hopefully, the talk wasn't too boring. For anyone interested, the presentation and sample code can be found on GitHub: &lt;a href="https://github.com/miroslavpopovic/easy-transition-sample"&gt;https://github.com/miroslavpopovic/easy-transition-sample&lt;/a&gt;. The presentation is in local language, but the samples are in English.&lt;/p&gt;
+&lt;p&gt;We had an interesting question about organizing JavaScript view models when using Knockout. We suggested &lt;a href="http://durandaljs.com/"&gt;Durandal&lt;/a&gt; as an excellent new framework for that. For alternatives, take a look at the great &lt;a href="http://net.tutsplus.com/"&gt;TutsPlus&lt;/a&gt; article, posted few days ago: &lt;a href="http://net.tutsplus.com/tutorials/javascript-ajax/building-large-maintainable-and-testable-knockout-js-applications/"&gt;Building Large, Maintainable, and Testable Knockout.js Applications&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>jQuery UI Autocomplete - Filter words starting with term</title>
+			<link>http://blog.miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term</link>
+			<description>&lt;p&gt;I had an interested problem with &lt;a href="http://jqueryui.com/demos/autocomplete/"&gt;jQuery UI Autocomplete&lt;/a&gt; yesterday. The client required that the search / filtering should be done from the beginning of the word only. By default, jQuery UI Autocomplete filters through the list matching the term in the middle of the word.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term</guid>
+			<pubDate>Sat, 23 Jun 2012 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I had an interested problem with &lt;a href="http://jqueryui.com/demos/autocomplete/"&gt;jQuery UI Autocomplete&lt;/a&gt; yesterday. The client required that the search / filtering should be done from the beginning of the word only. By default, jQuery UI Autocomplete filters through the list matching the term in the middle of the word.&lt;/p&gt;
+&lt;p&gt;There &lt;a href="http://stackoverflow.com/questions/2382497/jquery-autocomplete-plug-in-search-configuration"&gt;are&lt;/a&gt; &lt;a href="http://forum.jquery.com/topic/select-only-items-that-start-with-jquery-ui-autocomplete"&gt;solutions&lt;/a&gt; with using function as an Autocomplete source. It would be OK if we weren't using &lt;a href="http://stackoverflow.com/questions/7537002/autocomplete-combobox-with-knockout-js-template-jquery"&gt;jqAuto&lt;/a&gt; &lt;a href="http://knockoutjs.com/"&gt;Knockout&lt;/a&gt; binding by &lt;a href="http://www.knockmeout.net/"&gt;RP Niemeyer&lt;/a&gt; which already takes over the Autocomplete source option.&lt;/p&gt;
+&lt;p&gt;The solution was pretty easy though. After searching thru jQuery UI's source, I found the &lt;code&gt;filter&lt;/code&gt; method used just for that. All that needs to be done is replacing that function with this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;// Overrides the default autocomplete filter function to
+// search only from the beginning of the string
+$.ui.autocomplete.filter = function (array, term) {
+  var matcher = new RegExp(&amp;quot;^&amp;quot; + $.ui.autocomplete.escapeRegex(term), &amp;quot;i&amp;quot;);
+  return $.grep(array, function (value) {
+    return matcher.test(value.label || value.value || value);
+  });
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is actually the copy of the default jQuery UI's &lt;code&gt;filter&lt;/code&gt; method with a single change. Regex is prefixed with &amp;quot;^&amp;quot; sign which matches the beginning of the string.&lt;/p&gt;
+&lt;p&gt;Please note that this is a global change. It will affect all autocomplete boxes on your page.&lt;/p&gt;
+&lt;p&gt;Here's a fiddle for that, if you want to play around (just try commenting / uncommenting the &lt;code&gt;filter&lt;/code&gt; method):&lt;/p&gt;
+&lt;iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/miroslav/yLdn3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"&gt;&lt;/iframe&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Using FluentMigrator with MSBuild</title>
+			<link>http://blog.miroslavpopovic.com/posts/2012/06/using-fluentmigrator-with-msbuild</link>
+			<description>&lt;p&gt;I have been playing with &lt;a href="https://github.com/schambers/fluentmigrator"&gt;FluentMigrator&lt;/a&gt; lately, trying to implement the features I had with my old, SQL script based tool.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2012/06/using-fluentmigrator-with-msbuild</guid>
+			<pubDate>Tue, 12 Jun 2012 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I have been playing with &lt;a href="https://github.com/schambers/fluentmigrator"&gt;FluentMigrator&lt;/a&gt; lately, trying to implement the features I had with my old, SQL script based tool.&lt;/p&gt;
+&lt;p&gt;My plan was to write a blog post about integrating &lt;a href="https://github.com/schambers/fluentmigrator"&gt;FluentMigrator&lt;/a&gt; with &lt;a href="http://msdn.microsoft.com/en-us/library/0k6kkbsd.aspx"&gt;MSBuild&lt;/a&gt;, but the size kind of went out of hand. Instead of splitting it to multiple blog posts, I decided to write a &lt;a href="http://www.codeproject.com/"&gt;CodeProject&lt;/a&gt; article instead.&lt;/p&gt;
+&lt;p&gt;Here's the link if you are interested: &lt;a href="http://www.codeproject.com/Articles/402430/Using-FluentMigrator-with-MSBuild"&gt;http://www.codeproject.com/Articles/402430/Using-FluentMigrator-with-MSBuild&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Resurrection</title>
+			<link>http://blog.miroslavpopovic.com/posts/2012/06/resurrection</link>
+			<description>&lt;p&gt;A lot of things have happen last two-three years for me. I did some experiments (business ones, not with drugs :) ), that proved unsuccessful. During this period I neglected some important and other not so important things. Now I'm trying to get back and reset.&lt;/p&gt;</description>
+			<guid>http://blog.miroslavpopovic.com/posts/2012/06/resurrection</guid>
+			<pubDate>Sun, 10 Jun 2012 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;A lot of things have happen last two-three years for me. I did some experiments (business ones, not with drugs :) ), that proved unsuccessful. During this period I neglected some important and other not so important things. Now I'm trying to get back and reset.&lt;/p&gt;
+&lt;p&gt;One of neglected things is blogging. So, in my reset mode, I have decided to abandon &lt;a href="http://codemind.blogspot.com/"&gt;Blogger&lt;/a&gt; and start fresh on a new platform - &lt;a href="http://www.funnelweblog.com/"&gt;FunnelWeb&lt;/a&gt;. Currently, a default FunnelWeb theme is used. I plan to tweak it up a little when I get time and/or inspiration.&lt;/p&gt;
+&lt;p&gt;Old blog posts aren't imported. If you are interested in some of my older ramblings, go to &lt;a href="http://codemind.blogspot.com/"&gt;codemind.blogspot.com&lt;/a&gt;. This new blog also has a new feed, so please update your feed readers: &lt;a href="http://feeds.feedburner.com/miroslavpopovic/blog"&gt;http://feeds.feedburner.com/miroslavpopovic/blog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Enough of gibberish. What's going on now?&lt;/p&gt;
+&lt;p&gt;Lately, I'm doing a lot of web development, improving my JavaScript skills and trying to follow a large community behind HTML5. While doing that, I have collected a bunch of links to various web development resources. I got tired of having all those as browser shortcuts, so in an effort to organize it a bit, &lt;a href="http://miroslavpopovic.com/resources/web/"&gt;Web Resources&lt;/a&gt; page was made. Hopefully, you'll find something useful there. I'm planing to maintain that list in a future. You can also fork it on &lt;a href="https://github.com/miroslavpopovic/resources"&gt;GitHub&lt;/a&gt;, if you want to base your own list on it.&lt;/p&gt;
+&lt;p&gt;Also, expect a link to my new CodeProject article.&lt;/p&gt;
+&lt;p&gt;See you soon (hopefully).&lt;/p&gt;
+</content:encoded>
+		</item>
+	</channel>
 </rss>
