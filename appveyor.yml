@@ -29,6 +29,8 @@ on_success:
   - git config --global user.email $env:op_build_user_email
   - git config --global user.name $env:op_build_user
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  # Clear the changes in packages.xml file
+  - git checkout -- packages.xml
   - git checkout gh-pages
   - git rm -rf .
   - xcopy ..\output . /E
