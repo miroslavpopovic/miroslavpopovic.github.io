@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<link rel="self" href="http://blog.miroslavpopovic.com/" />
-	<id>http://blog.miroslavpopovic.com/</id>
+	<link rel="self" href="http://miroslavpopovic.com/" />
+	<id>http://miroslavpopovic.com/</id>
 	<title>Miroslav Popovic</title>
 	<rights>2017</rights>
-	<updated>2017-07-25T16:20:47Z</updated>
+	<updated>2017-07-26T10:51:14Z</updated>
 	<subtitle>Full-stack .NET and JavaScript software architect</subtitle>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2017/07/from-jekyll-to-wyam" />
-		<id>http://blog.miroslavpopovic.com/posts/2017/07/from-jekyll-to-wyam</id>
+		<link href="http://miroslavpopovic.com/posts/2017/07/from-jekyll-to-wyam" />
+		<id>http://miroslavpopovic.com/posts/2017/07/from-jekyll-to-wyam</id>
 		<title>From Jekyll to Wyam</title>
 		<updated>2017-07-19T00:00:00Z</updated>
 		<content>&lt;h2 id="back-to.net"&gt;Back to .NET&lt;/h2&gt;
@@ -59,8 +59,8 @@ Settings[BlogKeys.Description] = &amp;quot;Full-stack .NET and JavaScript softwa
 		<summary>&lt;p&gt;After doing mostly JavaScript development in the last few years I decided that it's time to head back to .NET world and see what's new. Actually, I never really left. There was a bunch of older .NET projects that I have maintained in the meantime and few new ones, but all of them were on full .NET Framework. My plan is to dive into .NET Core and ASP.NET Core. While I've been closely following all the new development around .NET Core, I'm yet to do a concrete project with it. Hopefully, this is about to change.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2015/04/speaking-engagements" />
-		<id>http://blog.miroslavpopovic.com/posts/2015/04/speaking-engagements</id>
+		<link href="http://miroslavpopovic.com/posts/2015/04/speaking-engagements" />
+		<id>http://miroslavpopovic.com/posts/2015/04/speaking-engagements</id>
 		<title>Speaking Engagements</title>
 		<updated>2015-04-27T00:00:00Z</updated>
 		<content>&lt;p&gt;On Wednesday, 29. April, I'm holding a talk &lt;a href="https://msnetwork.ba/conference/sessions#se2313"&gt;&amp;quot;Tales from the client side&amp;quot;&lt;/a&gt; on 5th Microsoft Bosnia and Herzegovina &lt;a href="https://msnetwork.ba/"&gt;NetWork conference&lt;/a&gt;. The samples and presentation are available at &lt;a href="https://github.com/miroslavpopovic/msnetwork5-sample"&gt;https://github.com/miroslavpopovic/msnetwork5-sample&lt;/a&gt;.&lt;/p&gt;
@@ -72,8 +72,8 @@ Settings[BlogKeys.Description] = &amp;quot;Full-stack .NET and JavaScript softwa
 		<summary>&lt;p&gt;On Wednesday, 29. April, I'm holding a talk &lt;a href="https://msnetwork.ba/conference/sessions#se2313"&gt;"Tales from the client side"&lt;/a&gt; on 5th Microsoft Bosnia and Herzegovina &lt;a href="https://msnetwork.ba/"&gt;NetWork conference&lt;/a&gt;. The samples and presentation are available at &lt;a href="https://github.com/miroslavpopovic/msnetwork5-sample"&gt;https://github.com/miroslavpopovic/msnetwork5-sample&lt;/a&gt;.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2015/03/switching-to-jekyll" />
-		<id>http://blog.miroslavpopovic.com/posts/2015/03/switching-to-jekyll</id>
+		<link href="http://miroslavpopovic.com/posts/2015/03/switching-to-jekyll" />
+		<id>http://miroslavpopovic.com/posts/2015/03/switching-to-jekyll</id>
 		<title>Switching to Jekyll</title>
 		<updated>2015-03-23T00:00:00Z</updated>
 		<content>&lt;p&gt;I decided to switch my blog from &lt;a href="http://www.funnelweblog.com/"&gt;FunnelWeb&lt;/a&gt; to &lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt; and host it on &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;. There were some problems along the way so I'm documenting it here in case it might help someone. If you want a more detailed introduction to Jekyll, read Brian Rinaldi's &lt;a href="http://developer.telerik.com/featured/getting-started-with-jekyll/"&gt;Getting Started with Jekyll&lt;/a&gt; post.&lt;/p&gt;
@@ -119,8 +119,8 @@ redirect_from: &amp;quot;/resurrection/&amp;quot;
 		<summary>&lt;p&gt;I decided to switch my blog from &lt;a href="http://www.funnelweblog.com/"&gt;FunnelWeb&lt;/a&gt; to &lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt; and host it on &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;. There were some problems along the way so I'm documenting it here in case it might help someone. If you want a more detailed introduction to Jekyll, read Brian Rinaldi's &lt;a href="http://developer.telerik.com/featured/getting-started-with-jekyll/"&gt;Getting Started with Jekyll&lt;/a&gt; post.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2015/03/ecmascript-2015-es6-presentation" />
-		<id>http://blog.miroslavpopovic.com/posts/2015/03/ecmascript-2015-es6-presentation</id>
+		<link href="http://miroslavpopovic.com/posts/2015/03/ecmascript-2015-es6-presentation" />
+		<id>http://miroslavpopovic.com/posts/2015/03/ecmascript-2015-es6-presentation</id>
 		<title>ECMAScript 2015 (ES6) Presentation</title>
 		<updated>2015-03-08T00:00:00Z</updated>
 		<content>&lt;p&gt;Ten days ago, I held a talk &amp;quot;ECMAScript 2015 (ES6)&amp;quot; on our local user group meeting. Slides on English and Serbian language, with examples, can be found here: &lt;a href="http://miroslavpopovic.github.io/ecmascript6/"&gt;http://miroslavpopovic.github.io/ecmascript6/&lt;/a&gt;.&lt;/p&gt;
@@ -129,8 +129,8 @@ redirect_from: &amp;quot;/resurrection/&amp;quot;
 		<summary>&lt;p&gt;Ten days ago, I held a talk "ECMAScript 2015 (ES6)" on our local user group meeting. Slides on English and Serbian language, with examples, can be found here: &lt;a href="http://miroslavpopovic.github.io/ecmascript6/"&gt;http://miroslavpopovic.github.io/ecmascript6/&lt;/a&gt;.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2014/09/ms-community-2014-presentation" />
-		<id>http://blog.miroslavpopovic.com/posts/2014/09/ms-community-2014-presentation</id>
+		<link href="http://miroslavpopovic.com/posts/2014/09/ms-community-2014-presentation" />
+		<id>http://miroslavpopovic.com/posts/2014/09/ms-community-2014-presentation</id>
 		<title>MS Community 2014 Presentation</title>
 		<updated>2014-09-19T00:00:00Z</updated>
 		<content>&lt;p&gt;I held a talk &amp;quot;Building modern web in Microsoft world&amp;quot; on this year's &lt;a href="http://konferencija.mscommunity.ba/"&gt;Microsoft Community conference&lt;/a&gt;. Thanks for everyone who attended. The conference was great as always. &lt;a href="https://twitter.com/ddamirMVP"&gt;Damir&lt;/a&gt; and &lt;a href="https://twitter.com/sahinovic"&gt;Enis&lt;/a&gt; did a great job organizing it.&lt;/p&gt;
@@ -139,8 +139,8 @@ redirect_from: &amp;quot;/resurrection/&amp;quot;
 		<summary>&lt;p&gt;I held a talk "Building modern web in Microsoft world" on this year's &lt;a href="http://konferencija.mscommunity.ba/"&gt;Microsoft Community conference&lt;/a&gt;. Thanks for everyone who attended. The conference was great as always. &lt;a href="https://twitter.com/ddamirMVP"&gt;Damir&lt;/a&gt; and &lt;a href="https://twitter.com/sahinovic"&gt;Enis&lt;/a&gt; did a great job organizing it.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2014/04/time-to-learn-angularjs" />
-		<id>http://blog.miroslavpopovic.com/posts/2014/04/time-to-learn-angularjs</id>
+		<link href="http://miroslavpopovic.com/posts/2014/04/time-to-learn-angularjs" />
+		<id>http://miroslavpopovic.com/posts/2014/04/time-to-learn-angularjs</id>
 		<title>Time to learn AngularJS</title>
 		<updated>2014-04-22T00:00:00Z</updated>
 		<content>&lt;p&gt;A week ago, Rob Eisenberg &lt;a href="http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/"&gt;announced&lt;/a&gt; that the future version of &lt;a href="http://durandaljs.com/"&gt;Duranda&lt;/a&gt;l will be called &lt;a href="http://angularjs.org/"&gt;AngularJS&lt;/a&gt; 2.0. What seemed to be a late April 1. joke proved to be true. Rob joined AngularJS core team as a full-time external contractor and they are already on the way, building the web's most advanced framework.&lt;/p&gt;
@@ -155,8 +155,8 @@ redirect_from: &amp;quot;/resurrection/&amp;quot;
 		<summary>&lt;p&gt;A week ago, Rob Eisenberg &lt;a href="http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/"&gt;announced&lt;/a&gt; that the future version of &lt;a href="http://durandaljs.com/"&gt;Duranda&lt;/a&gt;l will be called &lt;a href="http://angularjs.org/"&gt;AngularJS&lt;/a&gt; 2.0. What seemed to be a late April 1. joke proved to be true. Rob joined AngularJS core team as a full-time external contractor and they are already on the way, building the web's most advanced framework.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2014/01/an-advanced-guide-to-html-and-css" />
-		<id>http://blog.miroslavpopovic.com/posts/2014/01/an-advanced-guide-to-html-and-css</id>
+		<link href="http://miroslavpopovic.com/posts/2014/01/an-advanced-guide-to-html-and-css" />
+		<id>http://miroslavpopovic.com/posts/2014/01/an-advanced-guide-to-html-and-css</id>
 		<title>An advanced guide to HTML and CSS</title>
 		<updated>2014-01-19T00:00:00Z</updated>
 		<content>&lt;p&gt;Lately, I'm catching up with my reading list - have a bunch of links bookmarked over the last year or so. Found a little gem today that I would like to share...&lt;/p&gt;
@@ -166,8 +166,8 @@ redirect_from: &amp;quot;/resurrection/&amp;quot;
 		<summary>&lt;p&gt;Lately, I'm catching up with my reading list - have a bunch of links bookmarked over the last year or so. Found a little gem today that I would like to share...&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2013/06/rise-of-the-silverreader" />
-		<id>http://blog.miroslavpopovic.com/posts/2013/06/rise-of-the-silverreader</id>
+		<link href="http://miroslavpopovic.com/posts/2013/06/rise-of-the-silverreader" />
+		<id>http://miroslavpopovic.com/posts/2013/06/rise-of-the-silverreader</id>
 		<title>Rise of the SilverReader</title>
 		<updated>2013-06-28T00:00:00Z</updated>
 		<content>&lt;p&gt;Yes, you read that right. Rise of the &lt;a href="http://silverreader.com/"&gt;SilverReader&lt;/a&gt;, not &lt;a href="http://www.imdb.com/title/tt0486576/"&gt;Rise of the Silver Surfer&lt;/a&gt;.&lt;/p&gt;
@@ -180,8 +180,8 @@ redirect_from: &amp;quot;/resurrection/&amp;quot;
 		<summary>&lt;p&gt;Yes, you read that right. Rise of the &lt;a href="http://silverreader.com/"&gt;SilverReader&lt;/a&gt;, not &lt;a href="http://www.imdb.com/title/tt0486576/"&gt;Rise of the Silver Surfer&lt;/a&gt;.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2013/04/ms-network-2013-presentation-and-samples" />
-		<id>http://blog.miroslavpopovic.com/posts/2013/04/ms-network-2013-presentation-and-samples</id>
+		<link href="http://miroslavpopovic.com/posts/2013/04/ms-network-2013-presentation-and-samples" />
+		<id>http://miroslavpopovic.com/posts/2013/04/ms-network-2013-presentation-and-samples</id>
 		<title>MS NetWork 2013 Presentation and Samples</title>
 		<updated>2013-04-05T00:00:00Z</updated>
 		<content>&lt;p&gt;&lt;a href="http://msnetwork.ba"&gt;Microsoft NetWork 2013&lt;/a&gt; conference was great. It's the biggest IT conference in Bosnia and Herzegovina, held in &lt;a href="http://en.wikipedia.org/wiki/Tesli%C4%87"&gt;Teslić&lt;/a&gt; this year. I had a chance to meet some pretty cool people. Thanks to organizers for making an excellent event.&lt;/p&gt;
@@ -191,8 +191,8 @@ redirect_from: &amp;quot;/resurrection/&amp;quot;
 		<summary>&lt;p&gt;&lt;a href="http://msnetwork.ba"&gt;Microsoft NetWork 2013&lt;/a&gt; conference was great. It's the biggest IT conference in Bosnia and Herzegovina, held in &lt;a href="http://en.wikipedia.org/wiki/Tesli%C4%87"&gt;Teslić&lt;/a&gt; this year. I had a chance to meet some pretty cool people. Thanks to organizers for making an excellent event.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term" />
-		<id>http://blog.miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term</id>
+		<link href="http://miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term" />
+		<id>http://miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term</id>
 		<title>jQuery UI Autocomplete - Filter words starting with term</title>
 		<updated>2012-06-23T00:00:00Z</updated>
 		<content>&lt;p&gt;I had an interested problem with &lt;a href="http://jqueryui.com/demos/autocomplete/"&gt;jQuery UI Autocomplete&lt;/a&gt; yesterday. The client required that the search / filtering should be done from the beginning of the word only. By default, jQuery UI Autocomplete filters through the list matching the term in the middle of the word.&lt;/p&gt;
@@ -215,8 +215,8 @@ $.ui.autocomplete.filter = function (array, term) {
 		<summary>&lt;p&gt;I had an interested problem with &lt;a href="http://jqueryui.com/demos/autocomplete/"&gt;jQuery UI Autocomplete&lt;/a&gt; yesterday. The client required that the search / filtering should be done from the beginning of the word only. By default, jQuery UI Autocomplete filters through the list matching the term in the middle of the word.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2012/06/using-fluentmigrator-with-msbuild" />
-		<id>http://blog.miroslavpopovic.com/posts/2012/06/using-fluentmigrator-with-msbuild</id>
+		<link href="http://miroslavpopovic.com/posts/2012/06/using-fluentmigrator-with-msbuild" />
+		<id>http://miroslavpopovic.com/posts/2012/06/using-fluentmigrator-with-msbuild</id>
 		<title>Using FluentMigrator with MSBuild</title>
 		<updated>2012-06-12T00:00:00Z</updated>
 		<content>&lt;p&gt;I have been playing with &lt;a href="https://github.com/schambers/fluentmigrator"&gt;FluentMigrator&lt;/a&gt; lately, trying to implement the features I had with my old, SQL script based tool.&lt;/p&gt;
@@ -226,8 +226,8 @@ $.ui.autocomplete.filter = function (array, term) {
 		<summary>&lt;p&gt;I have been playing with &lt;a href="https://github.com/schambers/fluentmigrator"&gt;FluentMigrator&lt;/a&gt; lately, trying to implement the features I had with my old, SQL script based tool.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<link href="http://blog.miroslavpopovic.com/posts/2012/06/resurrection" />
-		<id>http://blog.miroslavpopovic.com/posts/2012/06/resurrection</id>
+		<link href="http://miroslavpopovic.com/posts/2012/06/resurrection" />
+		<id>http://miroslavpopovic.com/posts/2012/06/resurrection</id>
 		<title>Resurrection</title>
 		<updated>2012-06-10T00:00:00Z</updated>
 		<content>&lt;p&gt;A lot of things have happen last two-three years for me. I did some experiments (business ones, not with drugs :) ), that proved unsuccessful. During this period I neglected some important and other not so important things. Now I'm trying to get back and reset.&lt;/p&gt;
