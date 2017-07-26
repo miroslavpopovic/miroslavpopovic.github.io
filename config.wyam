@@ -2,6 +2,7 @@
 
 // Customize your settings and add new ones here
 Settings[Keys.Host] = "miroslavpopovic.com";
+Settings[Keys.LinksUseHttps] = true;
 Settings[BlogKeys.IncludeDateInPostPath] = true;
 Settings[BlogKeys.RssPath] = "feed.xml";
 Settings[BlogKeys.Title] = "Miroslav Popovic";
