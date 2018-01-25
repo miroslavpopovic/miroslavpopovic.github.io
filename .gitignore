@@ -5,4 +5,6 @@ _site
 
 # Ignore the config file that's used for gh-pages.
 _config.gh-pages.yml
+config.wyam.hash
+config.wyam.dll
 output/
