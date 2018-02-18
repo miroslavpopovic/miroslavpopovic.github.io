@@ -1,8 +1,9 @@
-Title: Creating a new web app with Aurelia and ASP.NET Core 2.0
+Title: Creating a new web app with Aurelia and ASP.NET Core 2.x
 Tags:
   - aspnetcore
   - aurelia
   - dotnet
+Published: 9999-01-01
 ---
 
 ## ...
