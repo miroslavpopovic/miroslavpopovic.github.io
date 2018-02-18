@@ -5,7 +5,7 @@ Tags:
   - apicontroller
 ---
 
-Two weeks ago ASP.NET team [unveiled](https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/) it's roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - Project KodKod - and a goal "to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs".
+Two weeks ago ASP.NET team [unveiled](https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/) it's roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - [Project KodKod](https://github.com/aspnet/Mvc/projects/5) - and a goal "to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs".
 
 ![Project KodKod](/images/2018-02/aspnet-mvc-project-kodkod.png)
 
@@ -33,11 +33,11 @@ This is my favorite new feature that will bring back some conventions we had in 
 
 No need to write `if (!ModelState.IsValid) return BadRequest(ModelState);`. Validation will be done automatically before calling your action method.
 
-One of the _best practices_ I've been preaching is [wrapping a response in an object](https://github.com/miroslavpopovic/production-ready-apis-sample/blob/44870228b8c9952ca33ee791d80aacfa4256b762/BoardGamesApi/Models/ApiResult.cs) that has properties like `Error` and `IsSuccessful` in addition to the actual data. ASP.NET Core 2.1 will introduce a validation error response in the shape of [RFC 7807](https://tools.ietf.org/html/rfc7807) standardized response, but you will be able to override it.
+One of the _best practices_ I've been preaching is [wrapping a response in an object](https://github.com/miroslavpopovic/production-ready-apis-sample/blob/44870228b8c9952ca33ee791d80aacfa4256b762/BoardGamesApi/Models/ApiResult.cs) that has properties like `Error` and `IsSuccessful` in addition to the actual data. ASP.NET Core 2.1 will take a different approach by introducing a validation error response in the shape of [RFC 7807](https://tools.ietf.org/html/rfc7807) standardized response, but you will be able to override it.
 
 ### Inferring defaults on action method parameters
 
-One thing that we lost in transition from the old ASP.NET Web API were automatic recognition of the source for action method parameters. This is coming back in ASP.NET Core 2.1. `[FromBody]` will be default for complex types. `[FromRoute]` will be used when possible and otherwise `[FromQuery]`.
+One thing that we lost in transition from the old ASP.NET Web API were automatic recognition of the source for action method parameters. This is coming back to ASP.NET Core 2.1 controllers decorated with `[ApiController]`. `[FromBody]` will be default for complex types. `[FromRoute]` will be used when possible and otherwise `[FromQuery]`.
 
 ### Other
 
@@ -128,7 +128,7 @@ As a long-time ASP.NET developer, it's really nice to see how rejuvenated ASP.NE
 
 .NET Core, .NET Standard and ASP.NET Core have brought back the hope for .NET developers in general. Open-source approach, multi-platform, beautiful C# language and a great performance could make ASP.NET Core a framework of choice and a force to recon in the server-side world. 
 
-We could even see a full-stack C# (similar to full-stack JavaScript with Node). An experiment to create a client-side .NET web framework that's running in a browser via Web Assembly is now on ASP.NET team's [GitHub repository](https://github.com/aspnet/Blazor). To learn more about it, watch [ASP.NET Community Standup](https://www.youtube.com/watch?v=Ta_qXpXQqGQ) from two weeks ago.
+We could even see a full-stack C# (similar to full-stack JavaScript with Node). Blazor, an experiment to create a client-side .NET web framework that's running in a browser via Web Assembly is now on ASP.NET team's [GitHub repository](https://github.com/aspnet/Blazor). To learn more about it, watch [ASP.NET Community Standup](https://www.youtube.com/watch?v=Ta_qXpXQqGQ) from two weeks ago.
 
 _If you didn't know, ASP.NET Community Standups have a new home on YouTube, under the [.NET Foundation channel](https://www.youtube.com/channel/UCiaZbznpWV1o-KLxj8zqR6A/videos)._
 
