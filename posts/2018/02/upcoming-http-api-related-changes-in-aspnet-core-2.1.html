@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Miroslav Popovic - silverreader</title>
+        <title>Miroslav Popovic - Upcoming HTTP API related changes in ASP.NET Core 2.1</title>
         <meta name="description" content="Full-stack .NET and JavaScript software architect" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Miroslav Popovic" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Miroslav Popovic - silverreader" />
+        <meta property="og:title" content="Miroslav Popovic - Upcoming HTTP API related changes in ASP.NET Core 2.1" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://miroslavpopovic.com/tags/silverreader" />
+        <meta property="og:url" content="https://miroslavpopovic.com/posts/2018/02/upcoming-http-api-related-changes-in-aspnet-core-2.1" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -102,9 +102,19 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>silverreader</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>Upcoming HTTP API related changes in ASP.NET Core 2.1</h1>
+    <div class="meta">        
+Published on Sunday, February 18, 2018<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/api" class="btn btn-default btn-xs">api</a>
+                    <a role="button" href="/tags/apicontroller" class="btn btn-default btn-xs">apicontroller</a>
+                    <a role="button" href="/tags/aspnetcore" class="btn btn-default btn-xs">aspnetcore</a>
+        </div>     
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -113,57 +123,131 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-                    <div class="post-list">
-            <a href="/posts/2013/06/rise-of-the-silverreader">
-                <h3 class="post-title">Rise of the SilverReader</h3>
-            </a>
-            <p class="post-meta">Posted on Friday, June 28, 2013</p>      
-        </div>   
+                                        
+
+<p>Two weeks ago ASP.NET team <a href="https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/">unveiled</a> it's roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - <a href="https://github.com/aspnet/Mvc/projects/5">Project KodKod</a> - and a goal &quot;to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs&quot;.</p>
+<p><img src="/images/2018-02/aspnet-mvc-project-kodkod.png" class="img-fluid" alt="Project KodKod" /></p>
+<p>Ever since ASP.NET Web API was introduced, almost 6 years ago, it became THE way that I was working with ASP.NET. I used it mostly to build a backend for SPA applications and on a few API only projects. My experience of building APIs is summed up in a talk that I've been presenting on local conferences and user group meetings, called &quot;Building production ready APIs with ASP.NET Core 2.0&quot;. The samples and the conference PowerPoint presentations can be found <a href="https://github.com/miroslavpopovic/production-ready-apis-sample">on GitHub</a>. As ASP.NET Core 2.1 is coming with a number of new API-related features, it could be a good time to update my presentation. So, let's see what are some of those features...</p>
+<h2 id="https-by-default">HTTPS by default</h2>
+<p>While not really an API specific feature, it's something that is more or less a must for public facing APIs. When you create a new ASP.NET Core 2.1 project, the template will enable HTTPS by default. A default local certificate will be created during .NET Core SDK installation. There will also be a new tool for managing certificates that will probably be installed as global tool. Global tools are a feature similar to Node global tools which will enable creation and distribution of tools ecosystem via NuGet. You can read more about it on <a href="https://blogs.msdn.microsoft.com/dotnet/2018/02/02/net-core-2-1-roadmap/">.NET Core 2.1 roadmap</a>.</p>
+<p>In addition to HTTPS by default, the template will also enable HSTS - <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HTTP Strict Transport Security</a> protocol - which will prevent browsers to try HTTP address. HTTPS will be forced.</p>
+<h2 id="better-swagger-openapi-specification-support">Better Swagger / OpenAPI specification support</h2>
+<p>For a long time, Swagger was de facto a standard for describing RESTful APIs but there were other tools too. That changed last year when SmartBear Software, a company behind Swagger, <a href="https://swagger.io/blog/announcing-openapi-3-0/">donated</a> Swagger 2.0 specification to the OpenAPI initiative. Today, it's known as <a href="https://www.openapis.org/">OpenAPI specification 3.0</a> and it's backed up by all the big players in API space.</p>
+<p>ASP.NET Core 2.1 will come with a new type - <code>ActionResult&lt;T&gt;</code> which will enable discoverability of the action result type, without the need for additional attributes that is required now to get the correct metadata.</p>
+<p>Also, a new tool will be added for build-time OpenAPI generation - at the moment we have only runtime generation. More features are planned for future versions.</p>
+<h2 id="apicontroller-attribute"><code>[ApiController]</code> attribute</h2>
+<p>This is my favorite new feature that will bring back some conventions we had in old ASP.NET Web API. Basically, you will decorate controller class with <code>[ApiController]</code> and MVC will be able to infer some defaults and do additional processing on your action methods. This is what we will have for start:</p>
+<h3 id="automatic-model-state-validation">Automatic model state validation</h3>
+<p>No need to write <code>if (!ModelState.IsValid) return BadRequest(ModelState);</code>. Validation will be done automatically before calling your action method.</p>
+<p>One of the <em>best practices</em> I've been preaching is <a href="https://github.com/miroslavpopovic/production-ready-apis-sample/blob/44870228b8c9952ca33ee791d80aacfa4256b762/BoardGamesApi/Models/ApiResult.cs">wrapping a response in an object</a> that has properties like <code>Error</code> and <code>IsSuccessful</code> in addition to the actual data. ASP.NET Core 2.1 will take a different approach by introducing a validation error response in the shape of <a href="https://tools.ietf.org/html/rfc7807">RFC 7807</a> standardized response, but you will be able to override it.</p>
+<h3 id="inferring-defaults-on-action-method-parameters">Inferring defaults on action method parameters</h3>
+<p>One thing that we lost in transition from the old ASP.NET Web API were automatic recognition of the source for action method parameters. This is coming back to ASP.NET Core 2.1 controllers decorated with <code>[ApiController]</code>. <code>[FromBody]</code> will be default for complex types. <code>[FromRoute]</code> will be used when possible and otherwise <code>[FromQuery]</code>.</p>
+<h3 id="other">Other</h3>
+<p>There are few more things that will be enabled with the new <code>[ApiController]</code> attribute. You can find more in depth review of this attribute in <a href="https://www.strathweb.com/2018/02/exploring-the-apicontrollerattribute-and-its-features-for-asp-net-core-mvc-2-1/">a post by Filip W</a>.</p>
+<h2 id="sample">Sample</h2>
+<p>To summarize, let's take a look at one of the action methods that I have in my presentation sample code, and how it would look like in ASP.NET Core 2.1.</p>
+<pre><code>// Sample: ASP.NET Core 2.0
+[Authorize]
+[Route(&quot;api/games&quot;)]
+public class GamesController : Controller
+{
+    private readonly IGamesRepository _gamesRepository;
+
+    public GamesController(IGamesRepository gamesRepository)
+    {
+        _gamesRepository = gamesRepository;
+    }
+    
+    /// &lt;summary&gt;
+    /// Create a new game from the supplied data.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;model&quot;&gt;Data to create the game from.&lt;/param&gt;
+    /// &lt;response code=&quot;200&quot;&gt;Returns the created game.&lt;/response&gt;
+    [Authorize(Roles = &quot;admin&quot;)]
+    [HttpPost]
+    [ProducesResponseType(typeof(ApiResult&lt;Game&gt;), 200)]
+    public IActionResult Post([FromBody] GameInput model)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var game = new Game();
+        model.MapToGame(game);
+
+        _gamesRepository.Create(game);
+
+        var url = $&quot;{Request.Scheme}://{Request.Host}/api/games/{game.Id}&quot;;
+
+        return Created(url, game.WrapData());
+    }       
+}
+</code></pre>
+<pre><code>// Sample: ASP.NET Core 2.1
+[ApiController]
+[Authorize]
+[Route(&quot;api/games&quot;)]
+public class GamesController : Controller
+{
+    private readonly IGamesRepository _gamesRepository;
+
+    public GamesController(IGamesRepository gamesRepository)
+    {
+        _gamesRepository = gamesRepository;
+    }
+    
+    /// &lt;summary&gt;
+    /// Create a new game from the supplied data.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;model&quot;&gt;Data to create the game from.&lt;/param&gt;
+    [HttpPost]
+    public ActionResult&lt;Game&gt; Post(GameInput model)
+    {
+        // No model state validation code here, hooray!
+
+        var game = new Game();
+        model.MapToGame(game);
+
+        _gamesRepository.Create(game);
+
+        var url = $&quot;{Request.Scheme}://{Request.Host}/api/games/{game.Id}&quot;;
+
+        return Created(url, game);
+    }       
+}
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>Since I haven't posted on my blog in a while, I felt obliged to share some of my thoughts on the current state of .NET (Core).</p>
+<p>As a long-time ASP.NET developer, it's really nice to see how rejuvenated ASP.NET Core is rapidly improving with each version. At one moment, before .NET Core became a thing, it looked like .NET ecosystem became stale. Even I (an early proponent of .NET) have took <a href="http://javascriptkicks.com/articles/147418/learning-node-js-and-react-while-building-a-product">a foray into Node</a>.</p>
+<p>.NET Core, .NET Standard and ASP.NET Core have brought back the hope for .NET developers in general. Open-source approach, multi-platform, beautiful C# language and a great performance could make ASP.NET Core a framework of choice and a force to recon in the server-side world.</p>
+<p>We could even see a full-stack C# (similar to full-stack JavaScript with Node). Blazor, an experiment to create a client-side .NET web framework that's running in a browser via Web Assembly is now on ASP.NET team's <a href="https://github.com/aspnet/Blazor">GitHub repository</a>. To learn more about it, watch <a href="https://www.youtube.com/watch?v=Ta_qXpXQqGQ">ASP.NET Community Standup</a> from two weeks ago.</p>
+<p><em>If you didn't know, ASP.NET Community Standups have a new home on YouTube, under the <a href="https://www.youtube.com/channel/UCiaZbznpWV1o-KLxj8zqR6A/videos">.NET Foundation channel</a>.</em></p>
+<p>Finally, after some struggle, the future of .NET looks bright!</p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/presentation" class="btn btn-default btn-xs">presentation (3)</a>
-                <a role="button" href="/tags/blog" class="btn btn-default btn-xs">blog (2)</a>
-                <a role="button" href="/tags/jekyll" class="btn btn-default btn-xs">jekyll (2)</a>
-                <a role="button" href="/tags/frontend" class="btn btn-default btn-xs">frontend (2)</a>
-                <a role="button" href="/tags/aspnetcore" class="btn btn-default btn-xs">aspnetcore (1)</a>
-                <a role="button" href="/tags/api" class="btn btn-default btn-xs">api (1)</a>
-                <a role="button" href="/tags/apicontroller" class="btn btn-default btn-xs">apicontroller (1)</a>
-                <a role="button" href="/tags/wyam" class="btn btn-default btn-xs">wyam (1)</a>
-                <a role="button" href="/tags/speaking" class="btn btn-default btn-xs">speaking (1)</a>
-                <a role="button" href="/tags/es2015" class="btn btn-default btn-xs">es2015 (1)</a>
-                <a role="button" href="/tags/es6" class="btn btn-default btn-xs">es6 (1)</a>
-                <a role="button" href="/tags/mscommunity" class="btn btn-default btn-xs">mscommunity (1)</a>
-                <a role="button" href="/tags/durandal" class="btn btn-default btn-xs">durandal (1)</a>
-                <a role="button" href="/tags/angular" class="btn btn-default btn-xs">angular (1)</a>
-                <a role="button" href="/tags/html" class="btn btn-default btn-xs">html (1)</a>
-                <a role="button" href="/tags/css" class="btn btn-default btn-xs">css (1)</a>
-                <a role="button" href="/tags/silverreader" class="btn btn-primary btn-xs">silverreader (1)</a>
-                <a role="button" href="/tags/projects" class="btn btn-default btn-xs">projects (1)</a>
-                <a role="button" href="/tags/msnetwork" class="btn btn-default btn-xs">msnetwork (1)</a>
-                <a role="button" href="/tags/jquery" class="btn btn-default btn-xs">jquery (1)</a>
-                <a role="button" href="/tags/jqueryui" class="btn btn-default btn-xs">jqueryui (1)</a>
-                <a role="button" href="/tags/autocomplete" class="btn btn-default btn-xs">autocomplete (1)</a>
-                <a role="button" href="/tags/msbuild" class="btn btn-default btn-xs">msbuild (1)</a>
-                <a role="button" href="/tags/fluentmigrator" class="btn btn-default btn-xs">fluentmigrator (1)</a>
-                <a role="button" href="/tags/codeproject" class="btn btn-default btn-xs">codeproject (1)</a>
-        </div>
-    </div>
-</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'miroslavpopovic';
+    var disqus_identifier = 'upcoming-http-api-related-changes-in-aspnet-core-2.1';
+    var disqus_title = 'Upcoming HTTP API related changes in ASP.NET Core 2.1';
+    var disqus_url = 'https://miroslavpopovic.com/posts/2018/02/upcoming-http-api-related-changes-in-aspnet-core-2.1';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
                                 </div>
                         </div>
                 </div>
