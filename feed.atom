@@ -4,7 +4,7 @@
 	<id>https://miroslavpopovic.com/</id>
 	<title>Miroslav Popovic</title>
 	<rights>2018</rights>
-	<updated>2018-02-18T21:52:38Z</updated>
+	<updated>2018-02-22T10:21:13Z</updated>
 	<subtitle>Full-stack .NET and JavaScript software architect</subtitle>
 	<entry>
 		<link href="https://miroslavpopovic.com/posts/2018/02/upcoming-http-api-related-changes-in-aspnet-core-2.1" />
@@ -85,6 +85,7 @@ public class GamesController : Controller
     /// Create a new game from the supplied data.
     /// &amp;lt;/summary&amp;gt;
     /// &amp;lt;param name=&amp;quot;model&amp;quot;&amp;gt;Data to create the game from.&amp;lt;/param&amp;gt;
+    [Authorize(Roles = &amp;quot;admin&amp;quot;)]
     [HttpPost]
     public ActionResult&amp;lt;Game&amp;gt; Post(GameInput model)
     {

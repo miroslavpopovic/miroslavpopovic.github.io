@@ -199,6 +199,7 @@ public class GamesController : Controller
     /// Create a new game from the supplied data.
     /// &lt;/summary&gt;
     /// &lt;param name=&quot;model&quot;&gt;Data to create the game from.&lt;/param&gt;
+    [Authorize(Roles = &quot;admin&quot;)]
     [HttpPost]
     public ActionResult&lt;Game&gt; Post(GameInput model)
     {
