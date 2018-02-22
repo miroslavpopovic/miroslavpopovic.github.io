@@ -103,6 +103,7 @@ public class GamesController : Controller
     /// Create a new game from the supplied data.
     /// </summary>
     /// <param name="model">Data to create the game from.</param>
+    [Authorize(Roles = "admin")]
     [HttpPost]
     public ActionResult<Game> Post(GameInput model)
     {
