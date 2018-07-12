@@ -5,8 +5,323 @@
 		<link>https://miroslavpopovic.com/</link>
 		<description>Full-stack .NET and JavaScript software architect</description>
 		<copyright>2018</copyright>
-		<pubDate>Mon, 16 Apr 2018 19:54:50 GMT</pubDate>
-		<lastBuildDate>Mon, 16 Apr 2018 19:54:50 GMT</lastBuildDate>
+		<pubDate>Thu, 12 Jul 2018 09:25:46 GMT</pubDate>
+		<lastBuildDate>Thu, 12 Jul 2018 09:25:46 GMT</lastBuildDate>
+		<item>
+			<title>Using Elasticsearch with ASP.NET Core and Docker</title>
+			<link>https://miroslavpopovic.com/posts/2018/07/elasticsearch-with-aspnet-core-and-docker</link>
+			<description>&lt;p&gt;Recently, I got an assignment for my employer's internal project to investigate &lt;a href="https://www.elastic.co/products/elasticsearch"&gt;Elasticsearch&lt;/a&gt; and its usage from within ASP.NET Core 2.1 app. I had no prior knowledge of Elasticsearch, but I had some experience with &lt;a href="http://lucene.apache.org/solr/"&gt;Solr&lt;/a&gt; and earlier with &lt;a href="https://github.com/nhibernate/NHibernate-Search"&gt;NHibernate Search&lt;/a&gt; which also used &lt;a href="https://lucene.apache.org/"&gt;Lucene&lt;/a&gt; under the cover. This post is a summary of my research.&lt;/p&gt;</description>
+			<guid>https://miroslavpopovic.com/posts/2018/07/elasticsearch-with-aspnet-core-and-docker</guid>
+			<pubDate>Thu, 12 Jul 2018 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Recently, I got an assignment for my employer's internal project to investigate &lt;a href="https://www.elastic.co/products/elasticsearch"&gt;Elasticsearch&lt;/a&gt; and its usage from within ASP.NET Core 2.1 app. I had no prior knowledge of Elasticsearch, but I had some experience with &lt;a href="http://lucene.apache.org/solr/"&gt;Solr&lt;/a&gt; and earlier with &lt;a href="https://github.com/nhibernate/NHibernate-Search"&gt;NHibernate Search&lt;/a&gt; which also used &lt;a href="https://lucene.apache.org/"&gt;Lucene&lt;/a&gt; under the cover. This post is a summary of my research.&lt;/p&gt;
+&lt;p&gt;So, what exactly is Elasticsearch?&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/elasticsearch.png" class="img-fluid" alt="Elasticsearch logo" /&gt;&lt;/p&gt;
+&lt;p&gt;Elasticsearch is a distributed, RESTful search and analytics engine. It's based on Lucene and provides a JSON based REST API on top of it, among other things. It also has a rich ecosystem of tools and a number of official and unofficial client libraries. There are two official .NET clients, a low-level Elasticsearch.Net which is just an unopinionated wrapper around REST API and a high-level NEST library built on top of Elasticsearch.Net which provides strongly typed, fluent query DSL.&lt;/p&gt;
+&lt;h2 id="elasticsearch-installation"&gt;Elasticsearch installation&lt;/h2&gt;
+&lt;p&gt;Almost all of my development work is done on Windows and for it, we have several &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html#install-elasticsearch"&gt;installation options&lt;/a&gt;, including a simple &lt;code&gt;.zip&lt;/code&gt; file package, an &lt;code&gt;.msi&lt;/code&gt; installation package and of course docker images.&lt;/p&gt;
+&lt;p&gt;If you are going with &lt;code&gt;.zip&lt;/code&gt; or &lt;code&gt;.msi&lt;/code&gt; package, you'll also need to install Java 8 SDK or later. Once unpacked or installed, you can run Elasticsearch from the command line or install it as a Windows service. Since I don't have Java SDK installed but have Docker, I'm going with &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/docker.html"&gt;Docker image&lt;/a&gt; option.&lt;/p&gt;
+&lt;p&gt;Elastic, the company behind the Elasticsearch, is hosting their &lt;a href="https://www.docker.elastic.co/"&gt;own Docker registry&lt;/a&gt;. To pull the latest Elasticsearch image (version 6.3.0 at the moment of writing) from the registry, you need to execute this command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; docker pull docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href="https://www.elastic.co/products/kibana"&gt;Kibana&lt;/a&gt; is also interesting for playing around with Elasticsearch. It's a web GUI that lets you visualize Elasticsearch data and navigate through the whole Elastic Stack. To pull its image, execute this command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; docker pull docker.elastic.co/kibana/kibana:6.3.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now that we have both Elasticsearch and Kibana downloaded, we can run them under the same network. First, let's create a Docker network:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; docker network create esnetwork --driver=bridge
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With the network set up, run both Elasticsearch and Kibana containers:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; docker run -p 9200:9200 -p 9300:9300 -e &amp;quot;discovery.type=single-node&amp;quot; --name elasticsearch -d --network esnetwork docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+&amp;gt; docker run -p 5601:5601 --name kibana -d --network esnetwork docker.elastic.co/kibana/kibana:6.3.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We also need to map a volume to avoid the data being reset each time we restart the container, which further complicates the command. Instead of that, we can use docker-compose. Let's create &lt;code&gt;docker-compose.yml&lt;/code&gt; file with the following content:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;version: '2'
+services:
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+        ports:
+            - &amp;quot;9200:9200&amp;quot;
+            - &amp;quot;9300:9300&amp;quot;
+        volumes:
+            - esdata:/usr/share/elasticsearch/data
+        networks:
+            - esnetwork
+    kibana:
+        image: docker.elastic.co/kibana/kibana:6.3.0
+        ports:
+            - &amp;quot;5601:5601&amp;quot;
+        networks:
+            - esnetwork
+        depends_on:
+            - elasticsearch
+    volumes:
+        esdata:
+            driver: local
+    networks:
+        esnetwork:
+            driver: bridge
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So, in short, we create two services &lt;code&gt;elasticsearch&lt;/code&gt; and &lt;code&gt;kibana&lt;/code&gt; and connect them via bridge network. &lt;code&gt;kibana&lt;/code&gt; depends on &lt;code&gt;elasticsearch&lt;/code&gt; in order to prevent it from being started first. If &lt;code&gt;elasticsearch&lt;/code&gt; container start fails, &lt;code&gt;kibana&lt;/code&gt; will fail too. We are also using the default ports for both.&lt;/p&gt;
+&lt;p&gt;To run everything, we can just do:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; docker-compose up
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now both Elasticsearch and Kibana are started. Browse &lt;a href="http://localhost:5601/"&gt;http://localhost:5601/&lt;/a&gt; to be greeted with Kibana dashboard.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/kibana.png" class="img-fluid" alt="Kibana dashboard" /&gt;&lt;/p&gt;
+&lt;p&gt;That's everything we need for running Elasticsearch in dev environment. Installation on production environment shouldn't be too hard either as there are packages for various Linux distros. Also, there are Elasticsearch SaaS offerings from all major cloud vendors and &lt;a href="https://www.elastic.co/cloud"&gt;from Elastic itself&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="sample-project-creation"&gt;Sample project creation&lt;/h2&gt;
+&lt;p&gt;To see how Elasticsearch works with ASP.NET Core, we'll create a new blog project, using Mads Kristensen's &lt;a href="https://github.com/madskristensen/MiniBlog.Core"&gt;MiniBlog.Core&lt;/a&gt; template. MiniBlog is a simple blogging engine built on ASP.NET Core 2.0.&lt;/p&gt;
+&lt;p&gt;If you don't want to follow the step-by-step creation of the new project and adding functionality to it, there's &lt;a href="https://github.com/miroslavpopovic/miniblog-elasticsearch"&gt;a complete sample&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;On the command line, install the template:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; dotnet new --install MadsKristensen.AspNetCore.Miniblog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then create the project and add the NEST NuGet package:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; dotnet new miniblog --name MiniBlogElasticsearch
+&amp;gt; dotnet add package NEST
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Open the project with Visual Studio Code or with Visual Studio 2017:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; code .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you start the debugging now or do &lt;code&gt;dotnet run&lt;/code&gt; from the command line, you should get the following welcome post in your browser:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/miniblog-welcome.png" class="img-fluid" alt="MiniBlog.Core Welcome" /&gt;&lt;/p&gt;
+&lt;p&gt;You can log in (using &lt;em&gt;Sign in&lt;/em&gt; link at the bottom of the page) and create new posts - we will need several in order to test how search is working. Use &lt;code&gt;demo&lt;/code&gt; for both username and password.&lt;/p&gt;
+&lt;h2 id="configuring-elasticsearch-client"&gt;Configuring Elasticsearch client&lt;/h2&gt;
+&lt;p&gt;NEST NuGet package is already installed in the previous step. &lt;a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/nest.html"&gt;NEST&lt;/a&gt; is a high level .NET client for Elasticsearch which provides a way to call Elasticsearch REST APIs via strongly-typed, easy to use, query DSL. There's a good &lt;a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/nest-getting-started.html"&gt;Getting started&lt;/a&gt; document on Elastic search documentation which can bring you up to speed.&lt;/p&gt;
+&lt;p&gt;For connecting to Elasticsearch API, we will use &lt;code&gt;ElasticClient&lt;/code&gt; which needs to be configured first. The documentation states that &lt;code&gt;ElasticClient&lt;/code&gt; is thread safe and hence it's possible to use a singleton instance of it per application (or per index). In order to be good ASP.NET Core citizens, let's initialize everything we need for Elasticsearch in &lt;code&gt;Startup&lt;/code&gt; class' &lt;code&gt;ConfigureServices&lt;/code&gt; method. Of course, we'll follow the best practices and add extension method for it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// In Startup class
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+    services.AddElasticsearch(Configuration);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And here's the basic extension method implementation:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public static class ElasticsearchExtensions
+{
+    public static void AddElasticsearch(
+        this IServiceCollection services, IConfiguration configuration)
+    {
+        var url = configuration[&amp;quot;elasticsearch:url&amp;quot;];
+        var defaultIndex = configuration[&amp;quot;elasticsearch:index&amp;quot;];
+
+        var settings = new ConnectionSettings(new Uri(url))
+            .DefaultIndex(defaultIndex)
+            .DefaultMappingFor&amp;lt;Post&amp;gt;(m =&amp;gt; m
+                .Ignore(p =&amp;gt; p.IsPublished)
+                .PropertyName(p =&amp;gt; p.ID, &amp;quot;id&amp;quot;)
+            )
+            .DefaultMappingFor&amp;lt;Comment&amp;gt;(m =&amp;gt; m
+                .Ignore(c =&amp;gt; c.Email)
+                .Ignore(c =&amp;gt; c.IsAdmin)
+                .PropertyName(c =&amp;gt; c.ID, &amp;quot;id&amp;quot;)
+            );
+
+        var client = new ElasticClient(settings);
+
+        services.AddSingleton&amp;lt;IElasticClient&amp;gt;(client);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The method expects that there is an &lt;code&gt;elasticsearch&lt;/code&gt; section in the configuration, so we need to add it to &lt;code&gt;appsettings.json&lt;/code&gt; (or other configuration source):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;elasticsearch&amp;quot;: {
+        &amp;quot;index&amp;quot;: &amp;quot;miniblog&amp;quot;,
+        &amp;quot;url&amp;quot;: &amp;quot;http://localhost:9200/&amp;quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;index&lt;/code&gt; should point to the default index in Elasticsearch and &lt;code&gt;url&lt;/code&gt; to the actual address of our Elasticsearch instance. Note that the organization within Elasticsearch is a bit different than within relational database server. When I first looked into it, I thought that &lt;em&gt;index&lt;/em&gt; is an equivalent of a single database and &lt;em&gt;type&lt;/em&gt; an equivalent of a database table. However, it's not really like that. Types are now obsolete from version 6.0.0 and will be completely removed in version 7.0.0. Indices should contain a single type only. Fortunately, we only have one type that needs to be indexed and searched - a blog &lt;code&gt;Post&lt;/code&gt;. &lt;code&gt;Comment&lt;/code&gt; type is nested and indexed under &lt;code&gt;Post&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;From the &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html"&gt;docs&lt;/a&gt;:
+Indices created in Elasticsearch 6.0.0 or later may only contain a single mapping type. Indices created in 5.x with multiple mapping types will continue to function as before in Elasticsearch 6.x. Mapping types will be completely removed in Elasticsearch 7.0.0.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;OK, back to &lt;code&gt;AddElasticsearch&lt;/code&gt; extension method. It also creates default mappings for our types. We are choosing not to index &lt;code&gt;Post.IsPublished&lt;/code&gt;, &lt;code&gt;Comment.Email&lt;/code&gt; (GDPR everyone?) and &lt;code&gt;Comment.IsAdmin&lt;/code&gt; properties. Plus, we want to have better names for ID properties in index - &lt;code&gt;id&lt;/code&gt; instead of &lt;code&gt;iD&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Once &lt;code&gt;ConnectionSettings&lt;/code&gt; are defined, we create a new instance of &lt;code&gt;ElasticClient&lt;/code&gt; using those settings and register it as a singleton under .NET Core dependency injection container.&lt;/p&gt;
+&lt;h2 id="indexing-blog-posts"&gt;Indexing blog posts&lt;/h2&gt;
+&lt;p&gt;Great, we can now use &lt;code&gt;IElasticClient&lt;/code&gt; when we need to communicate with Elasticsearch instance. Let's use it to add posts to the index whenever they are saved.&lt;/p&gt;
+&lt;p&gt;Open &lt;code&gt;Services/FileBlogService.cs&lt;/code&gt; in your editor and locate &lt;code&gt;SavePost(Post post)&lt;/code&gt; method. MiniBlog saves all the blog posts as separate XML files under &lt;code&gt;wwwroot/Posts&lt;/code&gt; folder and &lt;code&gt;SavePost&lt;/code&gt; method does the actual saving. We'll modify it by adding some code at the beginning and at the end of the method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Inject IElasticClient to the constructor
+
+public async Task SavePost(Post post)
+{
+    string filePath = GetFilePath(post);
+    post.LastModified = DateTime.UtcNow;
+
+    // Add this line:
+    bool postExists = File.Exists(filePath);
+
+    // ... rest of the method functionality
+
+    // Add these lines at the end:
+    if (postExists)
+        await _elasticClient.UpdateAsync&amp;lt;Post&amp;gt;(post, u =&amp;gt; u.Doc(post));
+    else
+        await _elasticClient.IndexDocumentAsync(post);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In order to index the blog &lt;code&gt;Post&lt;/code&gt; we check if the post already exists. If it does, we assume it's already a part of the index, so we do &lt;code&gt;UpdateAsync&lt;/code&gt;. Elasticsearch will identify the post by id. If it doesn't already exist, it will call &lt;code&gt;IndexDocumentAsync&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Blog &lt;code&gt;Post&lt;/code&gt;s can also be deleted. We need to modify &lt;code&gt;DeletePost(Post post)&lt;/code&gt; method too:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public async Task DeletePost(Post post)
+{
+    string filePath = GetFilePath(post);
+
+    if (File.Exists(filePath))
+        File.Delete(filePath);
+
+    await _elasticClient.DeleteAsync&amp;lt;Post&amp;gt;(post);
+
+    if (_cache.Contains(post))
+        _cache.Remove(post);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It's possible that index sometimes gets out of sync with actual posts - like when we are adding posts without starting Elasticsearch first, or if we have created posts before implementing the indexing changes above. To cover these cases, we'll create a simple reindex operation (NOT for production use). We can have it under the new &lt;code&gt;SearchController&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class SearchController : Controller
+{
+    private readonly IBlogService _blogService;
+    private readonly IElasticClient _elasticClient;
+    private readonly IOptionsSnapshot&amp;lt;BlogSettings&amp;gt; _settings;
+
+    public SearchController(IBlogService blogService, IElasticClient elasticClient, IOptionsSnapshot&amp;lt;BlogSettings&amp;gt; settings)
+    {
+        _blogService = blogService;
+        _elasticClient = elasticClient;
+        _settings = settings;
+    }
+
+    [Authorize]
+    [Route(&amp;quot;/search/reindex&amp;quot;)]
+    public async Task&amp;lt;IActionResult&amp;gt; ReIndex()
+    {
+        await _elasticClient.DeleteByQueryAsync&amp;lt;Post&amp;gt;(q =&amp;gt; q.MatchAll());
+
+        var allPosts = (await _blogService.GetPosts(int.MaxValue)).ToArray();
+
+        foreach (var post in allPosts)
+        {
+            await _elasticClient.IndexDocumentAsync(post);
+        }
+
+        return Ok($&amp;quot;{allPosts.Length} post(s) reindexed&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The implementation is pretty naïve (like I said, NOT for production use). It deletes all posts from the index using &lt;code&gt;match_all&lt;/code&gt; operator of Elasticsearch and then recreates the index by adding all posts to the index one by one. There's a better way to do this for production - &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html"&gt;Reindex API&lt;/a&gt; but our implementation is good enough for a simple demo.&lt;/p&gt;
+&lt;p&gt;When we navigate to &lt;code&gt;http://localhost:[our-port]/search/reindex&lt;/code&gt; in the browser, it will trigger reindexing and display the number of indexed posts.&lt;/p&gt;
+&lt;p&gt;That's it! Our Elasticsearch index now has data we can use. Let's try to see it in Kibana. Navigate to &lt;a href="http://localhost:5601/app/kibana#/dev_tools/console"&gt;http://localhost:5601/app/kibana#/dev_tools/console&lt;/a&gt; and enter the following in the console:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET miniblog/_search
+{
+    &amp;quot;query&amp;quot;: { &amp;quot;match_all&amp;quot;: {} }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It will use the &lt;code&gt;match_all&lt;/code&gt; operator to return everything in our &lt;code&gt;miniblog&lt;/code&gt; index. Depending on the number of posts you have added you might have a different total number:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/kibana-dev-tools.png" class="img-fluid" alt="Kibana Dev Tools Console" /&gt;&lt;/p&gt;
+&lt;h2 id="implementing-search-operation"&gt;Implementing search operation&lt;/h2&gt;
+&lt;p&gt;Excellent! We have data indexed but we're not using it for anything from the application itself. Let's add search operation next. Add the following to our &lt;code&gt;SearchController&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Route(&amp;quot;/search&amp;quot;)]
+public async Task&amp;lt;IActionResult&amp;gt; Find(string query, int page = 1, int pageSize = 5)
+{
+    var response = await _elasticClient.SearchAsync&amp;lt;Post&amp;gt;(
+        s =&amp;gt; s.Query(q =&amp;gt; q.QueryString(d =&amp;gt; d.Query(query)))
+            .From((page - 1) * pageSize)
+            .Size(pageSize));
+
+    ViewData[&amp;quot;Title&amp;quot;] = _settings.Value.Name + &amp;quot; - Search Results&amp;quot;;
+    ViewData[&amp;quot;Description&amp;quot;] = _settings.Value.Description;
+
+    if (!response.IsValid)
+    {
+        // We could handle errors here by checking response.OriginalException or response.ServerError properties
+        return View(&amp;quot;Results&amp;quot;, new Post[] { });
+    }
+
+    if (page &amp;gt; 1)
+        ViewData[&amp;quot;prev&amp;quot;] = GetSearchUrl(query, page - 1, pageSize);
+    if (response.IsValid &amp;amp;&amp;amp; response.Total &amp;gt; page * pageSize)
+        ViewData[&amp;quot;next&amp;quot;] = GetSearchUrl(query, page + 1, pageSize);
+
+    return View(&amp;quot;Results&amp;quot;, response.Documents);
+}
+
+private static string GetSearchUrl(string query, int page, int pageSize)
+{
+    return $&amp;quot;/search?query={Uri.EscapeDataString(query ?? &amp;quot;&amp;quot;)}&amp;amp;page={page}&amp;amp;pagesize={pageSize}/&amp;quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It's pretty simple. &lt;code&gt;QueryString&lt;/code&gt; full text query is used for searching for the string passed in from the browser. &lt;code&gt;QueryString&lt;/code&gt; searches in all fields by default and that's what we need. A pagination is also implemented with &lt;code&gt;page&lt;/code&gt; and &lt;code&gt;pageSize&lt;/code&gt; parameters, used as arguments for &lt;code&gt;From&lt;/code&gt; and &lt;code&gt;Size&lt;/code&gt; methods of NEST fluent DSL.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Tip:&lt;/em&gt; Errors are not handled. By default, NEST doesn't throw exceptions, neither for search nor for indexing operations. We can change that when configuring the client. When exceptions aren't thrown, you can check the response object. &lt;code&gt;response.IsValid&lt;/code&gt; will be false in case of any error and &lt;code&gt;response.ServerErrors&lt;/code&gt; or &lt;code&gt;response.OriginalException&lt;/code&gt; would contain actual errors or exceptions. We could for instance check which error happens and send it to the view to display it to the user.&lt;/p&gt;
+&lt;p&gt;The backend is implemented. We now need to add a search form to our pages. We'll add it below the header in &lt;code&gt;_Layout.cshtml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;header class=&amp;quot;siteheader&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+        &amp;lt;p itemprop=&amp;quot;name&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;~/&amp;quot;&amp;gt;&amp;#64;settings.Value.Name&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+        By &amp;lt;span itemprop=&amp;quot;author&amp;quot;&amp;gt;&amp;#64;settings.Value.Owner&amp;lt;/span&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Insert search form here: --&amp;gt;
+    &amp;lt;form class=&amp;quot;container&amp;quot; asp-action=&amp;quot;Find&amp;quot; asp-controller=&amp;quot;Search&amp;quot; method=&amp;quot;get&amp;quot;&amp;gt;
+        &amp;lt;input type=&amp;quot;search&amp;quot; name=&amp;quot;query&amp;quot; placeholder=&amp;quot;Search...&amp;quot; value=&amp;quot;&amp;#64;ViewContext.HttpContext.Request.Query[&amp;quot;query&amp;quot;]&amp;quot; /&amp;gt;
+    &amp;lt;/form&amp;gt;
+&amp;lt;/header&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When user enters a value in search input and hits Enter, it will trigger the search operation and redirect the browser to search results. As a last thing, let's add &lt;code&gt;Views/Search/Result.cshtml&lt;/code&gt; Razor view:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#64;model IEnumerable&amp;lt;Post&amp;gt;
+&amp;lt;div class=&amp;quot;container search-results&amp;quot;&amp;gt;
+    &amp;lt;h1&amp;gt;Search results&amp;lt;/h1&amp;gt;
+
+    &amp;#64;if (!Model.Any())
+    {
+        &amp;lt;p&amp;gt;Nothing found for: &amp;lt;em&amp;gt;&amp;#64;ViewContext.HttpContext.Request.Query[&amp;quot;query&amp;quot;]&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+    }
+
+    &amp;#64;foreach (var post in Model)
+    {
+        &amp;lt;article class=&amp;quot;post&amp;quot;&amp;gt;
+            &amp;lt;header&amp;gt;
+                &amp;lt;h2&amp;gt;&amp;lt;a asp-controller=&amp;quot;Blog&amp;quot; asp-action=&amp;quot;Post&amp;quot; asp-route-slug=&amp;quot;&amp;#64;post.Slug&amp;quot;&amp;gt;&amp;#64;post.Title&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;
+                &amp;lt;time datetime=&amp;quot;&amp;#64;post.PubDate.ToString(&amp;quot;s&amp;quot;)&amp;quot; itemprop=&amp;quot;datePublished&amp;quot;&amp;gt;Published &amp;#64;post.PubDate.ToString(&amp;quot;MMM d, yyyy&amp;quot;)&amp;lt;/time&amp;gt;
+                &amp;#64;if (User.Identity.IsAuthenticated)
+                {
+                    &amp;lt;a asp-controller=&amp;quot;Blog&amp;quot; asp-action=&amp;quot;edit&amp;quot; asp-route-id=&amp;quot;&amp;#64;post.ID&amp;quot; title=&amp;quot;Edit the post&amp;quot;&amp;gt;Edit post&amp;lt;/a&amp;gt;
+                }
+            &amp;lt;/header&amp;gt;
+            &amp;lt;p&amp;gt;&amp;#64;post.Excerpt&amp;lt;/p&amp;gt;
+        &amp;lt;/article&amp;gt;
+    }
+
+    &amp;lt;nav class=&amp;quot;pagination&amp;quot; aria-label=&amp;quot;Pagination&amp;quot;&amp;gt;
+        &amp;#64;if (ViewData[&amp;quot;prev&amp;quot;] != null)
+        {
+            &amp;lt;a rel=&amp;quot;prev&amp;quot; href=&amp;quot;&amp;#64;ViewData[&amp;quot;prev&amp;quot;]&amp;quot; title=&amp;quot;Previous results&amp;quot;&amp;gt;&amp;amp;laquo; Previous&amp;lt;/a&amp;gt;
+        }
+        &amp;#64;if (ViewData[&amp;quot;next&amp;quot;] != null)
+        {
+            &amp;lt;a rel=&amp;quot;next&amp;quot; href=&amp;quot;&amp;#64;ViewData[&amp;quot;next&amp;quot;]&amp;quot; title=&amp;quot;Next results&amp;quot;&amp;gt;Next &amp;amp;raquo;&amp;lt;/a&amp;gt;
+        }
+        &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;
+
+        &amp;#64;section Head {
+            &amp;#64;if (ViewData[&amp;quot;prev&amp;quot;] != null)
+            {
+                &amp;lt;link rel=&amp;quot;prev&amp;quot; href=&amp;quot;&amp;#64;ViewData[&amp;quot;prev&amp;quot;]&amp;quot; /&amp;gt;
+            }
+            &amp;#64;if (ViewData[&amp;quot;next&amp;quot;] != null)
+            {
+                &amp;lt;link rel=&amp;quot;next&amp;quot; href=&amp;quot;&amp;#64;ViewData[&amp;quot;next&amp;quot;]&amp;quot; /&amp;gt;
+            }
+        }
+    &amp;lt;/nav&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Search page displays a list of &lt;code&gt;Post&lt;/code&gt;s found by Elasticsearch in response to the given query.&lt;/p&gt;
+&lt;p&gt;If we search for something on our site, this is what we will get:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/miniblog-search.png" class="img-fluid" alt="MiniBlog Search Results" /&gt;&lt;/p&gt;
+&lt;p&gt;Pagination will work too if you have more than 5 results.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;This is just a tip of the iceberg. Elasticsearch has a vast number of features that you can use. The &lt;a href=""&gt;sample application&lt;/a&gt; on GitHub implements a few more features like &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/mapping-boost.html"&gt;boosting&lt;/a&gt;, &lt;a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/6.x/writing-analyzers.html"&gt;custom analyzers&lt;/a&gt;, tokenization, character filters, etc. You can find that in &lt;a href="https://github.com/miroslavpopovic/miniblog-elasticsearch/blob/master/src/ElasticsearchExtensions.cs"&gt;&lt;code&gt;ElasticsearchExtensions.cs&lt;/code&gt;&lt;/a&gt; file.&lt;/p&gt;
+&lt;p&gt;A thing to keep in mind is - make sure you double check everything before going into production.&lt;/p&gt;
+&lt;p&gt;First of all, you don't want Elasticsearch or Kibana's port exposed publicly! It should be accessible from your app backed only. It can (and should) also be protected with authentication. Check out &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html"&gt;X-Pack Authenticate API&lt;/a&gt; and &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html"&gt;SSL Certificate API&lt;/a&gt; for that.&lt;/p&gt;
+&lt;p&gt;Second, don't just throw everything into the index. Pick up only the data that makes sense. Adding a bunch of data just for the sake of having them indexed will hurt the performance, but more importantly, you'll get into trouble when you need to delete something. Remember GDPR? User data should be kept out of the index unless it's absolutely necessary. The other security-critical information too. Data breaches happen all the time. Don't be a part of the statistics.&lt;/p&gt;
+&lt;p&gt;So, what's my final thought on Elasticsearch? It's an excellent and powerful tool and it fulfilled my expectations.&lt;/p&gt;
+&lt;p&gt;However, what I didn't expect is the quality of the documentation. It's fantastic! There's an API reference, getting started documentation, best practices, an excellent documentation for the clients, etc. And not just the documentation for Elasticsearch, but for Docker and ASP.NET Core too. Long gone are the days where we had dry MSDN documentation with unoptimized and often wrong samples written by technical writers and not by developers.&lt;/p&gt;
+&lt;p&gt;Getting started with something as complex as Elasticsearch these days is easy thanks to an excellent documentation, so kudos to people from Elastic and community for writing them! All the Elasticsearch docs are editable on &lt;a href="https://github.com/elastic/elasticsearch/edit/6.3/docs/reference/getting-started.asciidoc"&gt;GitHub&lt;/a&gt;. Kudos also go to &lt;a href="https://github.com/docker/docker.github.io/edit/master/index.md"&gt;Docker&lt;/a&gt; and &lt;a href="https://github.com/aspnet/Docs/blob/master/aspnetcore/index.md"&gt;ASP.NET Core&lt;/a&gt; documentation that's also available for editing on GitHub. This is truly a documentation renaissance.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Conference Bonanza</title>
 			<link>https://miroslavpopovic.com/posts/2018/04/conference-bonanza</link>

@@ -1,0 +1,583 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Miroslav Popovic - Using Elasticsearch with ASP.NET Core and Docker</title>
+        <meta name="description" content="Full-stack .NET and JavaScript software architect" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Miroslav Popovic" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Miroslav Popovic" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Miroslav Popovic" />
+        <meta name="msapplication-tooltip" content="Miroslav Popovic" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Miroslav Popovic - Using Elasticsearch with ASP.NET Core and Docker" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://miroslavpopovic.com/posts/2018/07/elasticsearch-with-aspnet-core-and-docker" />
+        <!-- TODO: More social graph meta tags -->
+
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>     
+        <script src="/assets/js/highlight.pack.js"></script>   
+        <script src="/assets/js/clean-blog.js"></script>
+        <script src="/assets/js/d3.v3.min.js"></script>
+        <script src="/assets/js/trianglify.min.js"></script>
+        <script src="/assets/js/Please-compressed.js"></script>
+        <script src="/assets/js/background-check.min.js"></script>
+                
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+                <script src="/assets/js/html5shiv.js"></script>
+                <script src="/assets/js/respond.min.js"></script>
+        <![endif]-->
+        
+                <!-- Icons -->
+        <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Miroslav Popovic</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About Me</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Using Elasticsearch with ASP.NET Core and Docker</h1>
+    <div class="meta">        
+Published on Thursday, July 12, 2018<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/aspnetcore" class="btn btn-default btn-xs">aspnetcore</a>
+                    <a role="button" href="/tags/docker" class="btn btn-default btn-xs">docker</a>
+                    <a role="button" href="/tags/elasticsearch" class="btn btn-default btn-xs">elasticsearch</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>Recently, I got an assignment for my employer's internal project to investigate <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> and its usage from within ASP.NET Core 2.1 app. I had no prior knowledge of Elasticsearch, but I had some experience with <a href="http://lucene.apache.org/solr/">Solr</a> and earlier with <a href="https://github.com/nhibernate/NHibernate-Search">NHibernate Search</a> which also used <a href="https://lucene.apache.org/">Lucene</a> under the cover. This post is a summary of my research.</p>
+<p>So, what exactly is Elasticsearch?</p>
+<p><img src="/images/2018-07/elasticsearch.png" class="img-fluid" alt="Elasticsearch logo" /></p>
+<p>Elasticsearch is a distributed, RESTful search and analytics engine. It's based on Lucene and provides a JSON based REST API on top of it, among other things. It also has a rich ecosystem of tools and a number of official and unofficial client libraries. There are two official .NET clients, a low-level Elasticsearch.Net which is just an unopinionated wrapper around REST API and a high-level NEST library built on top of Elasticsearch.Net which provides strongly typed, fluent query DSL.</p>
+<h2 id="elasticsearch-installation">Elasticsearch installation</h2>
+<p>Almost all of my development work is done on Windows and for it, we have several <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html#install-elasticsearch">installation options</a>, including a simple <code>.zip</code> file package, an <code>.msi</code> installation package and of course docker images.</p>
+<p>If you are going with <code>.zip</code> or <code>.msi</code> package, you'll also need to install Java 8 SDK or later. Once unpacked or installed, you can run Elasticsearch from the command line or install it as a Windows service. Since I don't have Java SDK installed but have Docker, I'm going with <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/docker.html">Docker image</a> option.</p>
+<p>Elastic, the company behind the Elasticsearch, is hosting their <a href="https://www.docker.elastic.co/">own Docker registry</a>. To pull the latest Elasticsearch image (version 6.3.0 at the moment of writing) from the registry, you need to execute this command:</p>
+<pre><code>&gt; docker pull docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+</code></pre>
+<p><a href="https://www.elastic.co/products/kibana">Kibana</a> is also interesting for playing around with Elasticsearch. It's a web GUI that lets you visualize Elasticsearch data and navigate through the whole Elastic Stack. To pull its image, execute this command:</p>
+<pre><code>&gt; docker pull docker.elastic.co/kibana/kibana:6.3.0
+</code></pre>
+<p>Now that we have both Elasticsearch and Kibana downloaded, we can run them under the same network. First, let's create a Docker network:</p>
+<pre><code>&gt; docker network create esnetwork --driver=bridge
+</code></pre>
+<p>With the network set up, run both Elasticsearch and Kibana containers:</p>
+<pre><code>&gt; docker run -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; --name elasticsearch -d --network esnetwork docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+&gt; docker run -p 5601:5601 --name kibana -d --network esnetwork docker.elastic.co/kibana/kibana:6.3.0
+</code></pre>
+<p>We also need to map a volume to avoid the data being reset each time we restart the container, which further complicates the command. Instead of that, we can use docker-compose. Let's create <code>docker-compose.yml</code> file with the following content:</p>
+<pre><code>version: '2'
+services:
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+        ports:
+            - &quot;9200:9200&quot;
+            - &quot;9300:9300&quot;
+        volumes:
+            - esdata:/usr/share/elasticsearch/data
+        networks:
+            - esnetwork
+    kibana:
+        image: docker.elastic.co/kibana/kibana:6.3.0
+        ports:
+            - &quot;5601:5601&quot;
+        networks:
+            - esnetwork
+        depends_on:
+            - elasticsearch
+    volumes:
+        esdata:
+            driver: local
+    networks:
+        esnetwork:
+            driver: bridge
+</code></pre>
+<p>So, in short, we create two services <code>elasticsearch</code> and <code>kibana</code> and connect them via bridge network. <code>kibana</code> depends on <code>elasticsearch</code> in order to prevent it from being started first. If <code>elasticsearch</code> container start fails, <code>kibana</code> will fail too. We are also using the default ports for both.</p>
+<p>To run everything, we can just do:</p>
+<pre><code>&gt; docker-compose up
+</code></pre>
+<p>Now both Elasticsearch and Kibana are started. Browse <a href="http://localhost:5601/">http://localhost:5601/</a> to be greeted with Kibana dashboard.</p>
+<p><img src="/images/2018-07/kibana.png" class="img-fluid" alt="Kibana dashboard" /></p>
+<p>That's everything we need for running Elasticsearch in dev environment. Installation on production environment shouldn't be too hard either as there are packages for various Linux distros. Also, there are Elasticsearch SaaS offerings from all major cloud vendors and <a href="https://www.elastic.co/cloud">from Elastic itself</a>.</p>
+<h2 id="sample-project-creation">Sample project creation</h2>
+<p>To see how Elasticsearch works with ASP.NET Core, we'll create a new blog project, using Mads Kristensen's <a href="https://github.com/madskristensen/MiniBlog.Core">MiniBlog.Core</a> template. MiniBlog is a simple blogging engine built on ASP.NET Core 2.0.</p>
+<p>If you don't want to follow the step-by-step creation of the new project and adding functionality to it, there's <a href="https://github.com/miroslavpopovic/miniblog-elasticsearch">a complete sample</a> on GitHub.</p>
+<p>On the command line, install the template:</p>
+<pre><code>&gt; dotnet new --install MadsKristensen.AspNetCore.Miniblog
+</code></pre>
+<p>Then create the project and add the NEST NuGet package:</p>
+<pre><code>&gt; dotnet new miniblog --name MiniBlogElasticsearch
+&gt; dotnet add package NEST
+</code></pre>
+<p>Open the project with Visual Studio Code or with Visual Studio 2017:</p>
+<pre><code>&gt; code .
+</code></pre>
+<p>If you start the debugging now or do <code>dotnet run</code> from the command line, you should get the following welcome post in your browser:</p>
+<p><img src="/images/2018-07/miniblog-welcome.png" class="img-fluid" alt="MiniBlog.Core Welcome" /></p>
+<p>You can log in (using <em>Sign in</em> link at the bottom of the page) and create new posts - we will need several in order to test how search is working. Use <code>demo</code> for both username and password.</p>
+<h2 id="configuring-elasticsearch-client">Configuring Elasticsearch client</h2>
+<p>NEST NuGet package is already installed in the previous step. <a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/nest.html">NEST</a> is a high level .NET client for Elasticsearch which provides a way to call Elasticsearch REST APIs via strongly-typed, easy to use, query DSL. There's a good <a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/nest-getting-started.html">Getting started</a> document on Elastic search documentation which can bring you up to speed.</p>
+<p>For connecting to Elasticsearch API, we will use <code>ElasticClient</code> which needs to be configured first. The documentation states that <code>ElasticClient</code> is thread safe and hence it's possible to use a singleton instance of it per application (or per index). In order to be good ASP.NET Core citizens, let's initialize everything we need for Elasticsearch in <code>Startup</code> class' <code>ConfigureServices</code> method. Of course, we'll follow the best practices and add extension method for it:</p>
+<pre><code>// In Startup class
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+    services.AddElasticsearch(Configuration);
+}
+</code></pre>
+<p>And here's the basic extension method implementation:</p>
+<pre><code>public static class ElasticsearchExtensions
+{
+    public static void AddElasticsearch(
+        this IServiceCollection services, IConfiguration configuration)
+    {
+        var url = configuration[&quot;elasticsearch:url&quot;];
+        var defaultIndex = configuration[&quot;elasticsearch:index&quot;];
+
+        var settings = new ConnectionSettings(new Uri(url))
+            .DefaultIndex(defaultIndex)
+            .DefaultMappingFor&lt;Post&gt;(m =&gt; m
+                .Ignore(p =&gt; p.IsPublished)
+                .PropertyName(p =&gt; p.ID, &quot;id&quot;)
+            )
+            .DefaultMappingFor&lt;Comment&gt;(m =&gt; m
+                .Ignore(c =&gt; c.Email)
+                .Ignore(c =&gt; c.IsAdmin)
+                .PropertyName(c =&gt; c.ID, &quot;id&quot;)
+            );
+
+        var client = new ElasticClient(settings);
+
+        services.AddSingleton&lt;IElasticClient&gt;(client);
+    }
+}
+</code></pre>
+<p>The method expects that there is an <code>elasticsearch</code> section in the configuration, so we need to add it to <code>appsettings.json</code> (or other configuration source):</p>
+<pre><code>{
+    &quot;elasticsearch&quot;: {
+        &quot;index&quot;: &quot;miniblog&quot;,
+        &quot;url&quot;: &quot;http://localhost:9200/&quot;
+    }
+}
+</code></pre>
+<p><code>index</code> should point to the default index in Elasticsearch and <code>url</code> to the actual address of our Elasticsearch instance. Note that the organization within Elasticsearch is a bit different than within relational database server. When I first looked into it, I thought that <em>index</em> is an equivalent of a single database and <em>type</em> an equivalent of a database table. However, it's not really like that. Types are now obsolete from version 6.0.0 and will be completely removed in version 7.0.0. Indices should contain a single type only. Fortunately, we only have one type that needs to be indexed and searched - a blog <code>Post</code>. <code>Comment</code> type is nested and indexed under <code>Post</code>.</p>
+<blockquote class="blockquote">
+<p>From the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html">docs</a>:
+Indices created in Elasticsearch 6.0.0 or later may only contain a single mapping type. Indices created in 5.x with multiple mapping types will continue to function as before in Elasticsearch 6.x. Mapping types will be completely removed in Elasticsearch 7.0.0.</p>
+</blockquote>
+<p>OK, back to <code>AddElasticsearch</code> extension method. It also creates default mappings for our types. We are choosing not to index <code>Post.IsPublished</code>, <code>Comment.Email</code> (GDPR everyone?) and <code>Comment.IsAdmin</code> properties. Plus, we want to have better names for ID properties in index - <code>id</code> instead of <code>iD</code>.</p>
+<p>Once <code>ConnectionSettings</code> are defined, we create a new instance of <code>ElasticClient</code> using those settings and register it as a singleton under .NET Core dependency injection container.</p>
+<h2 id="indexing-blog-posts">Indexing blog posts</h2>
+<p>Great, we can now use <code>IElasticClient</code> when we need to communicate with Elasticsearch instance. Let's use it to add posts to the index whenever they are saved.</p>
+<p>Open <code>Services/FileBlogService.cs</code> in your editor and locate <code>SavePost(Post post)</code> method. MiniBlog saves all the blog posts as separate XML files under <code>wwwroot/Posts</code> folder and <code>SavePost</code> method does the actual saving. We'll modify it by adding some code at the beginning and at the end of the method:</p>
+<pre><code>// Inject IElasticClient to the constructor
+
+public async Task SavePost(Post post)
+{
+    string filePath = GetFilePath(post);
+    post.LastModified = DateTime.UtcNow;
+
+    // Add this line:
+    bool postExists = File.Exists(filePath);
+
+    // ... rest of the method functionality
+
+    // Add these lines at the end:
+    if (postExists)
+        await _elasticClient.UpdateAsync&lt;Post&gt;(post, u =&gt; u.Doc(post));
+    else
+        await _elasticClient.IndexDocumentAsync(post);
+}
+</code></pre>
+<p>In order to index the blog <code>Post</code> we check if the post already exists. If it does, we assume it's already a part of the index, so we do <code>UpdateAsync</code>. Elasticsearch will identify the post by id. If it doesn't already exist, it will call <code>IndexDocumentAsync</code>.</p>
+<p>Blog <code>Post</code>s can also be deleted. We need to modify <code>DeletePost(Post post)</code> method too:</p>
+<pre><code>public async Task DeletePost(Post post)
+{
+    string filePath = GetFilePath(post);
+
+    if (File.Exists(filePath))
+        File.Delete(filePath);
+
+    await _elasticClient.DeleteAsync&lt;Post&gt;(post);
+
+    if (_cache.Contains(post))
+        _cache.Remove(post);
+}
+</code></pre>
+<p>It's possible that index sometimes gets out of sync with actual posts - like when we are adding posts without starting Elasticsearch first, or if we have created posts before implementing the indexing changes above. To cover these cases, we'll create a simple reindex operation (NOT for production use). We can have it under the new <code>SearchController</code>:</p>
+<pre><code>public class SearchController : Controller
+{
+    private readonly IBlogService _blogService;
+    private readonly IElasticClient _elasticClient;
+    private readonly IOptionsSnapshot&lt;BlogSettings&gt; _settings;
+
+    public SearchController(IBlogService blogService, IElasticClient elasticClient, IOptionsSnapshot&lt;BlogSettings&gt; settings)
+    {
+        _blogService = blogService;
+        _elasticClient = elasticClient;
+        _settings = settings;
+    }
+
+    [Authorize]
+    [Route(&quot;/search/reindex&quot;)]
+    public async Task&lt;IActionResult&gt; ReIndex()
+    {
+        await _elasticClient.DeleteByQueryAsync&lt;Post&gt;(q =&gt; q.MatchAll());
+
+        var allPosts = (await _blogService.GetPosts(int.MaxValue)).ToArray();
+
+        foreach (var post in allPosts)
+        {
+            await _elasticClient.IndexDocumentAsync(post);
+        }
+
+        return Ok($&quot;{allPosts.Length} post(s) reindexed&quot;);
+    }
+}
+</code></pre>
+<p>The implementation is pretty naïve (like I said, NOT for production use). It deletes all posts from the index using <code>match_all</code> operator of Elasticsearch and then recreates the index by adding all posts to the index one by one. There's a better way to do this for production - <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html">Reindex API</a> but our implementation is good enough for a simple demo.</p>
+<p>When we navigate to <code>http://localhost:[our-port]/search/reindex</code> in the browser, it will trigger reindexing and display the number of indexed posts.</p>
+<p>That's it! Our Elasticsearch index now has data we can use. Let's try to see it in Kibana. Navigate to <a href="http://localhost:5601/app/kibana#/dev_tools/console">http://localhost:5601/app/kibana#/dev_tools/console</a> and enter the following in the console:</p>
+<pre><code>GET miniblog/_search
+{
+    &quot;query&quot;: { &quot;match_all&quot;: {} }
+}
+</code></pre>
+<p>It will use the <code>match_all</code> operator to return everything in our <code>miniblog</code> index. Depending on the number of posts you have added you might have a different total number:</p>
+<p><img src="/images/2018-07/kibana-dev-tools.png" class="img-fluid" alt="Kibana Dev Tools Console" /></p>
+<h2 id="implementing-search-operation">Implementing search operation</h2>
+<p>Excellent! We have data indexed but we're not using it for anything from the application itself. Let's add search operation next. Add the following to our <code>SearchController</code>:</p>
+<pre><code>[Route(&quot;/search&quot;)]
+public async Task&lt;IActionResult&gt; Find(string query, int page = 1, int pageSize = 5)
+{
+    var response = await _elasticClient.SearchAsync&lt;Post&gt;(
+        s =&gt; s.Query(q =&gt; q.QueryString(d =&gt; d.Query(query)))
+            .From((page - 1) * pageSize)
+            .Size(pageSize));
+
+    ViewData[&quot;Title&quot;] = _settings.Value.Name + &quot; - Search Results&quot;;
+    ViewData[&quot;Description&quot;] = _settings.Value.Description;
+
+    if (!response.IsValid)
+    {
+        // We could handle errors here by checking response.OriginalException or response.ServerError properties
+        return View(&quot;Results&quot;, new Post[] { });
+    }
+
+    if (page &gt; 1)
+        ViewData[&quot;prev&quot;] = GetSearchUrl(query, page - 1, pageSize);
+    if (response.IsValid &amp;&amp; response.Total &gt; page * pageSize)
+        ViewData[&quot;next&quot;] = GetSearchUrl(query, page + 1, pageSize);
+
+    return View(&quot;Results&quot;, response.Documents);
+}
+
+private static string GetSearchUrl(string query, int page, int pageSize)
+{
+    return $&quot;/search?query={Uri.EscapeDataString(query ?? &quot;&quot;)}&amp;page={page}&amp;pagesize={pageSize}/&quot;;
+}
+</code></pre>
+<p>It's pretty simple. <code>QueryString</code> full text query is used for searching for the string passed in from the browser. <code>QueryString</code> searches in all fields by default and that's what we need. A pagination is also implemented with <code>page</code> and <code>pageSize</code> parameters, used as arguments for <code>From</code> and <code>Size</code> methods of NEST fluent DSL.</p>
+<p><em>Tip:</em> Errors are not handled. By default, NEST doesn't throw exceptions, neither for search nor for indexing operations. We can change that when configuring the client. When exceptions aren't thrown, you can check the response object. <code>response.IsValid</code> will be false in case of any error and <code>response.ServerErrors</code> or <code>response.OriginalException</code> would contain actual errors or exceptions. We could for instance check which error happens and send it to the view to display it to the user.</p>
+<p>The backend is implemented. We now need to add a search form to our pages. We'll add it below the header in <code>_Layout.cshtml</code>:</p>
+<pre><code>&lt;header class=&quot;siteheader&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;p itemprop=&quot;name&quot;&gt;&lt;a href=&quot;~/&quot;&gt;&#64;settings.Value.Name&lt;/a&gt;&lt;/p&gt;
+        By &lt;span itemprop=&quot;author&quot;&gt;&#64;settings.Value.Owner&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;!-- Insert search form here: --&gt;
+    &lt;form class=&quot;container&quot; asp-action=&quot;Find&quot; asp-controller=&quot;Search&quot; method=&quot;get&quot;&gt;
+        &lt;input type=&quot;search&quot; name=&quot;query&quot; placeholder=&quot;Search...&quot; value=&quot;&#64;ViewContext.HttpContext.Request.Query[&quot;query&quot;]&quot; /&gt;
+    &lt;/form&gt;
+&lt;/header&gt;
+</code></pre>
+<p>When user enters a value in search input and hits Enter, it will trigger the search operation and redirect the browser to search results. As a last thing, let's add <code>Views/Search/Result.cshtml</code> Razor view:</p>
+<pre><code>&#64;model IEnumerable&lt;Post&gt;
+&lt;div class=&quot;container search-results&quot;&gt;
+    &lt;h1&gt;Search results&lt;/h1&gt;
+
+    &#64;if (!Model.Any())
+    {
+        &lt;p&gt;Nothing found for: &lt;em&gt;&#64;ViewContext.HttpContext.Request.Query[&quot;query&quot;]&lt;/em&gt;&lt;/p&gt;
+    }
+
+    &#64;foreach (var post in Model)
+    {
+        &lt;article class=&quot;post&quot;&gt;
+            &lt;header&gt;
+                &lt;h2&gt;&lt;a asp-controller=&quot;Blog&quot; asp-action=&quot;Post&quot; asp-route-slug=&quot;&#64;post.Slug&quot;&gt;&#64;post.Title&lt;/a&gt;&lt;/h2&gt;
+                &lt;time datetime=&quot;&#64;post.PubDate.ToString(&quot;s&quot;)&quot; itemprop=&quot;datePublished&quot;&gt;Published &#64;post.PubDate.ToString(&quot;MMM d, yyyy&quot;)&lt;/time&gt;
+                &#64;if (User.Identity.IsAuthenticated)
+                {
+                    &lt;a asp-controller=&quot;Blog&quot; asp-action=&quot;edit&quot; asp-route-id=&quot;&#64;post.ID&quot; title=&quot;Edit the post&quot;&gt;Edit post&lt;/a&gt;
+                }
+            &lt;/header&gt;
+            &lt;p&gt;&#64;post.Excerpt&lt;/p&gt;
+        &lt;/article&gt;
+    }
+
+    &lt;nav class=&quot;pagination&quot; aria-label=&quot;Pagination&quot;&gt;
+        &#64;if (ViewData[&quot;prev&quot;] != null)
+        {
+            &lt;a rel=&quot;prev&quot; href=&quot;&#64;ViewData[&quot;prev&quot;]&quot; title=&quot;Previous results&quot;&gt;&amp;laquo; Previous&lt;/a&gt;
+        }
+        &#64;if (ViewData[&quot;next&quot;] != null)
+        {
+            &lt;a rel=&quot;next&quot; href=&quot;&#64;ViewData[&quot;next&quot;]&quot; title=&quot;Next results&quot;&gt;Next &amp;raquo;&lt;/a&gt;
+        }
+        &lt;br /&gt;&lt;br /&gt;
+
+        &#64;section Head {
+            &#64;if (ViewData[&quot;prev&quot;] != null)
+            {
+                &lt;link rel=&quot;prev&quot; href=&quot;&#64;ViewData[&quot;prev&quot;]&quot; /&gt;
+            }
+            &#64;if (ViewData[&quot;next&quot;] != null)
+            {
+                &lt;link rel=&quot;next&quot; href=&quot;&#64;ViewData[&quot;next&quot;]&quot; /&gt;
+            }
+        }
+    &lt;/nav&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Search page displays a list of <code>Post</code>s found by Elasticsearch in response to the given query.</p>
+<p>If we search for something on our site, this is what we will get:</p>
+<p><img src="/images/2018-07/miniblog-search.png" class="img-fluid" alt="MiniBlog Search Results" /></p>
+<p>Pagination will work too if you have more than 5 results.</p>
+<h2 id="summary">Summary</h2>
+<p>This is just a tip of the iceberg. Elasticsearch has a vast number of features that you can use. The <a href="">sample application</a> on GitHub implements a few more features like <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/mapping-boost.html">boosting</a>, <a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/6.x/writing-analyzers.html">custom analyzers</a>, tokenization, character filters, etc. You can find that in <a href="https://github.com/miroslavpopovic/miniblog-elasticsearch/blob/master/src/ElasticsearchExtensions.cs"><code>ElasticsearchExtensions.cs</code></a> file.</p>
+<p>A thing to keep in mind is - make sure you double check everything before going into production.</p>
+<p>First of all, you don't want Elasticsearch or Kibana's port exposed publicly! It should be accessible from your app backed only. It can (and should) also be protected with authentication. Check out <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html">X-Pack Authenticate API</a> and <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html">SSL Certificate API</a> for that.</p>
+<p>Second, don't just throw everything into the index. Pick up only the data that makes sense. Adding a bunch of data just for the sake of having them indexed will hurt the performance, but more importantly, you'll get into trouble when you need to delete something. Remember GDPR? User data should be kept out of the index unless it's absolutely necessary. The other security-critical information too. Data breaches happen all the time. Don't be a part of the statistics.</p>
+<p>So, what's my final thought on Elasticsearch? It's an excellent and powerful tool and it fulfilled my expectations.</p>
+<p>However, what I didn't expect is the quality of the documentation. It's fantastic! There's an API reference, getting started documentation, best practices, an excellent documentation for the clients, etc. And not just the documentation for Elasticsearch, but for Docker and ASP.NET Core too. Long gone are the days where we had dry MSDN documentation with unoptimized and often wrong samples written by technical writers and not by developers.</p>
+<p>Getting started with something as complex as Elasticsearch these days is easy thanks to an excellent documentation, so kudos to people from Elastic and community for writing them! All the Elasticsearch docs are editable on <a href="https://github.com/elastic/elasticsearch/edit/6.3/docs/reference/getting-started.asciidoc">GitHub</a>. Kudos also go to <a href="https://github.com/docker/docker.github.io/edit/master/index.md">Docker</a> and <a href="https://github.com/aspnet/Docs/blob/master/aspnetcore/index.md">ASP.NET Core</a> documentation that's also available for editing on GitHub. This is truly a documentation renaissance.</p>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'miroslavpopovic';
+    var disqus_identifier = 'elasticsearch-with-aspnet-core-and-docker';
+    var disqus_title = 'Using Elasticsearch with ASP.NET Core and Docker';
+    var disqus_url = 'https://miroslavpopovic.com/posts/2018/07/elasticsearch-with-aspnet-core-and-docker';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            <ul class="list-inline">
+                <li>
+                    <a href="https://twitter.com/miroslavpopovic" target="_blank" title="Twitter Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/miroslavpopovic" target="_blank" title="Github Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/miroslavpopovic/" target="_blank" title="LinkedIn Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://plus.google.com/+MiroslavPopovic" target="_blank" title="Google+ Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://stackoverflow.com/users/119230" target="_blank" title="Stack Overflow Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.codeproject.com/Members/Miroslav-Popovic" target="_blank" title="Code Project Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="copyright text-muted">
+                    <a href="/feed.xml" class="btn-rss">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                        </span> RSS Feed
+                    </a>
+                                    <a href="/feed.atom" class="btn-rss">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                        </span> Atom Feed
+                    </a>
+                <br />
+                Copyright © 2018 by Miroslav Popovic
+                <br />
+                <strong><a href="https://wyam.io" target="_blank">Generated by Wyam</a></strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+                </footer> 
+
+                <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-32542962-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
