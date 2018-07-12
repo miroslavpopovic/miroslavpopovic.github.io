@@ -360,7 +360,7 @@ Pagination will work too if you have more than 5 results.
 
 ## Summary
 
-This is just a tip of the iceberg. Elasticsearch has a vast number of features that you can use. The [sample application]() on GitHub implements a few more features like [boosting](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/mapping-boost.html), [custom analyzers](https://www.elastic.co/guide/en/elasticsearch/client/net-api/6.x/writing-analyzers.html), tokenization, character filters, etc. You can find that in [`ElasticsearchExtensions.cs`](https://github.com/miroslavpopovic/miniblog-elasticsearch/blob/master/src/ElasticsearchExtensions.cs) file.
+This is just a tip of the iceberg. Elasticsearch has a vast number of features that you can use. The [sample application](https://github.com/miroslavpopovic/miniblog-elasticsearch) on GitHub implements a few more features like [boosting](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/mapping-boost.html), [custom analyzers](https://www.elastic.co/guide/en/elasticsearch/client/net-api/6.x/writing-analyzers.html), tokenization, character filters, etc. You can find that in [`ElasticsearchExtensions.cs`](https://github.com/miroslavpopovic/miniblog-elasticsearch/blob/master/src/ElasticsearchExtensions.cs) file.
 
 A thing to keep in mind is - make sure you double check everything before going into production. 
 
