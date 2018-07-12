@@ -5,8 +5,8 @@
 		<link>https://miroslavpopovic.com/</link>
 		<description>Full-stack .NET and JavaScript software architect</description>
 		<copyright>2018</copyright>
-		<pubDate>Thu, 12 Jul 2018 09:25:46 GMT</pubDate>
-		<lastBuildDate>Thu, 12 Jul 2018 09:25:46 GMT</lastBuildDate>
+		<pubDate>Thu, 12 Jul 2018 09:37:59 GMT</pubDate>
+		<lastBuildDate>Thu, 12 Jul 2018 09:37:59 GMT</lastBuildDate>
 		<item>
 			<title>Using Elasticsearch with ASP.NET Core and Docker</title>
 			<link>https://miroslavpopovic.com/posts/2018/07/elasticsearch-with-aspnet-core-and-docker</link>
@@ -313,7 +313,7 @@ private static string GetSearchUrl(string query, int page, int pageSize)
 &lt;p&gt;&lt;img src="/images/2018-07/miniblog-search.png" class="img-fluid" alt="MiniBlog Search Results" /&gt;&lt;/p&gt;
 &lt;p&gt;Pagination will work too if you have more than 5 results.&lt;/p&gt;
 &lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
-&lt;p&gt;This is just a tip of the iceberg. Elasticsearch has a vast number of features that you can use. The &lt;a href=""&gt;sample application&lt;/a&gt; on GitHub implements a few more features like &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/mapping-boost.html"&gt;boosting&lt;/a&gt;, &lt;a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/6.x/writing-analyzers.html"&gt;custom analyzers&lt;/a&gt;, tokenization, character filters, etc. You can find that in &lt;a href="https://github.com/miroslavpopovic/miniblog-elasticsearch/blob/master/src/ElasticsearchExtensions.cs"&gt;&lt;code&gt;ElasticsearchExtensions.cs&lt;/code&gt;&lt;/a&gt; file.&lt;/p&gt;
+&lt;p&gt;This is just a tip of the iceberg. Elasticsearch has a vast number of features that you can use. The &lt;a href="https://github.com/miroslavpopovic/miniblog-elasticsearch"&gt;sample application&lt;/a&gt; on GitHub implements a few more features like &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.3/mapping-boost.html"&gt;boosting&lt;/a&gt;, &lt;a href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/6.x/writing-analyzers.html"&gt;custom analyzers&lt;/a&gt;, tokenization, character filters, etc. You can find that in &lt;a href="https://github.com/miroslavpopovic/miniblog-elasticsearch/blob/master/src/ElasticsearchExtensions.cs"&gt;&lt;code&gt;ElasticsearchExtensions.cs&lt;/code&gt;&lt;/a&gt; file.&lt;/p&gt;
 &lt;p&gt;A thing to keep in mind is - make sure you double check everything before going into production.&lt;/p&gt;
 &lt;p&gt;First of all, you don't want Elasticsearch or Kibana's port exposed publicly! It should be accessible from your app backed only. It can (and should) also be protected with authentication. Check out &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html"&gt;X-Pack Authenticate API&lt;/a&gt; and &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html"&gt;SSL Certificate API&lt;/a&gt; for that.&lt;/p&gt;
 &lt;p&gt;Second, don't just throw everything into the index. Pick up only the data that makes sense. Adding a bunch of data just for the sake of having them indexed will hurt the performance, but more importantly, you'll get into trouble when you need to delete something. Remember GDPR? User data should be kept out of the index unless it's absolutely necessary. The other security-critical information too. Data breaches happen all the time. Don't be a part of the statistics.&lt;/p&gt;
