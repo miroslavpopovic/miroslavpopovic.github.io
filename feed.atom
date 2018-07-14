@@ -4,8 +4,344 @@
 	<id>https://miroslavpopovic.com/</id>
 	<title>Miroslav Popovic</title>
 	<rights>2018</rights>
-	<updated>2018-07-13T20:24:09Z</updated>
+	<updated>2018-07-14T10:28:53Z</updated>
 	<subtitle>Full-stack .NET and JavaScript software architect</subtitle>
+	<entry>
+		<link href="https://miroslavpopovic.com/posts/2018/07/aspnet-core-identity-and-aurelia" />
+		<id>https://miroslavpopovic.com/posts/2018/07/aspnet-core-identity-and-aurelia</id>
+		<title>ASP.NET Core Identity and Aurelia</title>
+		<updated>2018-07-14T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="/images/2018-07/aspnetcore-aurelia.png" class="img-fluid" alt="ASP.NET Core Identity and Aurelia" /&gt;&lt;/p&gt;
+&lt;p&gt;This blog post is a response to a &lt;a href="https://stackoverflow.com/q/51279092/119230"&gt;StackOverflow question&lt;/a&gt;. Andreas wanted to know how to add ASP.NET Core Identity to an existing Aurelia project. The answer is of course: &lt;em&gt;it depends&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;If it's really an existing application but without any authentication support or even without database access, then adding authentication and Identity might prove a bit difficult if you are not familiar enough with ASP.NET Core. At least it was like that before ASP.NET Core 2.1 which brought us Identity UI library and Identity Scaffolding features, among other things.&lt;/p&gt;
+&lt;p&gt;Identity UI library is implemented as a &lt;a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/ui-class?view=aspnetcore-2.1&amp;amp;tabs=visual-studio"&gt;Razor Class Library&lt;/a&gt;, another new feature in 2.1 which enables Razor views and pages to be embedded into class libraries. This was a perfect fit for Identity, so when you create a new ASP.NET Core 2.1 project with Identity enabled, you won't get any Account or Manage views, nor their models. Everything is embedded into the new &lt;code&gt;Microsoft.AspNetCore.Identity.UI&lt;/code&gt; assembly/NuGet package.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-2.1&amp;amp;tabs=visual-studio"&gt;Identity Scaffolding&lt;/a&gt; is a new feature that can be used from within Visual Studio or from .NET Core CLI. It's basically a code generator that will generate overrides for any (or all) Identity Razor views,  partials or necessary scripts. &lt;a href="https://twitter.com/talkingdotnet"&gt;Talking Dotnet&lt;/a&gt; has &lt;a href="http://www.talkingdotnet.com/how-to-scaffold-identity-ui-in-asp-net-core-2-1/"&gt;a good overview&lt;/a&gt; of Identity UI Scaffold.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/aspnet-core-identity-scaffold.png" class="img-fluid" alt="Identity Scaffold" /&gt;&lt;/p&gt;
+&lt;p&gt;So, this could be the answer to the question? Well, not quite. It will work only on ASP.NET Core 2.1 and above. If the project was created using &lt;a href="https://aurelia.io/docs/build-systems/aurelia-cli"&gt;Aurelia CLI&lt;/a&gt;, it would be on ASP.NET Core 2.0. In that case, you first need &lt;a href="https://docs.microsoft.com/en-us/aspnet/core/migration/20_21?view=aspnetcore-2.1"&gt;to upgrade&lt;/a&gt; to ASP.NET 2.1.&lt;/p&gt;
+&lt;p&gt;All of this is for an existing project, but if you are creating a new one, things might be a bit easier.&lt;/p&gt;
+&lt;h2 id="creating-a-new-asp.net-core-project-with-aurelia-and-identity-enabled"&gt;Creating a new ASP.NET Core project with Aurelia and Identity enabled&lt;/h2&gt;
+&lt;p&gt;ASP.NET Core 2.1 also has a new SPA project templates that are more in line with community usage of client-side frameworks. I.e. the new template for React is using Create React App and the new template for Angular is using Angular CLI. However, there is no template for Aurelia. &lt;a href="https://github.com/aniel"&gt;Neils Morf&lt;/a&gt; has a solution for this in his &lt;a href="https://aniel.info/posts/2018-02-25-aurelia-aspnetcore-spa-template"&gt;blog post&lt;/a&gt;. He basically creates a new project using the Angular template and then modifies few things to run Aurelia instead. Note that you won't need to install the new SPA templates since they come with ASP.NET Core 2.1 (his blog post was written prior to 2.1 release). After that, Identity Scaffold could be used to add Identity to it.&lt;/p&gt;
+&lt;p&gt;Another approach would be to create a new ASP.NET Core 2.1 project with Identity enabled and then add Aurelia to it. This is what we will do here.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/aspnet-core-identity-new-project.png" class="img-fluid" alt="New ASP.NET Core 2.1 project" /&gt;&lt;/p&gt;
+&lt;p&gt;Now create a new Aurelia app in another folder using Aurelia CLI. We don't want the CLI to overwrite files in our ASP.NET Core project. We'll copy and modify files we need manually. Make sure you select TypeScript (that's what OP was using) and ASP.NET Core in options.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; npm install aurelia-cli -g
+&amp;gt; au new
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Copy the following folders from the generated Aurelia app to the previously generated ASP.NET Core app:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;aurelia_project&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And the following files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;index.ejs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;package.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;package-scripts.js&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tsconfig.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tslint.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;webpack.config.js&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;webpack.netcore.config.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After these files are copied, we can run &lt;code&gt;npm install&lt;/code&gt; to install all the required &lt;code&gt;npm&lt;/code&gt; packages.&lt;/p&gt;
+&lt;p&gt;Before we start modifying files, we need to figure out what we are trying to achieve. There are (at least) three ways we can add authentication, depending on how far we want to go down the rabbit hole:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use the default implementation of Identity and protect access to Aurelia app.&lt;/li&gt;
+&lt;li&gt;Reimplement the whole ASP.NET Core Identity UI in Aurelia.&lt;/li&gt;
+&lt;li&gt;Have something in between, like have login only implemented in Aurelia and the rest (registration, forgot password, management, etc.) implemented in MVC.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We will go with option #1, as that is the easiest route. We'll leave the default Identity implementation intact (login, register, forget password) and serve Aurelia app from the main route (&lt;code&gt;/Home/Index&lt;/code&gt;). &lt;code&gt;[Authorize]&lt;/code&gt; attribute will be added to &lt;code&gt;HomeController&lt;/code&gt; in order to force the user to log in before accessing Aurelia app.&lt;/p&gt;
+&lt;p&gt;Note that this option will be viable only if we host the Aurelia app within the same ASP.NET Core app. If we had a separate project for it and a separate URL for hosting the client-side Aurelia app, we would probably go with option #2 or #3.&lt;/p&gt;
+&lt;p&gt;Option #2 is not easy to implement since Identity has a lot of different functionality. That could be a good topic for another blog post. For simple apps, option #1 works pretty well.&lt;/p&gt;
+&lt;p&gt;Let's start modifying files. First, we'll replace &lt;code&gt;Views/Home/Index.cshtml&lt;/code&gt; content in ASP.NET Core app with a content from &lt;code&gt;Views/Shared/_Layout.cshtml&lt;/code&gt; of Aurelia app and then define the body and scripts. The end result will be this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#64;{
+    Layout = null;
+    ViewData[&amp;quot;Title&amp;quot;] = &amp;quot;Home page&amp;quot;;
+}
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;
+    &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot; /&amp;gt;
+    &amp;lt;title&amp;gt;&amp;#64;ViewData[&amp;quot;Title&amp;quot;] - Aurelia&amp;lt;/title&amp;gt;
+
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;~/dist/vendor.css&amp;quot; asp-append-version=&amp;quot;true&amp;quot; /&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div aurelia-app=&amp;quot;main&amp;quot;&amp;gt;Loading...&amp;lt;/div&amp;gt;
+
+    &amp;lt;environment names=&amp;quot;Development&amp;quot;&amp;gt;
+        &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;~/dist/vendor.bundle.js&amp;quot; asp-append-version=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+        &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;~/dist/app.bundle.js&amp;quot; asp-append-version=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;/environment&amp;gt;
+    &amp;lt;environment names=&amp;quot;Production&amp;quot;&amp;gt;
+        &amp;lt;script type=&amp;quot;text/javascript&amp;quot; asp-src-include=&amp;quot;~/dist/common.*.bundle.js&amp;quot; asp-append-version=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;/environment&amp;gt;
+    &amp;lt;environment names=&amp;quot;Staging, Production&amp;quot;&amp;gt;
+        &amp;lt;script type=&amp;quot;text/javascript&amp;quot; asp-src-include=&amp;quot;~/dist/vendor.*.bundle.js&amp;quot; asp-append-version=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+        &amp;lt;script type=&amp;quot;text/javascript&amp;quot; asp-src-include=&amp;quot;~/dist/app.*.bundle.js&amp;quot; asp-append-version=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;/environment&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next thing - &lt;code&gt;Startup&lt;/code&gt; class. In there we need to add two things, to enable Webpack dev middleware, which is a part of &lt;a href="https://github.com/aspnet/JavaScriptServices"&gt;JavaScriptServices&lt;/a&gt; and to add SPA fallback route. Both of those changes are inside &lt;code&gt;Configure&lt;/code&gt; method, so this is how it will look like after:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseDatabaseErrorPage();
+
+        // This is added
+        app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+        {
+            HotModuleReplacement = true,
+            ConfigFile = &amp;quot;webpack.netcore.config.js&amp;quot;,
+            HotModuleReplacementClientOptions = new Dictionary&amp;lt;string, string&amp;gt; { {&amp;quot;reload&amp;quot;, &amp;quot;true&amp;quot;} }
+        });
+    }
+    else
+    {
+        app.UseExceptionHandler(&amp;quot;/Home/Error&amp;quot;);
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    app.UseCookiePolicy();
+
+    app.UseAuthentication();
+
+    app.UseMvc(routes =&amp;gt;
+    {
+        routes.MapRoute(
+            name: &amp;quot;default&amp;quot;,
+            template: &amp;quot;{controller=Home}/{action=Index}/{id?}&amp;quot;);
+
+        // This is added
+        routes.MapSpaFallbackRoute(
+            name: &amp;quot;spa-fallback&amp;quot;,
+            defaults: new {controller = &amp;quot;Home&amp;quot;, action = &amp;quot;Index&amp;quot;});
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we try to build the project now, we'll get TypeScript (&lt;code&gt;tsc&lt;/code&gt;) errors, since it seems to be too eager to include all &lt;code&gt;.js&lt;/code&gt; files it finds into compilation. To prevent it, &lt;code&gt;wwwroot&lt;/code&gt; and &lt;code&gt;./*.js&lt;/code&gt; exclusions need to be added into &lt;code&gt;tsconfig.json&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;exclude&amp;quot;: [
+    &amp;quot;node_modules&amp;quot;,
+    &amp;quot;aurelia_project&amp;quot;,
+    &amp;quot;wwwroot&amp;quot;,
+    &amp;quot;./*.js&amp;quot;
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Great, we can run the application now and get the output from Aurelia, but no authentication has been involved. Let's add &lt;code&gt;[Authorize]&lt;/code&gt; attribute to &lt;code&gt;HomeController&lt;/code&gt;'s &lt;code&gt;Index&lt;/code&gt; method.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class HomeController : Controller
+{
+    [Authorize]
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    // other methods ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we run the application now and browse &lt;code&gt;https://localhost:[port]/&lt;/code&gt;, we will be automatically redirected to login page. After login (and probably the initial registration), we will be redirected back to the home page which hosts our Aurelia app.&lt;/p&gt;
+&lt;p&gt;We can also try building Aurelia app from the command line with &lt;code&gt;au build&lt;/code&gt;. It should work as expected. In fact, there's one more feature we missed when copying from the Aurelia app generated with &lt;code&gt;au new&lt;/code&gt;. Project file also contained an additional target for publishing the Webpack Aurelia output:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;Target Name=&amp;quot;PublishRunWebpack&amp;quot; AfterTargets=&amp;quot;ComputeFilesToPublish&amp;quot;&amp;gt;
+    &amp;lt;!-- As part of publishing, ensure the JS resources are freshly built in production mode --&amp;gt;
+    &amp;lt;Exec Command=&amp;quot;npm install&amp;quot; /&amp;gt;
+    &amp;lt;Exec Command=&amp;quot;au build --env prod&amp;quot; /&amp;gt;
+    &amp;lt;!-- Include the newly-built files in the publish output --&amp;gt;
+    &amp;lt;ItemGroup&amp;gt;
+        &amp;lt;DistFiles Include=&amp;quot;wwwroot\dist\**&amp;quot; /&amp;gt;
+        &amp;lt;ResolvedFileToPublish Include=&amp;quot;&amp;#64;(DistFiles-&amp;gt;'%(FullPath)')&amp;quot; Exclude=&amp;quot;&amp;#64;(ResolvedFileToPublish)&amp;quot;&amp;gt;
+        &amp;lt;RelativePath&amp;gt;%(DistFiles.Identity)&amp;lt;/RelativePath&amp;gt;
+        &amp;lt;CopyToPublishDirectory&amp;gt;PreserveNewest&amp;lt;/CopyToPublishDirectory&amp;gt;
+        &amp;lt;/ResolvedFileToPublish&amp;gt;
+    &amp;lt;/ItemGroup&amp;gt;
+&amp;lt;/Target&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With this change, &lt;code&gt;dotnet publish&lt;/code&gt; operation now also creates an output from Aurelia app.&lt;/p&gt;
+&lt;p&gt;That's it, we have a client-side Aurelia app used in combination with server-side ASP.NET Core app with authentication and ASP.NET Core Identity enabled. By default, a cookie-based authentication is configured. If we need to make an API calls from Aurelia app to ASP.NET Core, we would also need to send cookies with each fetch request from the client - assuming that authorization is required for all API calls on the server side (and you do require it, don't you?). Usually, cookie-based authentication is not the best choice for API calls. Token-based authentication should be used instead.&lt;/p&gt;
+&lt;h2 id="bonus-authorizing-api-calls-from-aurelia-app-with-jwt-tokens"&gt;Bonus: Authorizing API calls from Aurelia app with JWT tokens&lt;/h2&gt;
+&lt;p&gt;The plan is to leave the current cookie-based authentication enabled for use in Identity (and potentially other MVC based pages) and to add JWT token based authentication too. &lt;a href="https://twitter.com/shawnwildermuth"&gt;Shawn Wildermuth&lt;/a&gt; has a good post about &lt;a href="https://wildermuth.com/2017/08/19/Two-AuthorizationSchemes-in-ASP-NET-Core-2"&gt;enabling dual mode authentication&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The following code should be added to &lt;code&gt;Startup.ConfigureServices&lt;/code&gt; method, just before the &lt;code&gt;services.AddMvc()...&lt;/code&gt; line:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;services.AddAuthentication()
+    .AddCookie(cfg =&amp;gt; cfg.SlidingExpiration = true)
+    .AddJwtBearer(cfg =&amp;gt;
+    {
+        cfg.SaveToken = true;
+
+        cfg.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidIssuer = Configuration[&amp;quot;Tokens:Issuer&amp;quot;],
+            ValidAudience = Configuration[&amp;quot;Tokens:Issuer&amp;quot;],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[&amp;quot;Tokens:Key&amp;quot;]))
+        };
+    });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This code depends on a presence of several configuration options, so we need to add those to &lt;code&gt;appsettings.json&lt;/code&gt; or another configuration source. &lt;strong&gt;Make sure these options are overridden and that strong key is used for production.&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;Tokens&amp;quot;: {
+    &amp;quot;Key&amp;quot;: &amp;quot;2b0c0b6d-28ee-430b-b644-aaf99a195161&amp;quot;,
+    &amp;quot;Issuer&amp;quot;: &amp;quot;https://miroslavpopovic.com&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now that we have added JWT authentication, we need to have a mechanism of sharing the token and other data with the client side app. One easy approach might be to generate new JWT token each time user access the home page and send it to the browser together with the HTML that hosts Aurelia app. It avoids the extra call to the server to retrieve user data (including the token), but be aware that it might not be the best choice from the security standpoint - &lt;strong&gt;make sure you are on HTTPS!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This class will contain the data that will be passed on to the client:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class ConfigViewModel
+{
+    public string UserName { get; set; }
+    public string Token { get; set; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let's add &lt;code&gt;GenerateToken&lt;/code&gt; method to &lt;code&gt;HomeController&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// A better approach would be to have this in a separate class
+// Note that this is just a sample implementation!
+private static string GenerateToken(string name, bool isAdmin, string issuer, string key)
+{
+    var claims = new List&amp;lt;Claim&amp;gt;
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, name),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+    if (isAdmin) claims.Add(new Claim(ClaimTypes.Role, &amp;quot;admin&amp;quot;));
+
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+    var creds = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+    var token = new JwtSecurityToken(
+        issuer,
+        issuer,
+        claims,
+        expires: DateTime.Now.AddDays(1),
+        signingCredentials: creds);
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We'll inject &lt;code&gt;IConfiguration&lt;/code&gt; into &lt;code&gt;HttpController&lt;/code&gt; constructor and modify the &lt;code&gt;Index&lt;/code&gt; method to call token generator and give necessary data to the view:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Authorize]
+public IActionResult Index()
+{
+    var token = GenerateToken(
+        User.Identity.Name,
+        User.IsInRole(&amp;quot;admin&amp;quot;),
+        _configuration[&amp;quot;Tokens:Issuer&amp;quot;],
+        _configuration[&amp;quot;Tokens:Key&amp;quot;]);
+
+    return View(new ConfigViewModel {UserName = User.Identity.Name, Token = token});
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;Index&lt;/code&gt; view also needs to be changed. &lt;code&gt;&amp;#64;model ConfigViewModel&lt;/code&gt; needs to be added to the top and &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; that acts as a container for Aurelia app needs to accept &lt;code&gt;data-*&lt;/code&gt; parameters:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div aurelia-app=&amp;quot;main&amp;quot; data-username=&amp;quot;&amp;#64;Model.UserName&amp;quot; data-token=&amp;quot;&amp;#64;Model.Token&amp;quot;&amp;gt;Loading...&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In Aurelia app, we'll modify &lt;code&gt;main.ts&lt;/code&gt; to register the instance of &lt;code&gt;serverConfig&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aurelia.container.registerInstance(
+    'serverConfig',
+    Object.assign({}, (aurelia.host as HTMLElement).dataset));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;app.ts&lt;/code&gt; or any other components can now inject &lt;code&gt;serverConfig&lt;/code&gt; and use it for binding, API calls, etc.:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import { inject } from 'aurelia-framework';
+
+&amp;#64;inject('serverConfig')
+export class App {
+    message = 'Hello World!';
+    serverConfig;
+
+    constructor(serverConfig) {
+        this.serverConfig = serverConfig;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;app.html&lt;/code&gt; content:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+    &amp;lt;h1&amp;gt;${message}&amp;lt;/h1&amp;gt;
+    &amp;lt;h2&amp;gt;Welcome ${serverConfig.username}&amp;lt;/h2&amp;gt;
+    &amp;lt;p&amp;gt;Your JWT token for API calls is: ${serverConfig.token}&amp;lt;/p&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, we'll add &lt;code&gt;DataController&lt;/code&gt; that will require JWT authorization for calls:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;using System;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace AspNetCoreAurelia.Controllers
+{
+    [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class DataController : Controller
+    {
+        [HttpGet(&amp;quot;/api/data&amp;quot;)]
+        public IActionResult Index()
+        {
+            return Ok(new {data = new Random().Next(1, 100)});
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To call the API we'll use &lt;code&gt;aurelia-fetch-client&lt;/code&gt; plugin which needs to be installed first:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; npm install aurelia-fetch-client
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Again, &lt;code&gt;app.ts&lt;/code&gt; will be modified with a new &lt;code&gt;loadData()&lt;/code&gt; method that's using &lt;code&gt;aurelia-fetch-client&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import { inject } from 'aurelia-framework';
+import { HttpClient } from 'aurelia-fetch-client';
+
+&amp;#64;inject('serverConfig', HttpClient)
+export class App {
+    data;
+    message = 'Hello World!';
+    http;
+    serverConfig;
+
+    constructor(serverConfig, http) {
+        this.serverConfig = serverConfig;
+        this.http = http;
+
+        http.configure(config =&amp;gt; {
+            config
+                .useStandardConfiguration()
+                .withBaseUrl('/api/')
+                .withDefaults({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': 'Bearer ' + serverConfig.token
+                    }
+                });
+        });
+    }
+
+    loadData() {
+        this.http.fetch('data')
+            .then(response =&amp;gt; response.json())
+            .then(result =&amp;gt; {
+                this.data = result.data;
+            });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;app.html&lt;/code&gt; will be modified too to have a button that triggers the call to &lt;code&gt;loadData()&lt;/code&gt; method and displays the result of the API call:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+    &amp;lt;h1&amp;gt;${message}&amp;lt;/h1&amp;gt;
+    &amp;lt;h2&amp;gt;Welcome ${serverConfig.username}&amp;lt;/h2&amp;gt;
+    &amp;lt;p&amp;gt;Your JWT token for API calls is: ${serverConfig.token}&amp;lt;/p&amp;gt;
+
+    &amp;lt;button class=&amp;quot;btn btn-default&amp;quot; click.trigger=&amp;quot;loadData()&amp;quot;&amp;gt;Load Data&amp;lt;/button&amp;gt;
+
+    &amp;lt;div if.bind=&amp;quot;data&amp;quot;&amp;gt;
+        Random data from server is: ${data}
+    &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here's the final result in all its glory:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2018-07/aurelia-demo-app.png" class="img-fluid" alt="Aurelia demo app" /&gt;&lt;/p&gt;
+&lt;p&gt;The finished sample code can be found &lt;a href="https://github.com/miroslavpopovic/aspnetcore-aurelia-sample"&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;So, that's it. We talked about how to add ASP.NET Core Identity to the existing project with ASP.NET Core and Aurelia. After that, we have considered options for creating a new ASP.NET Core and Aurelia project that has Identity implemented from the start and choose to implement the easiest one.&lt;/p&gt;
+&lt;p&gt;Unfortunately, we don't have a template that would cover this - to generate an ASP.NET Core app with Identity and Aurelia, but it's not that hard to do it now when we have Aurelia CLI at our disposal and also Identity scaffolding. It will be even easier when Aurelia CLI updates the ASP.NET Core output to 2.1. Hopefully, it will happen soon and you can always jump in &lt;a href="https://github.com/aurelia/cli"&gt;to help&lt;/a&gt;, it's open source after all :).&lt;/p&gt;
+&lt;p&gt;Finally, I will leave you with a thought. Do consider whether you really want to have Aurelia (or any other client-side framework) in the same project as your backend. Microservices are a buzzword today, and with a good reason. Serving static client-side code and serving backend API from the same server may affect the performance. When you have them separately it's easier to scale them appropriately. The client-side code could be served from CDN optimized for static files and with aggressive caching involved. Backend code could then be scaled up easily to accommodate higher request count and not to be bogged down by static files. There are a PowerPoint presentation and sample code that you might find interesting on &lt;a href="https://github.com/miroslavpopovic/docker-aspnetcore-sample-1"&gt;my GitHub repository&lt;/a&gt; with a microservice-like organization. It has ASP.NET Core backend, Postgres database, HAProxy balancer and Aurelia frontend in separate Docker containers.&lt;/p&gt;
+&lt;p&gt;Again, the code from this post can be found &lt;a href="https://github.com/miroslavpopovic/aspnetcore-aurelia-sample"&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="/images/2018-07/aspnetcore-aurelia.png" class="img-fluid" alt="ASP.NET Core Identity and Aurelia"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<link href="https://miroslavpopovic.com/posts/2018/07/elasticsearch-with-aspnet-core-and-docker" />
 		<id>https://miroslavpopovic.com/posts/2018/07/elasticsearch-with-aspnet-core-and-docker</id>

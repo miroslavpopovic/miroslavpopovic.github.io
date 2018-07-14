@@ -1,0 +1,608 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Miroslav Popovic - ASP.NET Core Identity and Aurelia</title>
+        <meta name="description" content="Full-stack .NET and JavaScript software architect" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Miroslav Popovic" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Miroslav Popovic" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Miroslav Popovic" />
+        <meta name="msapplication-tooltip" content="Miroslav Popovic" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Miroslav Popovic - ASP.NET Core Identity and Aurelia" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://miroslavpopovic.com/posts/2018/07/aspnet-core-identity-and-aurelia" />
+        <!-- TODO: More social graph meta tags -->
+
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>     
+        <script src="/assets/js/highlight.pack.js"></script>   
+        <script src="/assets/js/clean-blog.js"></script>
+        <script src="/assets/js/d3.v3.min.js"></script>
+        <script src="/assets/js/trianglify.min.js"></script>
+        <script src="/assets/js/Please-compressed.js"></script>
+        <script src="/assets/js/background-check.min.js"></script>
+                
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+                <script src="/assets/js/html5shiv.js"></script>
+                <script src="/assets/js/respond.min.js"></script>
+        <![endif]-->
+        
+                <!-- Icons -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+        <meta property="og:image" content="/images/2018-07/aspnetcore-aurelia.png" />
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Miroslav Popovic</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About Me</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>ASP.NET Core Identity and Aurelia</h1>
+    <div class="meta">        
+Published on Saturday, July 14, 2018<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/aspnetcore" class="btn btn-default btn-xs">aspnetcore</a>
+                    <a role="button" href="/tags/aurelia" class="btn btn-default btn-xs">aurelia</a>
+                    <a role="button" href="/tags/authentication" class="btn btn-default btn-xs">authentication</a>
+                    <a role="button" href="/tags/identity" class="btn btn-default btn-xs">identity</a>
+                    <a role="button" href="/tags/jwt" class="btn btn-default btn-xs">jwt</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="/images/2018-07/aspnetcore-aurelia.png" class="img-fluid" alt="ASP.NET Core Identity and Aurelia" /></p>
+<p>This blog post is a response to a <a href="https://stackoverflow.com/q/51279092/119230">StackOverflow question</a>. Andreas wanted to know how to add ASP.NET Core Identity to an existing Aurelia project. The answer is of course: <em>it depends</em>.</p>
+<p>If it's really an existing application but without any authentication support or even without database access, then adding authentication and Identity might prove a bit difficult if you are not familiar enough with ASP.NET Core. At least it was like that before ASP.NET Core 2.1 which brought us Identity UI library and Identity Scaffolding features, among other things.</p>
+<p>Identity UI library is implemented as a <a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/ui-class?view=aspnetcore-2.1&amp;tabs=visual-studio">Razor Class Library</a>, another new feature in 2.1 which enables Razor views and pages to be embedded into class libraries. This was a perfect fit for Identity, so when you create a new ASP.NET Core 2.1 project with Identity enabled, you won't get any Account or Manage views, nor their models. Everything is embedded into the new <code>Microsoft.AspNetCore.Identity.UI</code> assembly/NuGet package.</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-2.1&amp;tabs=visual-studio">Identity Scaffolding</a> is a new feature that can be used from within Visual Studio or from .NET Core CLI. It's basically a code generator that will generate overrides for any (or all) Identity Razor views,  partials or necessary scripts. <a href="https://twitter.com/talkingdotnet">Talking Dotnet</a> has <a href="http://www.talkingdotnet.com/how-to-scaffold-identity-ui-in-asp-net-core-2-1/">a good overview</a> of Identity UI Scaffold.</p>
+<p><img src="/images/2018-07/aspnet-core-identity-scaffold.png" class="img-fluid" alt="Identity Scaffold" /></p>
+<p>So, this could be the answer to the question? Well, not quite. It will work only on ASP.NET Core 2.1 and above. If the project was created using <a href="https://aurelia.io/docs/build-systems/aurelia-cli">Aurelia CLI</a>, it would be on ASP.NET Core 2.0. In that case, you first need <a href="https://docs.microsoft.com/en-us/aspnet/core/migration/20_21?view=aspnetcore-2.1">to upgrade</a> to ASP.NET 2.1.</p>
+<p>All of this is for an existing project, but if you are creating a new one, things might be a bit easier.</p>
+<h2 id="creating-a-new-asp.net-core-project-with-aurelia-and-identity-enabled">Creating a new ASP.NET Core project with Aurelia and Identity enabled</h2>
+<p>ASP.NET Core 2.1 also has a new SPA project templates that are more in line with community usage of client-side frameworks. I.e. the new template for React is using Create React App and the new template for Angular is using Angular CLI. However, there is no template for Aurelia. <a href="https://github.com/aniel">Neils Morf</a> has a solution for this in his <a href="https://aniel.info/posts/2018-02-25-aurelia-aspnetcore-spa-template">blog post</a>. He basically creates a new project using the Angular template and then modifies few things to run Aurelia instead. Note that you won't need to install the new SPA templates since they come with ASP.NET Core 2.1 (his blog post was written prior to 2.1 release). After that, Identity Scaffold could be used to add Identity to it.</p>
+<p>Another approach would be to create a new ASP.NET Core 2.1 project with Identity enabled and then add Aurelia to it. This is what we will do here.</p>
+<p><img src="/images/2018-07/aspnet-core-identity-new-project.png" class="img-fluid" alt="New ASP.NET Core 2.1 project" /></p>
+<p>Now create a new Aurelia app in another folder using Aurelia CLI. We don't want the CLI to overwrite files in our ASP.NET Core project. We'll copy and modify files we need manually. Make sure you select TypeScript (that's what OP was using) and ASP.NET Core in options.</p>
+<pre><code>&gt; npm install aurelia-cli -g
+&gt; au new
+</code></pre>
+<p>Copy the following folders from the generated Aurelia app to the previously generated ASP.NET Core app:</p>
+<ul>
+<li><code>aurelia_project</code></li>
+<li><code>src</code></li>
+</ul>
+<p>And the following files:</p>
+<ul>
+<li><code>index.ejs</code></li>
+<li><code>package.json</code></li>
+<li><code>package-scripts.js</code></li>
+<li><code>tsconfig.json</code></li>
+<li><code>tslint.json</code></li>
+<li><code>webpack.config.js</code></li>
+<li><code>webpack.netcore.config.js</code></li>
+</ul>
+<p>After these files are copied, we can run <code>npm install</code> to install all the required <code>npm</code> packages.</p>
+<p>Before we start modifying files, we need to figure out what we are trying to achieve. There are (at least) three ways we can add authentication, depending on how far we want to go down the rabbit hole:</p>
+<ol>
+<li>Use the default implementation of Identity and protect access to Aurelia app.</li>
+<li>Reimplement the whole ASP.NET Core Identity UI in Aurelia.</li>
+<li>Have something in between, like have login only implemented in Aurelia and the rest (registration, forgot password, management, etc.) implemented in MVC.</li>
+</ol>
+<p>We will go with option #1, as that is the easiest route. We'll leave the default Identity implementation intact (login, register, forget password) and serve Aurelia app from the main route (<code>/Home/Index</code>). <code>[Authorize]</code> attribute will be added to <code>HomeController</code> in order to force the user to log in before accessing Aurelia app.</p>
+<p>Note that this option will be viable only if we host the Aurelia app within the same ASP.NET Core app. If we had a separate project for it and a separate URL for hosting the client-side Aurelia app, we would probably go with option #2 or #3.</p>
+<p>Option #2 is not easy to implement since Identity has a lot of different functionality. That could be a good topic for another blog post. For simple apps, option #1 works pretty well.</p>
+<p>Let's start modifying files. First, we'll replace <code>Views/Home/Index.cshtml</code> content in ASP.NET Core app with a content from <code>Views/Shared/_Layout.cshtml</code> of Aurelia app and then define the body and scripts. The end result will be this:</p>
+<pre><code>&#64;{
+    Layout = null;
+    ViewData[&quot;Title&quot;] = &quot;Home page&quot;;
+}
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;&#64;ViewData[&quot;Title&quot;] - Aurelia&lt;/title&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;~/dist/vendor.css&quot; asp-append-version=&quot;true&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div aurelia-app=&quot;main&quot;&gt;Loading...&lt;/div&gt;
+
+    &lt;environment names=&quot;Development&quot;&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;~/dist/vendor.bundle.js&quot; asp-append-version=&quot;true&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;~/dist/app.bundle.js&quot; asp-append-version=&quot;true&quot;&gt;&lt;/script&gt;
+    &lt;/environment&gt;
+    &lt;environment names=&quot;Production&quot;&gt;
+        &lt;script type=&quot;text/javascript&quot; asp-src-include=&quot;~/dist/common.*.bundle.js&quot; asp-append-version=&quot;true&quot;&gt;&lt;/script&gt;
+    &lt;/environment&gt;
+    &lt;environment names=&quot;Staging, Production&quot;&gt;
+        &lt;script type=&quot;text/javascript&quot; asp-src-include=&quot;~/dist/vendor.*.bundle.js&quot; asp-append-version=&quot;true&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; asp-src-include=&quot;~/dist/app.*.bundle.js&quot; asp-append-version=&quot;true&quot;&gt;&lt;/script&gt;
+    &lt;/environment&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Next thing - <code>Startup</code> class. In there we need to add two things, to enable Webpack dev middleware, which is a part of <a href="https://github.com/aspnet/JavaScriptServices">JavaScriptServices</a> and to add SPA fallback route. Both of those changes are inside <code>Configure</code> method, so this is how it will look like after:</p>
+<pre><code>public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseDatabaseErrorPage();
+
+        // This is added
+        app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+        {
+            HotModuleReplacement = true,
+            ConfigFile = &quot;webpack.netcore.config.js&quot;,
+            HotModuleReplacementClientOptions = new Dictionary&lt;string, string&gt; { {&quot;reload&quot;, &quot;true&quot;} }
+        });
+    }
+    else
+    {
+        app.UseExceptionHandler(&quot;/Home/Error&quot;);
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    app.UseCookiePolicy();
+
+    app.UseAuthentication();
+
+    app.UseMvc(routes =&gt;
+    {
+        routes.MapRoute(
+            name: &quot;default&quot;,
+            template: &quot;{controller=Home}/{action=Index}/{id?}&quot;);
+
+        // This is added
+        routes.MapSpaFallbackRoute(
+            name: &quot;spa-fallback&quot;,
+            defaults: new {controller = &quot;Home&quot;, action = &quot;Index&quot;});
+    });
+}
+</code></pre>
+<p>If we try to build the project now, we'll get TypeScript (<code>tsc</code>) errors, since it seems to be too eager to include all <code>.js</code> files it finds into compilation. To prevent it, <code>wwwroot</code> and <code>./*.js</code> exclusions need to be added into <code>tsconfig.json</code> file:</p>
+<pre><code>&quot;exclude&quot;: [
+    &quot;node_modules&quot;,
+    &quot;aurelia_project&quot;,
+    &quot;wwwroot&quot;,
+    &quot;./*.js&quot;
+]
+</code></pre>
+<p>Great, we can run the application now and get the output from Aurelia, but no authentication has been involved. Let's add <code>[Authorize]</code> attribute to <code>HomeController</code>'s <code>Index</code> method.</p>
+<pre><code>public class HomeController : Controller
+{
+    [Authorize]
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    // other methods ...
+}
+</code></pre>
+<p>If we run the application now and browse <code>https://localhost:[port]/</code>, we will be automatically redirected to login page. After login (and probably the initial registration), we will be redirected back to the home page which hosts our Aurelia app.</p>
+<p>We can also try building Aurelia app from the command line with <code>au build</code>. It should work as expected. In fact, there's one more feature we missed when copying from the Aurelia app generated with <code>au new</code>. Project file also contained an additional target for publishing the Webpack Aurelia output:</p>
+<pre><code>&lt;Target Name=&quot;PublishRunWebpack&quot; AfterTargets=&quot;ComputeFilesToPublish&quot;&gt;
+    &lt;!-- As part of publishing, ensure the JS resources are freshly built in production mode --&gt;
+    &lt;Exec Command=&quot;npm install&quot; /&gt;
+    &lt;Exec Command=&quot;au build --env prod&quot; /&gt;
+    &lt;!-- Include the newly-built files in the publish output --&gt;
+    &lt;ItemGroup&gt;
+        &lt;DistFiles Include=&quot;wwwroot\dist\**&quot; /&gt;
+        &lt;ResolvedFileToPublish Include=&quot;&#64;(DistFiles-&gt;'%(FullPath)')&quot; Exclude=&quot;&#64;(ResolvedFileToPublish)&quot;&gt;
+        &lt;RelativePath&gt;%(DistFiles.Identity)&lt;/RelativePath&gt;
+        &lt;CopyToPublishDirectory&gt;PreserveNewest&lt;/CopyToPublishDirectory&gt;
+        &lt;/ResolvedFileToPublish&gt;
+    &lt;/ItemGroup&gt;
+&lt;/Target&gt;
+</code></pre>
+<p>With this change, <code>dotnet publish</code> operation now also creates an output from Aurelia app.</p>
+<p>That's it, we have a client-side Aurelia app used in combination with server-side ASP.NET Core app with authentication and ASP.NET Core Identity enabled. By default, a cookie-based authentication is configured. If we need to make an API calls from Aurelia app to ASP.NET Core, we would also need to send cookies with each fetch request from the client - assuming that authorization is required for all API calls on the server side (and you do require it, don't you?). Usually, cookie-based authentication is not the best choice for API calls. Token-based authentication should be used instead.</p>
+<h2 id="bonus-authorizing-api-calls-from-aurelia-app-with-jwt-tokens">Bonus: Authorizing API calls from Aurelia app with JWT tokens</h2>
+<p>The plan is to leave the current cookie-based authentication enabled for use in Identity (and potentially other MVC based pages) and to add JWT token based authentication too. <a href="https://twitter.com/shawnwildermuth">Shawn Wildermuth</a> has a good post about <a href="https://wildermuth.com/2017/08/19/Two-AuthorizationSchemes-in-ASP-NET-Core-2">enabling dual mode authentication</a>.</p>
+<p>The following code should be added to <code>Startup.ConfigureServices</code> method, just before the <code>services.AddMvc()...</code> line:</p>
+<pre><code>services.AddAuthentication()
+    .AddCookie(cfg =&gt; cfg.SlidingExpiration = true)
+    .AddJwtBearer(cfg =&gt;
+    {
+        cfg.SaveToken = true;
+
+        cfg.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidIssuer = Configuration[&quot;Tokens:Issuer&quot;],
+            ValidAudience = Configuration[&quot;Tokens:Issuer&quot;],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[&quot;Tokens:Key&quot;]))
+        };
+    });
+</code></pre>
+<p>This code depends on a presence of several configuration options, so we need to add those to <code>appsettings.json</code> or another configuration source. <strong>Make sure these options are overridden and that strong key is used for production.</strong></p>
+<pre><code>&quot;Tokens&quot;: {
+    &quot;Key&quot;: &quot;2b0c0b6d-28ee-430b-b644-aaf99a195161&quot;,
+    &quot;Issuer&quot;: &quot;https://miroslavpopovic.com&quot;
+}
+</code></pre>
+<p>Now that we have added JWT authentication, we need to have a mechanism of sharing the token and other data with the client side app. One easy approach might be to generate new JWT token each time user access the home page and send it to the browser together with the HTML that hosts Aurelia app. It avoids the extra call to the server to retrieve user data (including the token), but be aware that it might not be the best choice from the security standpoint - <strong>make sure you are on HTTPS!</strong></p>
+<p>This class will contain the data that will be passed on to the client:</p>
+<pre><code>public class ConfigViewModel
+{
+    public string UserName { get; set; }
+    public string Token { get; set; }
+}
+</code></pre>
+<p>Let's add <code>GenerateToken</code> method to <code>HomeController</code>:</p>
+<pre><code>// A better approach would be to have this in a separate class
+// Note that this is just a sample implementation!
+private static string GenerateToken(string name, bool isAdmin, string issuer, string key)
+{
+    var claims = new List&lt;Claim&gt;
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, name),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+    if (isAdmin) claims.Add(new Claim(ClaimTypes.Role, &quot;admin&quot;));
+
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+    var creds = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+    var token = new JwtSecurityToken(
+        issuer,
+        issuer,
+        claims,
+        expires: DateTime.Now.AddDays(1),
+        signingCredentials: creds);
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+</code></pre>
+<p>We'll inject <code>IConfiguration</code> into <code>HttpController</code> constructor and modify the <code>Index</code> method to call token generator and give necessary data to the view:</p>
+<pre><code>[Authorize]
+public IActionResult Index()
+{
+    var token = GenerateToken(
+        User.Identity.Name,
+        User.IsInRole(&quot;admin&quot;),
+        _configuration[&quot;Tokens:Issuer&quot;],
+        _configuration[&quot;Tokens:Key&quot;]);
+
+    return View(new ConfigViewModel {UserName = User.Identity.Name, Token = token});
+}
+</code></pre>
+<p>The <code>Index</code> view also needs to be changed. <code>&#64;model ConfigViewModel</code> needs to be added to the top and <code>&lt;div&gt;</code> that acts as a container for Aurelia app needs to accept <code>data-*</code> parameters:</p>
+<pre><code>&lt;div aurelia-app=&quot;main&quot; data-username=&quot;&#64;Model.UserName&quot; data-token=&quot;&#64;Model.Token&quot;&gt;Loading...&lt;/div&gt;
+</code></pre>
+<p>In Aurelia app, we'll modify <code>main.ts</code> to register the instance of <code>serverConfig</code>:</p>
+<pre><code>aurelia.container.registerInstance(
+    'serverConfig',
+    Object.assign({}, (aurelia.host as HTMLElement).dataset));
+</code></pre>
+<p><code>app.ts</code> or any other components can now inject <code>serverConfig</code> and use it for binding, API calls, etc.:</p>
+<pre><code>import { inject } from 'aurelia-framework';
+
+&#64;inject('serverConfig')
+export class App {
+    message = 'Hello World!';
+    serverConfig;
+
+    constructor(serverConfig) {
+        this.serverConfig = serverConfig;
+    }
+}
+</code></pre>
+<p><code>app.html</code> content:</p>
+<pre><code>&lt;template&gt;
+    &lt;h1&gt;${message}&lt;/h1&gt;
+    &lt;h2&gt;Welcome ${serverConfig.username}&lt;/h2&gt;
+    &lt;p&gt;Your JWT token for API calls is: ${serverConfig.token}&lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+<p>Finally, we'll add <code>DataController</code> that will require JWT authorization for calls:</p>
+<pre><code>using System;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace AspNetCoreAurelia.Controllers
+{
+    [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class DataController : Controller
+    {
+        [HttpGet(&quot;/api/data&quot;)]
+        public IActionResult Index()
+        {
+            return Ok(new {data = new Random().Next(1, 100)});
+        }
+    }
+}
+</code></pre>
+<p>To call the API we'll use <code>aurelia-fetch-client</code> plugin which needs to be installed first:</p>
+<pre><code>&gt; npm install aurelia-fetch-client
+</code></pre>
+<p>Again, <code>app.ts</code> will be modified with a new <code>loadData()</code> method that's using <code>aurelia-fetch-client</code>:</p>
+<pre><code>import { inject } from 'aurelia-framework';
+import { HttpClient } from 'aurelia-fetch-client';
+
+&#64;inject('serverConfig', HttpClient)
+export class App {
+    data;
+    message = 'Hello World!';
+    http;
+    serverConfig;
+
+    constructor(serverConfig, http) {
+        this.serverConfig = serverConfig;
+        this.http = http;
+
+        http.configure(config =&gt; {
+            config
+                .useStandardConfiguration()
+                .withBaseUrl('/api/')
+                .withDefaults({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': 'Bearer ' + serverConfig.token
+                    }
+                });
+        });
+    }
+
+    loadData() {
+        this.http.fetch('data')
+            .then(response =&gt; response.json())
+            .then(result =&gt; {
+                this.data = result.data;
+            });
+    }
+}
+</code></pre>
+<p><code>app.html</code> will be modified too to have a button that triggers the call to <code>loadData()</code> method and displays the result of the API call:</p>
+<pre><code>&lt;template&gt;
+    &lt;h1&gt;${message}&lt;/h1&gt;
+    &lt;h2&gt;Welcome ${serverConfig.username}&lt;/h2&gt;
+    &lt;p&gt;Your JWT token for API calls is: ${serverConfig.token}&lt;/p&gt;
+
+    &lt;button class=&quot;btn btn-default&quot; click.trigger=&quot;loadData()&quot;&gt;Load Data&lt;/button&gt;
+
+    &lt;div if.bind=&quot;data&quot;&gt;
+        Random data from server is: ${data}
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>Here's the final result in all its glory:</p>
+<p><img src="/images/2018-07/aurelia-demo-app.png" class="img-fluid" alt="Aurelia demo app" /></p>
+<p>The finished sample code can be found <a href="https://github.com/miroslavpopovic/aspnetcore-aurelia-sample">on GitHub</a>.</p>
+<h2 id="summary">Summary</h2>
+<p>So, that's it. We talked about how to add ASP.NET Core Identity to the existing project with ASP.NET Core and Aurelia. After that, we have considered options for creating a new ASP.NET Core and Aurelia project that has Identity implemented from the start and choose to implement the easiest one.</p>
+<p>Unfortunately, we don't have a template that would cover this - to generate an ASP.NET Core app with Identity and Aurelia, but it's not that hard to do it now when we have Aurelia CLI at our disposal and also Identity scaffolding. It will be even easier when Aurelia CLI updates the ASP.NET Core output to 2.1. Hopefully, it will happen soon and you can always jump in <a href="https://github.com/aurelia/cli">to help</a>, it's open source after all :).</p>
+<p>Finally, I will leave you with a thought. Do consider whether you really want to have Aurelia (or any other client-side framework) in the same project as your backend. Microservices are a buzzword today, and with a good reason. Serving static client-side code and serving backend API from the same server may affect the performance. When you have them separately it's easier to scale them appropriately. The client-side code could be served from CDN optimized for static files and with aggressive caching involved. Backend code could then be scaled up easily to accommodate higher request count and not to be bogged down by static files. There are a PowerPoint presentation and sample code that you might find interesting on <a href="https://github.com/miroslavpopovic/docker-aspnetcore-sample-1">my GitHub repository</a> with a microservice-like organization. It has ASP.NET Core backend, Postgres database, HAProxy balancer and Aurelia frontend in separate Docker containers.</p>
+<p>Again, the code from this post can be found <a href="https://github.com/miroslavpopovic/aspnetcore-aurelia-sample">on GitHub</a>.</p>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'miroslavpopovic';
+    var disqus_identifier = 'aspnet-core-identity-and-aurelia';
+    var disqus_title = 'ASP.NET Core Identity and Aurelia';
+    var disqus_url = 'https://miroslavpopovic.com/posts/2018/07/aspnet-core-identity-and-aurelia';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            <ul class="list-inline">
+                <li>
+                    <a href="https://twitter.com/miroslavpopovic" target="_blank" title="Twitter Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/miroslavpopovic" target="_blank" title="Github Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/miroslavpopovic/" target="_blank" title="LinkedIn Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://plus.google.com/+MiroslavPopovic" target="_blank" title="Google+ Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://stackoverflow.com/users/119230" target="_blank" title="Stack Overflow Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.codeproject.com/Members/Miroslav-Popovic" target="_blank" title="Code Project Profile">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="copyright text-muted">
+                    <a href="/feed.xml" class="btn-rss">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                        </span> RSS Feed
+                    </a>
+                                    <a href="/feed.atom" class="btn-rss">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                        </span> Atom Feed
+                    </a>
+                <br />
+                Copyright © 2018 by Miroslav Popovic
+                <br />
+                <strong><a href="https://wyam.io" target="_blank">Generated by Wyam</a></strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+                </footer> 
+
+                <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-32542962-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
