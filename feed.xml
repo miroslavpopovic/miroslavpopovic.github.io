@@ -5,8 +5,8 @@
 		<link>https://miroslavpopovic.com/</link>
 		<description>Full-stack .NET and JavaScript software architect</description>
 		<copyright>2018</copyright>
-		<pubDate>Tue, 17 Jul 2018 08:31:48 GMT</pubDate>
-		<lastBuildDate>Tue, 17 Jul 2018 08:31:48 GMT</lastBuildDate>
+		<pubDate>Sat, 21 Jul 2018 20:48:35 GMT</pubDate>
+		<lastBuildDate>Sat, 21 Jul 2018 20:48:35 GMT</lastBuildDate>
 		<item>
 			<title>ASP.NET Core Identity and Aurelia</title>
 			<link>https://miroslavpopovic.com/posts/2018/07/aspnet-core-identity-and-aurelia</link>
@@ -595,7 +595,7 @@ private static string GetSearchUrl(string query, int page, int pageSize)
     &amp;lt;/form&amp;gt;
 &amp;lt;/header&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;When user enters a value in search input and hits Enter, it will trigger the search operation and redirect the browser to search results. As a last thing, let's add &lt;code&gt;Views/Search/Result.cshtml&lt;/code&gt; Razor view:&lt;/p&gt;
+&lt;p&gt;When user enters a value in search input and hits Enter, it will trigger the search operation and redirect the browser to search results. As a last thing, let's add &lt;code&gt;Views/Search/Results.cshtml&lt;/code&gt; Razor view:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;#64;model IEnumerable&amp;lt;Post&amp;gt;
 &amp;lt;div class=&amp;quot;container search-results&amp;quot;&amp;gt;
     &amp;lt;h1&amp;gt;Search results&amp;lt;/h1&amp;gt;
