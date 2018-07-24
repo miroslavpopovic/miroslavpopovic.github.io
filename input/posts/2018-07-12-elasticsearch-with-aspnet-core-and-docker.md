@@ -7,7 +7,7 @@ Tags:
 
 Recently, I got an assignment for my employer's internal project to investigate [Elasticsearch](https://www.elastic.co/products/elasticsearch) and its usage from within ASP.NET Core 2.1 app. I had no prior knowledge of Elasticsearch, but I had some experience with [Solr](http://lucene.apache.org/solr/) and earlier with [NHibernate Search](https://github.com/nhibernate/NHibernate-Search) which also used [Lucene](https://lucene.apache.org/) under the cover. This post is a summary of my research.
 
-So, what exactly is Elasticsearch? 
+So, what exactly is Elasticsearch?
 
 ![Elasticsearch logo](/images/2018-07/elasticsearch.png)
 
@@ -236,7 +236,7 @@ It's possible that index sometimes gets out of sync with actual posts - like whe
 
 The implementation is pretty naïve (like I said, NOT for production use). It deletes all posts from the index using `match_all` operator of Elasticsearch and then recreates the index by adding all posts to the index one by one. There's a better way to do this for production - [Reindex API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) but our implementation is good enough for a simple demo.
 
-When we navigate to `http://localhost:[our-port]/search/reindex` in the browser, it will trigger reindexing and display the number of indexed posts. 
+When we navigate to `http://localhost:[our-port]/search/reindex` in the browser, it will trigger reindexing and display the number of indexed posts.
 
 That's it! Our Elasticsearch index now has data we can use. Let's try to see it in Kibana. Navigate to http://localhost:5601/app/kibana#/dev_tools/console and enter the following in the console:
 
@@ -277,7 +277,7 @@ Excellent! We have data indexed but we're not using it for anything from the app
 
         return View("Results", response.Documents);
     }
-    
+
     private static string GetSearchUrl(string query, int page, int pageSize)
     {
         return $"/search?query={Uri.EscapeDataString(query ?? "")}&page={page}&pagesize={pageSize}/";
@@ -300,7 +300,7 @@ The backend is implemented. We now need to add a search form to our pages. We'll
         </form>
     </header>
 
-When user enters a value in search input and hits Enter, it will trigger the search operation and redirect the browser to search results. As a last thing, let's add `Views/Search/Result.cshtml` Razor view:
+When user enters a value in search input and hits Enter, it will trigger the search operation and redirect the browser to search results. As a last thing, let's add `Views/Search/Results.cshtml` Razor view:
 
     @model IEnumerable<Post>
     <div class="container search-results">
@@ -362,14 +362,14 @@ Pagination will work too if you have more than 5 results.
 
 This is just a tip of the iceberg. Elasticsearch has a vast number of features that you can use. The [sample application](https://github.com/miroslavpopovic/miniblog-elasticsearch) on GitHub implements a few more features like [boosting](https://www.elastic.co/guide/en/elasticsearch/reference/6.3/mapping-boost.html), [custom analyzers](https://www.elastic.co/guide/en/elasticsearch/client/net-api/6.x/writing-analyzers.html), tokenization, character filters, etc. You can find that in [`ElasticsearchExtensions.cs`](https://github.com/miroslavpopovic/miniblog-elasticsearch/blob/master/src/ElasticsearchExtensions.cs) file.
 
-A thing to keep in mind is - make sure you double check everything before going into production. 
+A thing to keep in mind is - make sure you double check everything before going into production.
 
-First of all, you don't want Elasticsearch or Kibana's port exposed publicly! It should be accessible from your app backed only. It can (and should) also be protected with authentication. Check out [X-Pack Authenticate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html) and [SSL Certificate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html) for that. 
+First of all, you don't want Elasticsearch or Kibana's port exposed publicly! It should be accessible from your app backed only. It can (and should) also be protected with authentication. Check out [X-Pack Authenticate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html) and [SSL Certificate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html) for that.
 
 Second, don't just throw everything into the index. Pick up only the data that makes sense. Adding a bunch of data just for the sake of having them indexed will hurt the performance, but more importantly, you'll get into trouble when you need to delete something. Remember GDPR? User data should be kept out of the index unless it's absolutely necessary. The other security-critical information too. Data breaches happen all the time. Don't be a part of the statistics.
 
-So, what's my final thought on Elasticsearch? It's an excellent and powerful tool and it fulfilled my expectations. 
+So, what's my final thought on Elasticsearch? It's an excellent and powerful tool and it fulfilled my expectations.
 
-However, what I didn't expect is the quality of the documentation. It's fantastic! There's an API reference, getting started documentation, best practices, an excellent documentation for the clients, etc. And not just the documentation for Elasticsearch, but for Docker and ASP.NET Core too. Long gone are the days where we had dry MSDN documentation with unoptimized and often wrong samples written by technical writers and not by developers. 
+However, what I didn't expect is the quality of the documentation. It's fantastic! There's an API reference, getting started documentation, best practices, an excellent documentation for the clients, etc. And not just the documentation for Elasticsearch, but for Docker and ASP.NET Core too. Long gone are the days where we had dry MSDN documentation with unoptimized and often wrong samples written by technical writers and not by developers.
 
 Getting started with something as complex as Elasticsearch these days is easy thanks to an excellent documentation, so kudos to people from Elastic and community for writing them! All the Elasticsearch docs are editable on [GitHub](https://github.com/elastic/elasticsearch/edit/6.3/docs/reference/getting-started.asciidoc). Kudos also go to [Docker](https://github.com/docker/docker.github.io/edit/master/index.md) and [ASP.NET Core](https://github.com/aspnet/Docs/blob/master/aspnetcore/index.md) documentation that's also available for editing on GitHub. This is truly a documentation renaissance.
