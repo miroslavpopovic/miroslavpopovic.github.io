@@ -57,12 +57,12 @@ We also need to map a volume to avoid the data being reset each time we restart 
                 - esnetwork
             depends_on:
                 - elasticsearch
-        volumes:
-            esdata:
-                driver: local
-        networks:
-            esnetwork:
-                driver: bridge
+    volumes:
+        esdata:
+            driver: local
+    networks:
+        esnetwork:
+            driver: bridge
 
 So, in short, we create two services `elasticsearch` and `kibana` and connect them via bridge network. `kibana` depends on `elasticsearch` in order to prevent it from being started first. If `elasticsearch` container start fails, `kibana` will fail too. We are also using the default ports for both.
 
