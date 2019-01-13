@@ -4,9 +4,9 @@
 		<title>Miroslav Popovic</title>
 		<link>https://miroslavpopovic.com/</link>
 		<description>Full-stack .NET and JavaScript software architect</description>
-		<copyright>2018</copyright>
-		<pubDate>Tue, 24 Jul 2018 08:45:18 GMT</pubDate>
-		<lastBuildDate>Tue, 24 Jul 2018 08:45:18 GMT</lastBuildDate>
+		<copyright>2019</copyright>
+		<pubDate>Sun, 13 Jan 2019 20:40:33 GMT</pubDate>
+		<lastBuildDate>Sun, 13 Jan 2019 20:40:33 GMT</lastBuildDate>
 		<item>
 			<title>ASP.NET Core Identity and Aurelia</title>
 			<link>https://miroslavpopovic.com/posts/2018/07/aspnet-core-identity-and-aurelia</link>
@@ -389,18 +389,18 @@ services:
             - esnetwork
         depends_on:
             - elasticsearch
-    volumes:
-        esdata:
-            driver: local
-    networks:
-        esnetwork:
-            driver: bridge
+volumes:
+    esdata:
+        driver: local
+networks:
+    esnetwork:
+        driver: bridge
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So, in short, we create two services &lt;code&gt;elasticsearch&lt;/code&gt; and &lt;code&gt;kibana&lt;/code&gt; and connect them via bridge network. &lt;code&gt;kibana&lt;/code&gt; depends on &lt;code&gt;elasticsearch&lt;/code&gt; in order to prevent it from being started first. If &lt;code&gt;elasticsearch&lt;/code&gt; container start fails, &lt;code&gt;kibana&lt;/code&gt; will fail too. We are also using the default ports for both.&lt;/p&gt;
 &lt;p&gt;To run everything, we can just do:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;gt; docker-compose up
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now both Elasticsearch and Kibana are started. Browse &lt;a href="http://localhost:5601/"&gt;http://localhost:5601/&lt;/a&gt; to be greeted with Kibana dashboard.&lt;/p&gt;
+&lt;p&gt;Now both Elasticsearch and Kibana are started. Browse http://localhost:5601/ to be greeted with Kibana dashboard.&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/2018-07/kibana.png" class="img-fluid" alt="Kibana dashboard" /&gt;&lt;/p&gt;
 &lt;p&gt;That's everything we need for running Elasticsearch in dev environment. Installation on production environment shouldn't be too hard either as there are packages for various Linux distros. Also, there are Elasticsearch SaaS offerings from all major cloud vendors and &lt;a href="https://www.elastic.co/cloud"&gt;from Elastic itself&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="sample-project-creation"&gt;Sample project creation&lt;/h2&gt;
@@ -541,7 +541,7 @@ public async Task SavePost(Post post)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The implementation is pretty naïve (like I said, NOT for production use). It deletes all posts from the index using &lt;code&gt;match_all&lt;/code&gt; operator of Elasticsearch and then recreates the index by adding all posts to the index one by one. There's a better way to do this for production - &lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html"&gt;Reindex API&lt;/a&gt; but our implementation is good enough for a simple demo.&lt;/p&gt;
 &lt;p&gt;When we navigate to &lt;code&gt;http://localhost:[our-port]/search/reindex&lt;/code&gt; in the browser, it will trigger reindexing and display the number of indexed posts.&lt;/p&gt;
-&lt;p&gt;That's it! Our Elasticsearch index now has data we can use. Let's try to see it in Kibana. Navigate to &lt;a href="http://localhost:5601/app/kibana#/dev_tools/console"&gt;http://localhost:5601/app/kibana#/dev_tools/console&lt;/a&gt; and enter the following in the console:&lt;/p&gt;
+&lt;p&gt;That's it! Our Elasticsearch index now has data we can use. Let's try to see it in Kibana. Navigate to http://localhost:5601/app/kibana#/dev_tools/console and enter the following in the console:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;GET miniblog/_search
 {
     &amp;quot;query&amp;quot;: { &amp;quot;match_all&amp;quot;: {} }
