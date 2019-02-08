@@ -4,8 +4,50 @@
 	<title>Miroslav Popovic</title>
 	<link rel="self" href="https://miroslavpopovic.com/" />
 	<rights>2019</rights>
-	<updated>2019-01-13T20:40:33Z</updated>
+	<updated>2019-02-08T13:47:22Z</updated>
 	<subtitle>Full-stack .NET and JavaScript software architect</subtitle>
+	<entry>
+		<id>https://miroslavpopovic.com/posts/2019/02/2018-in-review</id>
+		<title>2018 in review</title>
+		<link href="https://miroslavpopovic.com/posts/2019/02/2018-in-review" />
+		<updated>2019-02-08T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="/images/2019-02/community-2018.png" class="img-fluid" alt="Community activities in 2018" /&gt;&lt;/p&gt;
+&lt;p&gt;This is (a bit late) review of the activities I had in 2018., mostly for archival purpose, since I tend to forget things.&lt;/p&gt;
+&lt;h2 id="seavus"&gt;Seavus&lt;/h2&gt;
+&lt;p&gt;I started to work for &lt;a href="https://seavus.com"&gt;Seavus&lt;/a&gt; in September 2017., so 2018. was my first full year there. Some time was necessary to adopt to the new way of working. Before Seavus, I was doing remote / freelance work. Switching to regular working hours, with no overtime and staying up late took a while. As always, there are pros and cons. The biggest pro in my opinion is with social aspect. Seavus managed to attract a huge number of great people (900+ of employees at the moment) and I consider that as its greatest strength. Most of the cons that I have are related to the difference between the work I had before. None of them are really big, and things are improving along the way.&lt;/p&gt;
+&lt;p&gt;Seavus Banja Luka office started growing nicely. Btw we &lt;a href="https://career.seavus.com/"&gt;are hiring&lt;/a&gt; :). At the end of 2018. I was offered a promotion to Technical Lead with additional assignments - basically to be a face of Seavus in Bosnia and Herzegovina. We'll see how that goes :).&lt;/p&gt;
+&lt;h2 id="conferences-and-other-community-events"&gt;Conferences and other community events&lt;/h2&gt;
+&lt;p&gt;&lt;img src="/images/2019-02/miroslav-popovic-mscommunity-2018.jpg" class="img-fluid" alt="MSCommunity 2018" /&gt;&lt;/p&gt;
+&lt;p&gt;Continuing from 2017., the last year was also pretty busy regarding community events. Here are the talks I had:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://www.facebook.com/events/393720467707508/"&gt;January 25th, BLbit meetup&lt;/a&gt; - Introduction to ASP.NET Core 2.0 talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.facebook.com/events/1629179527151548/"&gt;February 6th, Seavus CodeTalks, Novi Sad&lt;/a&gt; - Building production-ready APIs with ASP.NET Core 2.0&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.meetup.com/MSDEV-Serbia-User-Group/events/247513563/"&gt;February 7th, MSDEV Serbia meetup, Belgrade&lt;/a&gt; - Introduction to ASP.NET Core 2.0 and Building production-ready APIs with ASP.NET Core 2.0 talks&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.networkkonferencija.ba/"&gt;April 19th, NetWork conference, Neum&lt;/a&gt; - Docker and ASP.NET Core talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.windays.hr/raspored/arhiva/2018/building_production_ready_apis/4249"&gt;April 27th, WinDays conference, Porec&lt;/a&gt; - Building production-ready APIs with ASP.NET Core 2.1 talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://weblica.hr/"&gt;May 12th, Weblica conference, Cakovec&lt;/a&gt; - Building production-ready APIs with ASP.NET Core talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://codetalks.seavus.com/seavus-codetalks-in-kragujevac-17052018"&gt;May 17th, Seavus CodeTalks, Kragujevac&lt;/a&gt; - Docker and ASP.NET Core 2.1 talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.kulendayz.com/"&gt;September 1st, KulenDayz conference, Osijek&lt;/a&gt; - Docker and ASP.NET Core talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://conference.mscommunity.ba/"&gt;September 14th, MSCommunity conference, Sarajevo&lt;/a&gt; - Visual Studio productivity talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://criscon.krizevci.hr/"&gt;September 22nd, CrisCon conference, Krizevci&lt;/a&gt; - Docker and ASP.NET Core talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.sinergija18.rs/"&gt;October 25th, Sinergija conference, Belgrade&lt;/a&gt; - Building production-ready APIs with ASP.NET Core 2.x talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.meetup.com/dotnet-amsterdam/events/255737023/"&gt;November 1st, DotNet Amsterdam meetup, Amsterdam&lt;/a&gt; - Building production-ready APIs with ASP.NET Core 2.2 talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.sqlsaturday.com/791/EventHome.aspx"&gt;November 3rd, SQLSaturday event, Banja Luka&lt;/a&gt; - Building production-ready APIs with ASP.NET Core 2.2 talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://codetalks.seavus.com/seavus-codetalks-in-belgrade-13112018"&gt;November 13th, Seavus CodeTalks, Belgrade&lt;/a&gt; - Be productive with Visual Studio talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://codetalks.seavus.com/seavus-codetalks-in-banja-luka-15112018"&gt;November 15th, Seavus CodeTalks, Banja Luka&lt;/a&gt; - Be productive with Visual Studio talk&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://advtechdays.com/"&gt;December 6th, Advanced Technology Days conference, Zagreb&lt;/a&gt; - Migration from ASP.NET MVC to ASP.NET Core 2.x talk&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The DotNet Amsterdam meetup was recorded. You can check it out &lt;a href="https://youtu.be/XLHeJgWovI4"&gt;on YouTube&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now that I see all of it in a list, it's a lot :). Not sure if I'll be able to keep that pace in 2019.&lt;/p&gt;
+&lt;h2 id="blbit-user-group"&gt;BLbit user group&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.facebook.com/groups/blbit/"&gt;BLbit&lt;/a&gt; continues to be most active &lt;a href="https://www.facebook.com/groups/mscommunitybih/"&gt;MSCommunity&lt;/a&gt; user group in Bosnia and Herzegovina by the &lt;a href="https://www.facebook.com/groups/blbit/events/"&gt;number of meetups&lt;/a&gt;. One of highlights of the last year was a participation in global &lt;a href="https://www.dotnetconf.net/"&gt;.NET Conf&lt;/a&gt; event - with a conference watch party and an additional meetup. We had swags too! :)&lt;/p&gt;
+&lt;p&gt;Last year we have also started to use &lt;a href="https://www.meetup.com/BLbitUG/"&gt;Meetup platform&lt;/a&gt; and became members of &lt;a href="https://www.meetup.com/pro/dotnet/"&gt;.NET Foundation&lt;/a&gt;. Recently, we have also created a &lt;a href="https://twitter.com/blbitug"&gt;Twitter account&lt;/a&gt; and we are still on &lt;a href="https://www.eventbrite.com/o/korisnicka-grupa-blbit-banja-luka-3287790552"&gt;Eventbrite too&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hopefully, we will able to keep going strong this year too.&lt;/p&gt;
+&lt;h2 id="plans-for-2019"&gt;Plans for 2019&lt;/h2&gt;
+&lt;p&gt;Granted, there will be more responsibilities in Seavus, with the promotion, but I don't plan to neglect the community engagement. Might tune down a bit with the number of community events, but will try to be more active with my blog (yeah, not the first time I planned that) and open-source contributions.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="/images/2019-02/community-2018.png" class="img-fluid" alt="Community activities in 2018"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://miroslavpopovic.com/posts/2018/07/aspnet-core-identity-and-aurelia</id>
 		<title>ASP.NET Core Identity and Aurelia</title>
