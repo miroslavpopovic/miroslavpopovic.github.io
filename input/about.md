@@ -1,7 +1,7 @@
 Title: About Me
 ---
 
-.NET and JavaScript software architect, currently employed by [Seavus](https://seavus.com/).
+.NET and JavaScript software architect, employed as a Technical Lead at [Seavus](https://seavus.com/).
 
 One of the leaders of the local [BLbit](http://www.developers.ba/) / [Microsoft Community](http://www.mscommunity.ba/groups/blbit) [user group](https://www.facebook.com/groups/blbit/) and an occasional speaker on dev conferences in Bosnia and Hercegovina and region.
 
