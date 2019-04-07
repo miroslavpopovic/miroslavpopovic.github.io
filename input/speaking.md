@@ -9,9 +9,11 @@ This page contains a history of the talks I had recently as well as other commun
  1. March 29th
      - [NetWork conference, Neum](https://www.networkkonferencija.ba/)
      - [What's new in .NET Core 3.0](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
+     - 99 attendees, 77 votes, 4.68 average speaker rating, 4.64 average talk rating
  2. April 4th
      - [WinDays conference, Sibenik](https://www.windays.hr/)
      - [What's new in .NET Core 3.0](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
+     - 120 attendees, 78 votes, 4.77 average speaker rating
 
 2018
 ----
