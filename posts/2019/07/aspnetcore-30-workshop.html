@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Miroslav Popovic - blog</title>
+        <title>Miroslav Popovic - ASP.NET Core 3.0 Workshop</title>
         <meta name="description" content="Full-stack .NET and JavaScript software architect" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Miroslav Popovic" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Miroslav Popovic - blog" />
+        <meta property="og:title" content="Miroslav Popovic - ASP.NET Core 3.0 Workshop" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://miroslavpopovic.com/tags/blog" />
+        <meta property="og:url" content="https://miroslavpopovic.com/posts/2019/07/aspnetcore-30-workshop" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -65,7 +65,8 @@
         <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
         <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 
-        
+        <meta property="og:image" content="/images/2019-07/workshop-cover.png" />
+
 
         </head>
         <body>
@@ -104,9 +105,21 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>blog</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>ASP.NET Core 3.0 Workshop</h1>
+    <div class="meta">        
+Published on Friday, July 26, 2019<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/aspnetcore" class="btn btn-default btn-xs">aspnetcore</a>
+                    <a role="button" href="/tags/blazor" class="btn btn-default btn-xs">blazor</a>
+                    <a role="button" href="/tags/community" class="btn btn-default btn-xs">community</a>
+                    <a role="button" href="/tags/webapi" class="btn btn-default btn-xs">webapi</a>
+                    <a role="button" href="/tags/workshop" class="btn btn-default btn-xs">workshop</a>
+        </div>     
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -115,77 +128,48 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/2017/07/from-jekyll-to-wyam">
-                <h3 class="post-title">From Jekyll to Wyam</h3>
-            </a>
-            <p class="post-meta">Posted on Wednesday, July 19, 2017</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/2015/03/switching-to-jekyll">
-                <h3 class="post-title">Switching to Jekyll</h3>
-            </a>
-            <p class="post-meta">Posted on Monday, March 23, 2015</p>      
-        </div>   
+                                        
+
+<p><img src="/images/2019-07/workshop-cover.png" class="img-fluid" alt="ASP.NET Core 3.0 Workshop" /></p>
+<p>For quite some time, I was thinking about creating a workshop for ASP.NET Core. After some talks I had with members of <a href="https://www.facebook.com/eestec.lcbanjaluka/">EESTEC</a> student organization and the management of <a href="https://seavus.com/">Seavus</a>, the idea started to shape up. My plan was to build something that could be reused for various events - for community organized events, inside the company, for conferences, and of course to be usable for others too.</p>
+<p>After almost two months of sleeping less, preparing samples, writing instructions and having a first live workshop with students in duration of 10 days, there's finally something to share. The current version of workshop, with sample project and instructions, is available <a href="https://github.com/miroslavpopovic/aspnetcore-workshop">on GitHub</a>. I was heavily influenced by .NET Foundation's <a href="https://presentations.dotnetfoundation.org/">presentations and workshops</a> and I even took some of the materials from there - parts of presentation, presentation template and the cover image for the workshop. Why not, <a href="https://www.meetup.com/BLbitUG/">my user group</a> and myself are members of .NET Foundation organization. You <a href="https://dotnetfoundation.org/get-involved">could be too</a>! :)</p>
+<p>So, what is this workshop about? Other than ASP.NET Core 3.0 of course. Well, at the end, I have decided to go with Web API route. After the introduction to .NET Core 3.0 and ASP.NET Core and looking through the available templates, together with attendees, a domain is chosen and implemented as REST Web API. That API is then improved and finally consumed by frontend SPA application. To continue at the bleeding edge, we are not using JavaScript SPA frameworks like <a href="https://aurelia.io/">Aurelia</a> (the best one out there ;)), React, Vue or Angular, but a completely new thing called <a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/client">Blazor</a>!</p>
+<p>The workshop itself is split into 10 parts (for now). Each part has it's <a href="https://github.com/miroslavpopovic/aspnetcore-workshop/tree/master/docs">own document with instructions</a>. There is a <a href="https://github.com/miroslavpopovic/aspnetcore-workshop/blob/master/docs/00-prerequisites.md">prerequisites</a> document that you can use to prepare your environment. If you want to present it to others, there's a <a href="https://github.com/miroslavpopovic/aspnetcore-workshop/blob/master/docs/speaker-notes.md">speaker notes</a> document to remind you what should you go through during each part.</p>
+<p>Note that both ASP.NET Core 3.0 and client-side Blazor are at the moment in preview phase. .NET Core 3.0 will launch in September during <a href="https://www.dotnetconf.net/">.NET Conf</a> and client-side Blazor sometime next year. The workshop is updated to Preview 7, which <a href="https://devblogs.microsoft.com/dotnet/announcing-net-core-3-0-preview-7/">came out</a> a few days ago and has a go-live license. There are some things in workshop that could not be achieved with the current version. I still consider the workshop a work in progress, until the final versions of .NET Core 3.0 and client-side Blazor are out and the workshop updated.</p>
+<p>You are welcome to use the workshop as you see fit. You can follow it by yourself, using the provided instructions. Or you could present the workshop to your friends, community or company. You could also create a derived version of workshop from it - in which case I would be grateful for an attribution :). I hope it will be useful.</p>
+<p>I'm also interested in presenting the workshop as well as <a href="https://miroslavpopovic.com/speaking">giving regular talks</a>, so if you have something in mind, like a community event, conference, etc., let me know.</p>
+<p>At the end, here are some pictures from the live workshop we had in Banja Luka. Thanks <a href="https://www.facebook.com/eestec.lcbanjaluka/">EESTEC</a>, <a href="https://seavus.com/">Seavus</a>, <a href="https://www.meetup.com/BLbitUG/">BLbit</a>, <a href="http://bit-alliance.ba/">Bit Alliance</a> and <a href="https://etf.unibl.org/index.php/en/home">ETFBL</a> for the help in organizing the event! And of course, thanks to all attendees, you were great!</p>
+<p><img src="/images/2019-07/workshop-1.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" />
+<img src="/images/2019-07/workshop-2.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" />
+<img src="/images/2019-07/workshop-3.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" />
+<img src="/images/2019-07/workshop-4.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" />
+<img src="/images/2019-07/workshop-5.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" /></p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/aspnetcore" class="btn btn-default btn-xs">aspnetcore (5)</a>
-                <a role="button" href="/tags/presentation" class="btn btn-default btn-xs">presentation (4)</a>
-                <a role="button" href="/tags/jekyll" class="btn btn-default btn-xs">jekyll (2)</a>
-                <a role="button" href="/tags/frontend" class="btn btn-default btn-xs">frontend (2)</a>
-                <a role="button" href="/tags/community" class="btn btn-default btn-xs">community (2)</a>
-                <a role="button" href="/tags/conference" class="btn btn-default btn-xs">conference (2)</a>
-                <a role="button" href="/tags/docker" class="btn btn-default btn-xs">docker (2)</a>
-                <a role="button" href="/tags/msnetwork" class="btn btn-default btn-xs">msnetwork (2)</a>
-                <a role="button" href="/tags/blog" class="btn btn-primary btn-xs">blog (2)</a>
-                <a role="button" href="/tags/wyam" class="btn btn-default btn-xs">wyam (1)</a>
-                <a role="button" href="/tags/speaking" class="btn btn-default btn-xs">speaking (1)</a>
-                <a role="button" href="/tags/es2015" class="btn btn-default btn-xs">es2015 (1)</a>
-                <a role="button" href="/tags/es6" class="btn btn-default btn-xs">es6 (1)</a>
-                <a role="button" href="/tags/mscommunity" class="btn btn-default btn-xs">mscommunity (1)</a>
-                <a role="button" href="/tags/durandal" class="btn btn-default btn-xs">durandal (1)</a>
-                <a role="button" href="/tags/angular" class="btn btn-default btn-xs">angular (1)</a>
-                <a role="button" href="/tags/html" class="btn btn-default btn-xs">html (1)</a>
-                <a role="button" href="/tags/css" class="btn btn-default btn-xs">css (1)</a>
-                <a role="button" href="/tags/silverreader" class="btn btn-default btn-xs">silverreader (1)</a>
-                <a role="button" href="/tags/projects" class="btn btn-default btn-xs">projects (1)</a>
-                <a role="button" href="/tags/jquery" class="btn btn-default btn-xs">jquery (1)</a>
-                <a role="button" href="/tags/jqueryui" class="btn btn-default btn-xs">jqueryui (1)</a>
-                <a role="button" href="/tags/autocomplete" class="btn btn-default btn-xs">autocomplete (1)</a>
-                <a role="button" href="/tags/msbuild" class="btn btn-default btn-xs">msbuild (1)</a>
-                <a role="button" href="/tags/fluentmigrator" class="btn btn-default btn-xs">fluentmigrator (1)</a>
-                <a role="button" href="/tags/codeproject" class="btn btn-default btn-xs">codeproject (1)</a>
-                <a role="button" href="/tags/workshop" class="btn btn-default btn-xs">workshop (1)</a>
-                <a role="button" href="/tags/webapi" class="btn btn-default btn-xs">webapi (1)</a>
-                <a role="button" href="/tags/blazor" class="btn btn-default btn-xs">blazor (1)</a>
-                <a role="button" href="/tags/aurelia" class="btn btn-default btn-xs">aurelia (1)</a>
-                <a role="button" href="/tags/authentication" class="btn btn-default btn-xs">authentication (1)</a>
-                <a role="button" href="/tags/identity" class="btn btn-default btn-xs">identity (1)</a>
-                <a role="button" href="/tags/jwt" class="btn btn-default btn-xs">jwt (1)</a>
-                <a role="button" href="/tags/elasticsearch" class="btn btn-default btn-xs">elasticsearch (1)</a>
-                <a role="button" href="/tags/windays" class="btn btn-default btn-xs">windays (1)</a>
-                <a role="button" href="/tags/weblica" class="btn btn-default btn-xs">weblica (1)</a>
-                <a role="button" href="/tags/api" class="btn btn-default btn-xs">api (1)</a>
-                <a role="button" href="/tags/apicontroller" class="btn btn-default btn-xs">apicontroller (1)</a>
-        </div>
-    </div>
-</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'miroslavpopovic';
+    var disqus_identifier = 'aspnetcore-30-workshop';
+    var disqus_title = 'ASP.NET Core 3.0 Workshop';
+    var disqus_url = 'https://miroslavpopovic.com/posts/2019/07/aspnetcore-30-workshop';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
                                 </div>
                         </div>
                 </div>

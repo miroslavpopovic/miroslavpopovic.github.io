@@ -4,8 +4,30 @@
 	<title>Miroslav Popovic</title>
 	<link rel="self" href="https://miroslavpopovic.com/" />
 	<rights>2019</rights>
-	<updated>2019-06-01T19:27:46Z</updated>
+	<updated>2019-07-26T19:38:26Z</updated>
 	<subtitle>Full-stack .NET and JavaScript software architect</subtitle>
+	<entry>
+		<id>https://miroslavpopovic.com/posts/2019/07/aspnetcore-30-workshop</id>
+		<title>ASP.NET Core 3.0 Workshop</title>
+		<link href="https://miroslavpopovic.com/posts/2019/07/aspnetcore-30-workshop" />
+		<updated>2019-07-26T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="/images/2019-07/workshop-cover.png" class="img-fluid" alt="ASP.NET Core 3.0 Workshop" /&gt;&lt;/p&gt;
+&lt;p&gt;For quite some time, I was thinking about creating a workshop for ASP.NET Core. After some talks I had with members of &lt;a href="https://www.facebook.com/eestec.lcbanjaluka/"&gt;EESTEC&lt;/a&gt; student organization and the management of &lt;a href="https://seavus.com/"&gt;Seavus&lt;/a&gt;, the idea started to shape up. My plan was to build something that could be reused for various events - for community organized events, inside the company, for conferences, and of course to be usable for others too.&lt;/p&gt;
+&lt;p&gt;After almost two months of sleeping less, preparing samples, writing instructions and having a first live workshop with students in duration of 10 days, there's finally something to share. The current version of workshop, with sample project and instructions, is available &lt;a href="https://github.com/miroslavpopovic/aspnetcore-workshop"&gt;on GitHub&lt;/a&gt;. I was heavily influenced by .NET Foundation's &lt;a href="https://presentations.dotnetfoundation.org/"&gt;presentations and workshops&lt;/a&gt; and I even took some of the materials from there - parts of presentation, presentation template and the cover image for the workshop. Why not, &lt;a href="https://www.meetup.com/BLbitUG/"&gt;my user group&lt;/a&gt; and myself are members of .NET Foundation organization. You &lt;a href="https://dotnetfoundation.org/get-involved"&gt;could be too&lt;/a&gt;! :)&lt;/p&gt;
+&lt;p&gt;So, what is this workshop about? Other than ASP.NET Core 3.0 of course. Well, at the end, I have decided to go with Web API route. After the introduction to .NET Core 3.0 and ASP.NET Core and looking through the available templates, together with attendees, a domain is chosen and implemented as REST Web API. That API is then improved and finally consumed by frontend SPA application. To continue at the bleeding edge, we are not using JavaScript SPA frameworks like &lt;a href="https://aurelia.io/"&gt;Aurelia&lt;/a&gt; (the best one out there ;)), React, Vue or Angular, but a completely new thing called &lt;a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/client"&gt;Blazor&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;The workshop itself is split into 10 parts (for now). Each part has it's &lt;a href="https://github.com/miroslavpopovic/aspnetcore-workshop/tree/master/docs"&gt;own document with instructions&lt;/a&gt;. There is a &lt;a href="https://github.com/miroslavpopovic/aspnetcore-workshop/blob/master/docs/00-prerequisites.md"&gt;prerequisites&lt;/a&gt; document that you can use to prepare your environment. If you want to present it to others, there's a &lt;a href="https://github.com/miroslavpopovic/aspnetcore-workshop/blob/master/docs/speaker-notes.md"&gt;speaker notes&lt;/a&gt; document to remind you what should you go through during each part.&lt;/p&gt;
+&lt;p&gt;Note that both ASP.NET Core 3.0 and client-side Blazor are at the moment in preview phase. .NET Core 3.0 will launch in September during &lt;a href="https://www.dotnetconf.net/"&gt;.NET Conf&lt;/a&gt; and client-side Blazor sometime next year. The workshop is updated to Preview 7, which &lt;a href="https://devblogs.microsoft.com/dotnet/announcing-net-core-3-0-preview-7/"&gt;came out&lt;/a&gt; a few days ago and has a go-live license. There are some things in workshop that could not be achieved with the current version. I still consider the workshop a work in progress, until the final versions of .NET Core 3.0 and client-side Blazor are out and the workshop updated.&lt;/p&gt;
+&lt;p&gt;You are welcome to use the workshop as you see fit. You can follow it by yourself, using the provided instructions. Or you could present the workshop to your friends, community or company. You could also create a derived version of workshop from it - in which case I would be grateful for an attribution :). I hope it will be useful.&lt;/p&gt;
+&lt;p&gt;I'm also interested in presenting the workshop as well as &lt;a href="https://miroslavpopovic.com/speaking"&gt;giving regular talks&lt;/a&gt;, so if you have something in mind, like a community event, conference, etc., let me know.&lt;/p&gt;
+&lt;p&gt;At the end, here are some pictures from the live workshop we had in Banja Luka. Thanks &lt;a href="https://www.facebook.com/eestec.lcbanjaluka/"&gt;EESTEC&lt;/a&gt;, &lt;a href="https://seavus.com/"&gt;Seavus&lt;/a&gt;, &lt;a href="https://www.meetup.com/BLbitUG/"&gt;BLbit&lt;/a&gt;, &lt;a href="http://bit-alliance.ba/"&gt;Bit Alliance&lt;/a&gt; and &lt;a href="https://etf.unibl.org/index.php/en/home"&gt;ETFBL&lt;/a&gt; for the help in organizing the event! And of course, thanks to all attendees, you were great!&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/2019-07/workshop-1.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" /&gt;
+&lt;img src="/images/2019-07/workshop-2.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" /&gt;
+&lt;img src="/images/2019-07/workshop-3.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" /&gt;
+&lt;img src="/images/2019-07/workshop-4.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" /&gt;
+&lt;img src="/images/2019-07/workshop-5.jpg" class="img-fluid" alt="ASP.NET Core 3.0 Workshop, Banja Luka" /&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="/images/2019-07/workshop-cover.png" class="img-fluid" alt="ASP.NET Core 3.0 Workshop"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://miroslavpopovic.com/posts/2019/02/2018-in-review</id>
 		<title>2018 in review</title>
