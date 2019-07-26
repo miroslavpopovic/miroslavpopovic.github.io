@@ -1,7 +1,15 @@
 Title: Speaking
 ---
 
-This page contains a history of the talks I had recently as well as other community engagements.
+This page contains upcoming talks and a history of the talks I had recently as well as other community engagements.
+
+Upcoming
+--------
+
+ 1. October 23rd-25th (two talks)
+     - [.NET DeveloperDays 2019, Warsaw](https://net.developerdays.pl/)
+     - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3.0)
+     - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-1)
 
 2019
 ----
@@ -28,6 +36,15 @@ This page contains a history of the talks I had recently as well as other commun
      - [Tarabica conference, Belgrade](https://www.tarabica.org/)
      - [Migration from ASP.NET MVC to ASP.NET Core](https://www.slideshare.net/miroslavpopovic/tarabica-2019-migration-from-aspnet-mvc-to-aspnet-core)
      - 80 attendees
+ 6. June 12th
+     - [SQLSaturday event, Timisoara](https://www.sqlsaturday.com/874/eventhome.aspx)
+     - [Visual Studio productivity](https://www.slideshare.net/miroslavpopovic/sqlsaturday-timisoara-visual-studio-productivity)
+     - 25 attendees
+ 7. July 8th - July 19th (workshop)
+     - [ASP.NET Core 3.0 Workshop, Banja Luka](https://www.facebook.com/events/442062336634864/)
+     - Organized by [EESTEC LC Banja Luka](https://www.facebook.com/eestec.lcbanjaluka/)
+     - [Workshop sample and instructions](https://github.com/miroslavpopovic/aspnetcore-workshop)
+     - 20 attendees
 
 2018
 ----
