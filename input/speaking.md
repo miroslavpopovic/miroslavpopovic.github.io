@@ -10,7 +10,10 @@ Upcoming
      - [.NET DeveloperDays 2019, Warsaw](https://net.developerdays.pl/)
      - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3)
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
- 2. December 14th
+ 2. December 4-5th
+     - [Advanced Technology Days, Zagreb](https://advtechdays.com/)
+     - [Visual Studio productivity](https://www.slideshare.net/miroslavpopovic/sqlsaturday-timisoara-visual-studio-productivity)
+ 3. December 14th
      - [SQLSaturday event, Ljubljana](https://www.sqlsaturday.com/910/eventhome.aspx)
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
 
