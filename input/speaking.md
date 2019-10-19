@@ -6,14 +6,11 @@ This page contains upcoming talks and a history of the talks I had recently as w
 Upcoming
 --------
 
- 1. October 16th-18th
-     - [Sinergija 19, Belgrade](https://sinergija.live/)
-     - [What's new in .NET Core 3.0](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
- 2. October 23rd-25th (two talks)
+ 1. October 23rd-25th (two talks)
      - [.NET DeveloperDays 2019, Warsaw](https://net.developerdays.pl/)
      - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3)
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
- 3. December 14th
+ 2. December 14th
      - [SQLSaturday event, Ljubljana](https://www.sqlsaturday.com/910/eventhome.aspx)
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
 
@@ -51,6 +48,10 @@ Upcoming
      - Organized by [EESTEC LC Banja Luka](https://www.facebook.com/eestec.lcbanjaluka/)
      - [Workshop sample and instructions](https://github.com/miroslavpopovic/aspnetcore-workshop)
      - 20 attendees
+ 8. October 16th
+     - [Sinergija 19, Belgrade](https://sinergija.live/)
+     - [What's new in .NET Core 3.0](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
+     - 138 attendees, 80 votes, 4.75 average speaker rating, 4.74 average talk rating
 
 2018
 ----
