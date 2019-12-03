@@ -6,16 +6,15 @@ This page contains upcoming talks and a history of the talks I had recently as w
 Upcoming
 --------
 
- 1. October 23rd-25th (two talks)
-     - [.NET DeveloperDays 2019, Warsaw](https://net.developerdays.pl/)
-     - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3)
-     - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
- 2. December 4-5th
+ 1. December 4-5th
      - [Advanced Technology Days, Zagreb](https://advtechdays.com/)
      - [Visual Studio productivity](https://www.slideshare.net/miroslavpopovic/sqlsaturday-timisoara-visual-studio-productivity)
- 3. December 14th
+ 2. December 14th
      - [SQLSaturday event, Ljubljana](https://www.sqlsaturday.com/910/eventhome.aspx)
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
+ 3. December 18th
+     - [MSCommunity event, Sarajevo](https://www.facebook.com/groups/mscommunitybih/)
+     - [What's new in .NET world](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
 
 2019
 ----
@@ -55,6 +54,17 @@ Upcoming
      - [Sinergija 19, Belgrade](https://sinergija.live/)
      - [What's new in .NET Core 3.0](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
      - 138 attendees, 80 votes, 4.75 average speaker rating, 4.74 average talk rating
+ 9. October 23rd-25th (two talks)
+     - [.NET DeveloperDays 2019, Warsaw](https://net.developerdays.pl/)
+     - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3)
+     - ~150 attendees, 79 votes, 4.04 average rating
+     - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
+     - ~200 attendees, 67 votes, 4.25 average rating
+ 10. November 18th-22nd (workshop)
+     - ASP.NET Core 3.0 Workshop, Skopje
+     - Organized by [Seavus Skopje](https://www.seavus.com/)
+     - [Workshop sample and instructions](https://github.com/miroslavpopovic/aspnetcore-workshop)
+     - 2 groups with 20 attendees each
 
 2018
 ----
