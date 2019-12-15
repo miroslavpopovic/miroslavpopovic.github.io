@@ -6,13 +6,7 @@ This page contains upcoming talks and a history of the talks I had recently as w
 Upcoming
 --------
 
- 1. December 4-5th
-     - [Advanced Technology Days, Zagreb](https://advtechdays.com/)
-     - [Visual Studio productivity](https://www.slideshare.net/miroslavpopovic/sqlsaturday-timisoara-visual-studio-productivity)
- 2. December 14th
-     - [SQLSaturday event, Ljubljana](https://www.sqlsaturday.com/910/eventhome.aspx)
-     - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
- 3. December 18th
+ 1. December 18th
      - [MSCommunity event, Sarajevo](https://www.facebook.com/groups/mscommunitybih/)
      - [What's new in .NET world](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
 
@@ -65,6 +59,14 @@ Upcoming
      - Organized by [Seavus Skopje](https://www.seavus.com/)
      - [Workshop sample and instructions](https://github.com/miroslavpopovic/aspnetcore-workshop)
      - 2 groups with 20 attendees each
+ 11. December 4th
+     - [Advanced Technology Days, Zagreb](https://advtechdays.com/)
+     - [Visual Studio productivity](https://www.slideshare.net/miroslavpopovic/advanced-technology-days-15-visual-studio-productivity)
+     - ~50 attendees, 32 votes, 4.47 average rating
+ 12. December 14th
+     - [SQLSaturday event, Ljubljana](https://www.sqlsaturday.com/910/eventhome.aspx)
+     - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
+     - ~40 attendees
 
 2018
 ----
