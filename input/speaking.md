@@ -6,9 +6,7 @@ This page contains upcoming talks and a history of the talks I had recently as w
 Upcoming
 --------
 
- 1. December 18th
-     - [MSCommunity event, Sarajevo](https://www.facebook.com/groups/mscommunitybih/)
-     - [What's new in .NET world](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
+TBD
 
 2019
 ----
@@ -67,6 +65,10 @@ Upcoming
      - [SQLSaturday event, Ljubljana](https://www.sqlsaturday.com/910/eventhome.aspx)
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
      - ~40 attendees
+ 13. December 18th
+     - [MSCommunity event, Sarajevo](https://www.facebook.com/groups/mscommunitybih/)
+     - [What's new in .NET world](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
+     - ~10 attendees
 
 2018
 ----
