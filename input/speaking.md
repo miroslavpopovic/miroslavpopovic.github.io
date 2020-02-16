@@ -6,7 +6,9 @@ This page contains upcoming talks and a history of the talks I had recently as w
 Upcoming
 --------
 
-TBD
+ 1. June 8th
+     - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
+     - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3)
 
 2019
 ----
