@@ -1,14 +1,29 @@
 Title: Speaking
 ---
 
-This page contains upcoming talks and a history of the talks I had recently as well as other community engagements.
+This page contains upcoming talks and the history of the talks I had recently as well as other community engagements.
 
 Upcoming
 --------
 
- 1. June 8th
+ 1. November 30th, 2021
+     - [European Cloud Summit](https://www.collabsummit.eu/en/lectures/3656/building-an-auth-microservice-with-asp-net-core-identity-and-identityserver)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+
+ 2. May 24th, 2022
      - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
      - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3)
+
+2020
+----
+
+ 1. July 7th
+     - [Seavus CodeTalks Remote Event](https://www.facebook.com/events/1629179527151548/)
+     - [Building an auth microservice with ASP.NET Core Identity and IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample/)
+
+ 2. December 9th
+     - [WinDays20, online](https://www.windays.hr/raspored/predavanje/building_an_auth_microservice/284)
+     - [Building an auth microservice with ASP.NET Core Identity and IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample/)
 
 2019
 ----
