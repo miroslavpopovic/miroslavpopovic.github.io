@@ -6,12 +6,14 @@ This page contains upcoming talks and the history of the talks I had recently as
 Upcoming
 --------
 
- 1. November 30th, 2021
+*Nothing at the moment*
+
+2021
+----
+
+ 1. November 30th
      - [European Cloud Summit](https://www.collabsummit.eu/en/lectures/3656/building-an-auth-microservice-with-asp-net-core-identity-and-identityserver)
      - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
- 2. May 24th, 2022
-     - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
-     - [Building production-ready APIs with ASP.NET Core](https://github.com/miroslavpopovic/production-ready-apis-sample-3)
 
 2020
 ----
