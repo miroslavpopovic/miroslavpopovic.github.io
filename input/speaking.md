@@ -6,7 +6,7 @@ This page contains upcoming talks and the history of the talks I had recently as
 Upcoming
 --------
 
-1. October 27th, 2022 (two talks)
+ 1. October 27th, 2022 (two talks)
     - [NetWork 10, Neum](https://www.networkkonferencija.ba/)
     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
     - [What's new in .NET world?](https://github.com/miroslavpopovic/)
@@ -14,26 +14,23 @@ Upcoming
 2022
 ----
 
-1. August 30th
+ 1. August 30th
     - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
-
-2. September 3rd
+ 2. September 3rd
     - [KulenDayz, Osijek](https://kulendayz.com/)
     - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
-
-3. September 15th
+ 3. September 15th
     - [Road to Init, Banja Luka](https://initconf.org/rti)
     - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
 
 2021
 ----
 
-1. November 30th
+ 1. November 30th
     - [European Cloud Summit, Dusseldorf](https://www.collabsummit.eu/en/lectures/3656/building-an-auth-microservice-with-asp-net-core-identity-and-identityserver)
     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
-
-2. December 28th
+ 2. December 28th
     - [BLbit UG, Banja Luka](https://www.meetup.com/blbitug/events/282838289/)
     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
 
