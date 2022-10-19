@@ -7,32 +7,41 @@ Upcoming
 --------
 
  1. October 27th, 2022 (two talks)
-    - [NetWork 10, Neum](https://www.networkkonferencija.ba/)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
-    - [What's new in .NET world?](https://github.com/miroslavpopovic/)
+     - [NetWork 10, Neum](https://www.networkkonferencija.ba/)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+     - [What's new in .NET world?](https://github.com/miroslavpopovic/)
+ 2. November 29th, 2022
+     - [Advanced Technology Days 14, Zagreb](https://www.advtechdays.com/)
+     - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
 
 2022
 ----
 
  1. August 30th
-    - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+     - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
  2. September 3rd
-    - [KulenDayz, Osijek](https://kulendayz.com/)
-    - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
+     - [KulenDayz, Osijek](https://kulendayz.com/)
+     - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
  3. September 15th
-    - [Road to Init, Banja Luka](https://initconf.org/rti)
-    - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
+     - [Road to Init, Banja Luka](https://initconf.org/rti)
+     - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
+ 4. September 24th
+     - [Init 2022, Banja Luka](https://initconf.org/)
+     - Conference co-organizer, speaker communication
+ 5. October 14th
+     - [Lanaco DevHosted01](https://techhosted.ba/devhosted/)
+     - [Building an auth microservice with .NET](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
 
 2021
 ----
 
  1. November 30th
-    - [European Cloud Summit, Dusseldorf](https://www.collabsummit.eu/en/lectures/3656/building-an-auth-microservice-with-asp-net-core-identity-and-identityserver)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+     - [European Cloud Summit, Dusseldorf](https://www.collabsummit.eu/en/lectures/3656/building-an-auth-microservice-with-asp-net-core-identity-and-identityserver)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
  2. December 28th
-    - [BLbit UG, Banja Luka](https://www.meetup.com/blbitug/events/282838289/)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+     - [BLbit UG, Banja Luka](https://www.meetup.com/blbitug/events/282838289/)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
 
 2020
 ----
@@ -88,20 +97,23 @@ Upcoming
      - ~150 attendees, 79 votes, 4.04 average rating
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
      - ~200 attendees, 67 votes, 4.25 average rating
- 10. November 18th-22nd (workshop)
+ 10. November 2nd
+     - [Init 2019, Banja Luka](https://2019.initconf.org/)
+     - Conference co-organizer, speaker communication
+ 11. November 18th-22nd (workshop)
      - ASP.NET Core 3.0 Workshop, Skopje
      - Organized by [Seavus Skopje](https://www.seavus.com/)
      - [Workshop sample and instructions](https://github.com/miroslavpopovic/aspnetcore-workshop)
      - 2 groups with 20 attendees each
- 11. December 4th
+ 12. December 4th
      - [Advanced Technology Days, Zagreb](https://advtechdays.com/)
      - [Visual Studio productivity](https://www.slideshare.net/miroslavpopovic/advanced-technology-days-15-visual-studio-productivity)
      - ~50 attendees, 32 votes, 4.47 average rating
- 12. December 14th
+ 13. December 14th
      - [SQLSaturday event, Ljubljana](https://www.sqlsaturday.com/910/eventhome.aspx)
      - [Docker and ASP.NET Core](https://github.com/miroslavpopovic/docker-aspnetcore-sample-2)
      - ~40 attendees
- 13. December 18th
+ 14. December 18th
      - [MSCommunity event, Sarajevo](https://www.facebook.com/groups/mscommunitybih/)
      - [What's new in .NET world](https://github.com/miroslavpopovic/what-is-new-in-dotnet-core-3)
      - ~10 attendees
