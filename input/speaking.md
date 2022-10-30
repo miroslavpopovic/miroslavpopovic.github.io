@@ -6,11 +6,7 @@ This page contains upcoming talks and the history of the talks I had recently as
 Upcoming
 --------
 
- 1. October 27th, 2022 (two talks)
-     - [NetWork 10, Neum](https://www.networkkonferencija.ba/)
-     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
-     - [What's new in .NET world?](https://github.com/miroslavpopovic/)
- 2. November 29th, 2022
+ 1. November 29th, 2022
      - [Advanced Technology Days 14, Zagreb](https://www.advtechdays.com/)
      - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
 
@@ -32,6 +28,12 @@ Upcoming
  5. October 14th
      - [Lanaco DevHosted01](https://techhosted.ba/devhosted/)
      - [Building an auth microservice with .NET](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+ 6. October 27th, 2022 (two talks)
+     - [NetWork 10, Neum](https://www.networkkonferencija.ba/)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+     - 40 attendees, 20 votes, 4.70 average talk rating
+     - [What's new in .NET world?](https://github.com/miroslavpopovic/)
+     - 90 attendees, 61 votes, 4.52 average talk rating
 
 2021
 ----
