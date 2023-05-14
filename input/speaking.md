@@ -6,14 +6,13 @@ This page contains upcoming talks and the history of the talks I had recently as
 Upcoming
 --------
 
- 1. November 29-30th, 2022
-    - [Advanced Technology Days 14, Zagreb](https://www.advtechdays.com/)
-    - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
- 2. December 6-7th, 2022
-    - [Sinergija 22, Belgrade](https://www.sinergija.live/)
+ 1. May 30-31st, 2023 (two talks)
+    - [Thrive Conference 2023, Lipica](https://www.thriveconf.com)
     - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+    - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
+ 2. August 29th, 2023
+    - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
+    - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
 
 2022
 ----
@@ -33,15 +32,25 @@ Upcoming
  5. October 14th
      - [Lanaco DevHosted01](https://techhosted.ba/devhosted/)
      - [Building an auth microservice with .NET](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
- 6. October 27th, 2022 (two talks)
+ 6. October 27th (two talks)
      - [NetWork 10, Neum](https://www.networkkonferencija.ba/)
      - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
      - 40 attendees, 21 votes, 4.67 average speaker rating, 4.71 average talk rating
      - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
      - 90 attendees, 62 votes, 4.52 average talk rating, 4.53 average talk rating
- 7. November 17th, 2022
+ 7. November 17th
     - [EESTEC LevelUp 5, Banja Luka](https://www.linkedin.com/company/eestec-lc-banja-luka/)
     - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
+ 8. November 29-30th (two talks)
+    - [Advanced Technology Days 14, Zagreb](https://www.advtechdays.com/)
+    - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
+    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+ 9. December 6-7th (two talks)
+    - [Sinergija 22, Belgrade](https://www.sinergija.live/)
+    - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
+    - 95 attendees, 4.66 average speaker rating, 4.51 average talk rating
+    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+    - 120 attendees, 4.89 average speaker rating, 4.71 average talk rating
 
 2021
 ----
