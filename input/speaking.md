@@ -6,13 +6,25 @@ This page contains upcoming talks and the history of the talks I had recently as
 Upcoming
 --------
 
- 1. May 30-31st, 2023 (two talks)
+ 1. October 18-20th, 2023 (two talks)
+    - [NetWork 11 Conference 2023, Neum](https://www.networkkonferencija.ba/)
+    - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
+    - Clean Architecture with ASP.NET Core - a brand new talk
+
+2023
+----
+
+1. May 30-31st (two talks)
+    - *Had to cancel my talks, because of family emergency*
     - [Thrive Conference 2023, Lipica](https://www.thriveconf.com)
     - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
     - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
- 2. August 29th, 2023
+2. August 29th
     - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
     - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
+3. September 2nd
+    - [KulenDayz, Osijek](https://kulendayz.com/)
+    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet7/)
 
 2022
 ----
