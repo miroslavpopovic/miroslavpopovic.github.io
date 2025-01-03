@@ -5,7 +5,7 @@ Tags:
   - apicontroller
 ---
 
-Two weeks ago ASP.NET team [unveiled](https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/) it's roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - [Project KodKod](https://github.com/aspnet/Mvc/projects/5) - and a goal "to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs".
+Two weeks ago ASP.NET team [unveiled](https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/) its roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - [Project KodKod](https://github.com/aspnet/Mvc/projects/5) - and a goal "to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs".
 
 ![Project KodKod](/images/2018-02/aspnet-mvc-project-kodkod.png)
 

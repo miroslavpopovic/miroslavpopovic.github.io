@@ -6,6 +6,6 @@ Settings[Keys.LinksUseHttps] = true;
 Settings[BlogKeys.IncludeDateInPostPath] = true;
 Settings[BlogKeys.RssPath] = "feed.xml";
 Settings[BlogKeys.Title] = "Miroslav Popovic";
-Settings[BlogKeys.Description] = "Full-stack .NET and JavaScript software architect";
+Settings[BlogKeys.Description] = "Senior software architect and .NET developer";
 
 // Add any pipeline customizations here

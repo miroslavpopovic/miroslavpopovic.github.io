@@ -1,9 +1,9 @@
 Title: About Me
 ---
 
-.NET and JavaScript software architect, employed as a Technical Lead at [Seavus](https://seavus.com/).
+Senior software architect, working mostly with .NET platform. Employed as a Software Engineering Manager at [Qinshift](https://qinshift.com/) (ex Seavus, soon to be Avenga).
 
-One of the leaders of the local [BLbit](https://www.meetup.com/blbitug/) Microsoft Community [user group](https://www.facebook.com/groups/blbit/) and a speaker on dev conferences in Europe.
+One of the leaders of the local [BLbit](https://www.meetup.com/blbitug/) Microsoft Community [user group](https://www.facebook.com/groups/blbit/) and a conference [speaker](http://miroslavpopovic.com/speaking).
 
 [<img src="http://stackexchange.com/users/flair/41050.png?theme=clean" width="208" height="58" alt="profile for Miroslav Popovic on Stack Exchange, a network of free, community-driven Q&A sites" title="profile for Miroslav Popovic on Stack Exchange, a network of free, community-driven Q&A sites" />](http://stackexchange.com/users/41050/miroslav-popovic1)
 
