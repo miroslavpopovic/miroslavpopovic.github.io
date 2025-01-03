@@ -3,10 +3,10 @@
 	<channel>
 		<title>Miroslav Popovic</title>
 		<link>https://miroslavpopovic.com/</link>
-		<description>Full-stack .NET and JavaScript software architect</description>
+		<description>Senior software architect and .NET developer</description>
 		<copyright>2025</copyright>
-		<pubDate>Fri, 03 Jan 2025 05:46:25 GMT</pubDate>
-		<lastBuildDate>Fri, 03 Jan 2025 05:46:25 GMT</lastBuildDate>
+		<pubDate>Fri, 03 Jan 2025 06:39:13 GMT</pubDate>
+		<lastBuildDate>Fri, 03 Jan 2025 06:39:13 GMT</lastBuildDate>
 		<item>
 			<title>ASP.NET Core 3.0 Workshop</title>
 			<link>https://miroslavpopovic.com/posts/2019/07/aspnetcore-30-workshop</link>
@@ -771,10 +771,10 @@ private static string GetSearchUrl(string query, int page, int pageSize)
 		<item>
 			<title>Upcoming HTTP API related changes in ASP.NET Core 2.1</title>
 			<link>https://miroslavpopovic.com/posts/2018/02/upcoming-http-api-related-changes-in-aspnet-core-2.1</link>
-			<description>&lt;p&gt;Two weeks ago ASP.NET team &lt;a href="https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/"&gt;unveiled&lt;/a&gt; it's roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - &lt;a href="https://github.com/aspnet/Mvc/projects/5"&gt;Project KodKod&lt;/a&gt; - and a goal "to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs".&lt;/p&gt;</description>
+			<description>&lt;p&gt;Two weeks ago ASP.NET team &lt;a href="https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/"&gt;unveiled&lt;/a&gt; its roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - &lt;a href="https://github.com/aspnet/Mvc/projects/5"&gt;Project KodKod&lt;/a&gt; - and a goal "to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs".&lt;/p&gt;</description>
 			<guid>https://miroslavpopovic.com/posts/2018/02/upcoming-http-api-related-changes-in-aspnet-core-2.1</guid>
 			<pubDate>Sun, 18 Feb 2018 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;Two weeks ago ASP.NET team &lt;a href="https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/"&gt;unveiled&lt;/a&gt; it's roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - &lt;a href="https://github.com/aspnet/Mvc/projects/5"&gt;Project KodKod&lt;/a&gt; - and a goal &amp;quot;to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs&amp;quot;.&lt;/p&gt;
+			<content:encoded>&lt;p&gt;Two weeks ago ASP.NET team &lt;a href="https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/"&gt;unveiled&lt;/a&gt; its roadmap for ASP.NET Core 2.1 release. In addition to some highly expected features like new SignalR version, Identity changes and WebHooks, the things that I'm most excited of are Web API improvements. These changes are summed up in an initiative with a funny name - &lt;a href="https://github.com/aspnet/Mvc/projects/5"&gt;Project KodKod&lt;/a&gt; - and a goal &amp;quot;to make MVC into a opinionated, forward-thinking, batteries included framework for HTTP APIs&amp;quot;.&lt;/p&gt;
 &lt;p&gt;&lt;img src="/images/2018-02/aspnet-mvc-project-kodkod.png" class="img-fluid" alt="Project KodKod" /&gt;&lt;/p&gt;
 &lt;p&gt;Ever since ASP.NET Web API was introduced, almost 6 years ago, it became THE way that I was working with ASP.NET. I used it mostly to build a backend for SPA applications and on a few API only projects. My experience of building APIs is summed up in a talk that I've been presenting on local conferences and user group meetings, called &amp;quot;Building production ready APIs with ASP.NET Core 2.0&amp;quot;. The samples and the conference PowerPoint presentations can be found &lt;a href="https://github.com/miroslavpopovic/production-ready-apis-sample"&gt;on GitHub&lt;/a&gt;. As ASP.NET Core 2.1 is coming with a number of new API-related features, it could be a good time to update my presentation. So, let's see what are some of those features...&lt;/p&gt;
 &lt;h2 id="https-by-default"&gt;HTTPS by default&lt;/h2&gt;
