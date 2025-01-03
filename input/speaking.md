@@ -6,25 +6,37 @@ This page contains upcoming talks and the history of the talks I had recently as
 Upcoming
 --------
 
- 1. October 18-20th, 2023 (two talks)
-    - [NetWork 11 Conference 2023, Neum](https://www.networkkonferencija.ba/)
-    - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
-    - Clean Architecture with ASP.NET Core - a brand new talk
+ 1. Loading...
+
+2024
+----
+
+ 1. **Parental leave: I became a father of a beautiful baby girl!**
+ 2. Technical review of the book ["Looks Good to Me" by Adrienne Braganza](https://www.manning.com/books/looks-good-to-me) 
 
 2023
 ----
 
-1. May 30-31st (two talks)
-    - *Had to cancel my talks, because of family emergency*
-    - [Thrive Conference 2023, Lipica](https://www.thriveconf.com)
-    - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
-    - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
-2. August 29th
-    - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
-    - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
-3. September 2nd
-    - [KulenDayz, Osijek](https://kulendayz.com/)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet7/)
+ 1. May 30-31st (two talks)
+     - *Had to cancel my talks, because of family emergency*
+     - [Thrive Conference 2023, Lipica](https://www.thriveconf.com)
+     - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
+     - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
+ 2. August 29th
+     - [.NET Day Switzerland, Zürich](https://dotnetday.ch/)
+     - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
+ 3. September 2nd
+     - [KulenDayz, Osijek](https://kulendayz.com/)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet7/)
+ 4. October 18-20th, 2023 (two talks)
+     - [NetWork 11 Conference 2023, Neum](https://www.networkkonferencija.ba/)
+     - [Minimal APIs in ASP.NET Core](https://github.com/miroslavpopovic/minimal-apis-sample/)
+     - 3rd best talk at the conference, 4.88 average talk rating
+     - [Clean Architecture with ASP.NET Core](https://github.com/miroslavpopovic/clean-architecture-sample)
+ 5. November 29-30th, 2023 (two talks)
+     - [Advanced Technology Days, Zagreb](https://www.advtechdays.com/)
+     - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
+     - [Clean Architecture with ASP.NET Core](https://github.com/miroslavpopovic/clean-architecture-sample)
 
 2022
 ----
@@ -51,18 +63,18 @@ Upcoming
      - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
      - 90 attendees, 62 votes, 4.52 average talk rating, 4.53 average talk rating
  7. November 17th
-    - [EESTEC LevelUp 5, Banja Luka](https://www.linkedin.com/company/eestec-lc-banja-luka/)
-    - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
+     - [EESTEC LevelUp 5, Banja Luka](https://www.linkedin.com/company/eestec-lc-banja-luka/)
+     - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
  8. November 29-30th (two talks)
-    - [Advanced Technology Days 14, Zagreb](https://www.advtechdays.com/)
-    - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+     - [Advanced Technology Days 14, Zagreb](https://www.advtechdays.com/)
+     - [Minimal APIs in ASP.NET Core 6+](https://github.com/miroslavpopovic/minimal-apis-sample)
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
  9. December 6-7th (two talks)
-    - [Sinergija 22, Belgrade](https://www.sinergija.live/)
-    - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
-    - 95 attendees, 4.66 average speaker rating, 4.51 average talk rating
-    - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
-    - 120 attendees, 4.89 average speaker rating, 4.71 average talk rating
+     - [Sinergija 22, Belgrade](https://www.sinergija.live/)
+     - [What's new in .NET world?](https://github.com/miroslavpopovic/dotnet-6-and-7/)
+     - 95 attendees, 4.66 average speaker rating, 4.51 average talk rating
+     - [Building an auth microservice with ASP.NET Core Identity and Duende IdentityServer](https://github.com/miroslavpopovic/auth-microservice-sample-dotnet6/)
+     - 120 attendees, 4.89 average speaker rating, 4.71 average talk rating
 
 2021
 ----
