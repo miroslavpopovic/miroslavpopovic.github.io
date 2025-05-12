@@ -4,7 +4,7 @@ branches:
 
 environment:
   access_token:
-    secure: d2EAjwg3QWsuc/NJiIjVf5/G5ztiTvWgxMKd8/8MWA7trTPKXuKdOmOrdJCiOB6JQn5/T1Avmd0GT6JG9cOXvWo5Eg89bDDb63dZknlr2Plgdxc25DIa2Ysr0398zuLr
+    secure: d2EAjwg3QWsuc/NJiIjVf7Wlu5aq9bbFrxpK0dmS7GcSKiLRDyEeHJXl6RcRXghA2tigt6WTMf3H4k2qbAMcuBiep08OmNb7wWE7PksuPeqHu8M837YBHwBklKMnT0Cq
 
 install:
   - git submodule update --init --recursive
